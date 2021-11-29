@@ -1,0 +1,21 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}
+
+:focus {
+  outline: 2px solid #5dc5cc;
+}
+
+:focus:not(:focus-visible) {
+  outline: 0;
+}
