@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductList from '../src/pages/ProductList/ProductList';
-import ProductDetail from '../src/pages/ProductDetail/ProductDetail';
-import Login from '../src/pages/Login/Login';
+import ProductList from './pages/ProductList/ProductList';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
+import Login from './pages/Login/Login';
 
 const Router = () => {
   return (
