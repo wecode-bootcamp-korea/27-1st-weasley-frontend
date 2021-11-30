@@ -1,8 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
-const ProductDetailTop = props => {
-  console.log(props);
+import { Link, useParams } from 'react-router-dom';
+
+const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
+  // console.log('id', id);
+  console.log(detail);
+  const { id } = useParams();
+  console.log(id);
+  const i = Number(id);
+
   return (
     <section className="productDetailTop">
       <div className="productDetailImage">
@@ -10,7 +16,7 @@ const ProductDetailTop = props => {
       </div>
       <div className="productDetailInfo">
         <div className="productInfoHeader">
-          <span className="productTitleName">{props.name}</span>
+          <span className="productTitleName">안됨</span>
           <span className="productInfoOptions">
             <Link to="#">타입변경</Link>
           </span>
@@ -21,12 +27,28 @@ const ProductDetailTop = props => {
             <span className="reviewAverageViewScore">4.4점</span>
           </span>
           <span className="capacity">180mL (8주 사용 분량)</span>
+          <div className="countUp">
+            <span>
+              <input type="button" onClick={countDownEvent} value="-" />
+            </span>
+            <span className="productCount">{count}</span>
+            <span>
+              <input type="button" onClick={countUpEvent} value="+" />
+            </span>
+          </div>
         </div>
-        <form className="butAction">
+        <form className="buttonAction">
           <button type="button" className="buyButton">
-            {props.price}
+            구독하기
+          </button>
+          <button type="button" className="buyButton">
+            구매하기
+          </button>
+          <button type="button" className="buyButton">
+            장바구니 담기
           </button>
         </form>
+        <div> 6,900 </div>
       </div>
     </section>
   );

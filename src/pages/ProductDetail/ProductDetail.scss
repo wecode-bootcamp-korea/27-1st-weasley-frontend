@@ -49,14 +49,20 @@
         .capacity {
           color: $colorGray;
         }
+        .countUp {
+          .productCount {
+            padding: 0 10px;
+          }
+        }
       }
-      .butAction {
+      .buttonAction {
+        @include flexSpaceBetweenCenter;
         .buyButton {
-          width: 100%;
+          width: 130px;
           background-color: $colorMint;
           color: $colorhite;
           border-radius: $ButtonBorderRadius;
-          padding: 20px 34px;
+          padding: 20px 15px;
           font-size: 18px;
           border: none;
           cursor: pointer;
@@ -108,10 +114,9 @@
       text-align: center;
       margin-top: 50px;
     }
+
     .resultWrap {
       @include flexCenter;
-    }
-    .resultWrap {
       margin-top: 50px;
 
       .circle {

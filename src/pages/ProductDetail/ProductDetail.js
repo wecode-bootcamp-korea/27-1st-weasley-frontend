@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ProductDetailTop from './ProductTop';
 import ProductDetailContents from './ProductDetailContents';
 
 import './ProductDetail.scss';
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  console.log(id);
+  const [detail, setDetail] = useState([]);
+  const [price, setPrice] = useState([]);
+  const [count, setCount] = useState(1);
+
+  const countUpEvent = () => {
+    setCount(count + 1);
+  };
+  const countDownEvent = () => {
+    setCount(count - 1);
+    return count < 2 ? setCount(1) : null;
+  };
+
   useEffect(() => {
-    fetch(`/data/productDetail/detailcontents.json?id=${id}`)
+    fetch('/data/detailcontents.json')
       .then(res => res.json())
       .then(data => {
         setDetail(data);
       });
   }, []);
 
-  const [detail, setDetail] = useState([]);
-  console.log('디테일이다', detail);
-  console.log('디테일 아이디');
   return (
     <main className="main">
       <ProductDetailTop
-        id={detail.id}
-        name={detail.detailName}
-        price={detail.price}
+        detail={detail}
+        count={count}
+        countUpEvent={countUpEvent}
+        countDownEvent={countDownEvent}
       />
-      <ProductDetailContents />;
+      <ProductDetailContents detail={detail} />;
     </main>
   );
 };
