@@ -2,8 +2,8 @@
 $colorBlack: #262626;
 $colorGray: #8e8e8e;
 $colorBackGroundGray: #f7f6f5;
-$colorProductGray: #fafafa;
-$colorWhite: #fff;
+$colorWProductGray: #fafafa;
+$colorhite: #fff;
 $colorMint: #5dc5cc;
 $colorLightMint: #eef9fa;
 
@@ -26,8 +26,8 @@ $BigButtonPadding: 0 34px;
 $SmallButtonPadding: 0 16px;
 
 /* Border */
-$borderGray: 1px solid $color-gray;
-$borderDarkgray: 1px solid $color-dark-gray;
+$borderGray: 1px solid $colorGray;
+$borderDarkgray: 1px solid rgb(103, 103, 103);
 
 /* Margin */
 $marginCenter: 0 auto;
