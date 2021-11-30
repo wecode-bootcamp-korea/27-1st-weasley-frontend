@@ -30,6 +30,7 @@ const ProductDetail = () => {
     <main className="main">
       <ProductDetailTop
         detail={detail}
+        price={price}
         count={count}
         countUpEvent={countUpEvent}
         countDownEvent={countDownEvent}

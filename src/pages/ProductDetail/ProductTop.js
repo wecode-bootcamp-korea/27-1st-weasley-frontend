@@ -2,7 +2,13 @@ import React, { useEffect } from 'react';
 
 import { Link, useParams } from 'react-router-dom';
 
-const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
+const ProductDetailTop = ({
+  price,
+  detail,
+  count,
+  countUpEvent,
+  countDownEvent,
+}) => {
   // console.log('id', id);
   console.log(detail);
   const { id } = useParams();
@@ -16,7 +22,7 @@ const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
       </div>
       <div className="productDetailInfo">
         <div className="productInfoHeader">
-          <span className="productTitleName">안됨</span>
+          <span className="productTitleName">데이터바인딩제목</span>
           <span className="productInfoOptions">
             <Link to="#">타입변경</Link>
           </span>
@@ -48,7 +54,10 @@ const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
             장바구니 담기
           </button>
         </form>
-        <div> 6,900 </div>
+        <div className="priceTab">
+          <span className="productPrice">6500</span>
+          <span>원</span>
+        </div>
       </div>
     </section>
   );
