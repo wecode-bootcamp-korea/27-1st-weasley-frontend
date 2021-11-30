@@ -64,15 +64,68 @@
       }
     }
   }
-}
-.productDetailMain {
-  padding: 50px 0;
 
-  .productDetailTitle {
-    font-size: $fontLarge;
-    font-weight: $weightSemiBold;
-    line-height: 50px;
-    text-align: center;
-    padding-bottom: 50px;
+  .productDetailMain {
+    padding: 80px 0;
+
+    .productDetailTitle {
+      margin: 100px 0;
+    }
+    .productDetailTitleContents {
+      font-size: $fontLarge;
+      font-weight: $weightRegular;
+      line-height: 50px;
+      text-align: center;
+      padding-bottom: 50px;
+    }
+
+    .slideBanner {
+      @include flexSpaceBetweenCenter;
+      align-items: start;
+      border-radius: $ButtonBorderRadius;
+      background-color: #fff;
+
+      .leftWrap {
+        width: 50%;
+        padding: 80px 35px;
+
+        .leftTag {
+          padding-bottom: 70px;
+        }
+
+        .leftTitle {
+          font-size: $fontLarge;
+          font-weight: $weightRegular;
+          line-height: 40px;
+        }
+      }
+      .slideImage {
+        width: 50%;
+      }
+    }
+    .costInfo {
+      @include flexSpaceBetweenCenter;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .resultWrap {
+      @include flexCenter;
+    }
+    .resultWrap {
+      margin-top: 50px;
+
+      .circle {
+        background-color: $colorMint;
+        color: $colorhite;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        margin: 50px;
+        padding: 20px;
+      }
+      .circle:nth-child(2) {
+        background-color: $colorGray;
+      }
+    }
   }
 }
