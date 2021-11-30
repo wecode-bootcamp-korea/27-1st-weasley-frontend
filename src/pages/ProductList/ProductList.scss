@@ -1,0 +1,108 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f7f6f5;
+}
+
+.banner {
+  width: 100%;
+  padding: 0px 25px;
+  //   max-width: 1140px;
+  margin: 0 auto;
+  background-color: #5dc5cc;
+}
+
+.bannerSection {
+  display: flex;
+  height: 330px;
+  background-image: url('https://openwork.wiselycompany.com/static/media/composition_trial.34a5950b.png');
+  background-repeat: no-repeat;
+  background-size: 850px;
+  background-position: left 530px bottom;
+  background-color: #5dc5cc;
+  align-items: center;
+  .article {
+    margin-left: 250px;
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    h2 {
+      font-size: 30px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 10px;
+    }
+    button {
+      margin: 30px 0;
+      padding: 18px 40px;
+      border-radius: 8px;
+      border: 1px solid #5dc5cc;
+      color: #5dc5cc;
+      font-size: 25px;
+    }
+  }
+}
+
+.main {
+  .mainTitle {
+    margin: 100px 0 0 30px;
+    font-weight: 700;
+    font-size: 50px;
+  }
+}
+
+.productSelect {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.product {
+  background-color: #eef9fa;
+  display: flex;
+  width: 800px;
+  margin: 0 auto;
+  border-radius: 20px;
+  margin-top: 100px;
+  .productImg {
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+  .productTitle {
+    p:first-child {
+      font-size: 25px;
+      font-weight: 700;
+    }
+    p:last-child {
+      font-size: 20px;
+      font-weight: 500;
+      color: gray;
+    }
+  }
+  select {
+    margin: 60px 0 100px 0;
+  }
+}
+
+.productType {
+  margin-top: 50px;
+
+  .type {
+    width: 400px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 8px;
+  }
+  .typeBtn {
+    button {
+      padding: 5px;
+      background-color: #5dc5cc;
+      color: white;
+    }
+  }
+}
