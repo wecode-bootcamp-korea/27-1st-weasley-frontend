@@ -1,20 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ProductDetailTop = ({
+  name,
   price,
-  detail,
   count,
   countUpEvent,
   countDownEvent,
 }) => {
-  // console.log('id', id);
-  console.log(detail);
-  const { id } = useParams();
-  console.log(id);
-  const i = Number(id);
-
   return (
     <section className="productDetailTop">
       <div className="productDetailImage">
@@ -22,7 +16,7 @@ const ProductDetailTop = ({
       </div>
       <div className="productDetailInfo">
         <div className="productInfoHeader">
-          <span className="productTitleName">데이터바인딩제목</span>
+          <span className="productTitleName">{name}</span>
           <span className="productInfoOptions">
             <Link to="#">타입변경</Link>
           </span>
@@ -55,7 +49,7 @@ const ProductDetailTop = ({
           </button>
         </form>
         <div className="priceTab">
-          <span className="productPrice">6500</span>
+          <span className="productPrice">{price}</span>
           <span>원</span>
         </div>
       </div>
