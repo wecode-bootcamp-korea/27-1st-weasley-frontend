@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ProductDetailTop from './ProductTop';
@@ -7,6 +7,7 @@ import './ProductDetail.scss';
 
 const ProductDetail = () => {
   const [detail, setDetail] = useState([]);
+  const [price, setPrice] = useState();
   const [count, setCount] = useState(1);
   const { id } = useParams();
 
@@ -17,7 +18,6 @@ const ProductDetail = () => {
   };
   const countDownEvent = () => {
     setCount(count - 1);
-    return count < 2 ? setCount(1) : null;
   };
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ProductDetail = () => {
         setDetail(data);
       });
   }, []);
-
+  console.log('디테일입니다:', detail);
   return (
     <main className="main">
       {detailList.map(item => {

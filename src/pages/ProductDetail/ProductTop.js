@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
+
+import './ProductTop.scss';
 
 const ProductDetailTop = ({
   name,
@@ -8,6 +9,7 @@ const ProductDetailTop = ({
   count,
   countUpEvent,
   countDownEvent,
+  isCountDownVailed,
 }) => {
   return (
     <section className="productDetailTop">
@@ -29,7 +31,12 @@ const ProductDetailTop = ({
           <span className="capacity">180mL (8주 사용 분량)</span>
           <div className="countUp">
             <span>
-              <input type="button" onClick={countDownEvent} value="-" />
+              <input
+                type="button"
+                disabled={count === 1 ? true : false}
+                onClick={countDownEvent}
+                value="-"
+              />
             </span>
             <span className="productCount">{count}</span>
             <span>

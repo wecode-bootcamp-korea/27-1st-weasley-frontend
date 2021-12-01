@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './ProductDetailContents.scss';
+
 const ProductDetailContents = () => {
   return (
     <section className="productDetailMain">
