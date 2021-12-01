@@ -25,11 +25,11 @@ function Product({ category, i }) {
           {category.products_list.map(function (list, i) {
             return (
               <div
+                key={list.id}
                 className="type"
                 onClick={() => {
                   setImgUrl(list.img);
                 }}
-                key={i}
               >
                 <div>{list.outer_name}</div>
                 <div className="typeBtn">
