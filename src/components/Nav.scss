@@ -1,28 +1,49 @@
 @import '../styles/variables.scss';
 
-.Nav {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
+.navBar {
+  padding: 0 20px;
+  @include flexCenter;
   height: 65px;
-  color: $colorBlack;
-  background-color: #f7f6f5;
   border-bottom: $borderDarkgray;
+  background-color: $colorWhite;
 
-  .navBar {
+  .navLogo {
+    width: 220px;
+    margin-right: 50px;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+
+    img {
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+  .navMenu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: inline-block;
+    text-align: center;
+    width: 1280px;
+    margin: $marginCenter;
+    padding: 50px;
 
-    .navButton {
+    ul {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 120px;
-      width: 20px;
-      margin: 20px;
+    }
+
+    .navMenuIngredient,
+    .navMenuProduct,
+    .navMenuCustomer {
+      color: $colorGray;
+      cursor: pointer;
+      padding: 20px;
+    }
+  }
+  .navLoginCart {
+    @include flexCenter;
+    padding-right: 50px;
+
+    .login {
+      padding-right: 30px;
+      width: 100px;
     }
   }
 }

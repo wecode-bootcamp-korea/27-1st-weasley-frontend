@@ -1,46 +1,48 @@
-import React, { useState } from 'react';
-import Main from './Main';
-import logo from './images/logo/logo-bk.svg';
-import cart from '.images/navimg/bi_cart.svg';
-import '../Nav/Nav.scss';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../components/Nav.scss';
 
 function Nav() {
-  const [home, setHome] = useState(Main);
-
   return (
     <div className="Nav">
       <div className="navBar">
-        <div className="navButton">
-          <button
-            type="button"
-            className="homeLogo"
-            onClick={() => setHome(Main)}
-          >
-            <img scr={logo} className="logoBlack" alt="와이즐리" />
-          </button>
+        <div className="navLogo">
+          <Link to="/">
+            <img src="./images/logo/logo-bk.svg" alt="logo" classNAme="logo" />
+          </Link>
         </div>
-        <hr />
-        <main children={home} />
         <div className="navMenu">
           <ul className="navMenuUl">
             <li className="navMenuList1">
-              <button className="navMenuListBtn1">핵심성분</button>
+              <Link to="/">
+                <p className="navMenuIngredient">핵심성분</p>
+              </Link>
             </li>
+
             <li className="navMenuList2">
-              <button className="navMenuListBtn1">상품보기</button>
+              <Link to="/productlist">
+                <p className="navMenuProduct">상품보기</p>
+              </Link>
             </li>
             <li className="navMenuList3">
-              <button className="navMenuListBtn1">고객센터</button>
+              <Link to="/">
+                <p className="navMenuCustomer">고객센터</p>
+              </Link>
             </li>
           </ul>
         </div>
+
         <div className="navLoginCart">
-          <button className="loginBtn">
+          <Link to="login">
             <p className="login">로그인</p>
-          </button>
-          <button className="cart">
-            <img src={cart} className="cartImg" alt="장바구니" />
-          </button>
+          </Link>
+          <Link to="#">
+            <img
+              src="./images/navimg/bi_cart.svg"
+              className="cartImg"
+              alt="장바구니"
+            />
+          </Link>
         </div>
       </div>
     </div>
