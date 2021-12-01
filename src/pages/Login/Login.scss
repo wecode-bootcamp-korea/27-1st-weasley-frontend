@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .Login {
-  background: url('/assets/images/loginbg.png') no-repeat center center fixed;
+  background: url('/assets/images/loginbackground.png') no-repeat;
   background-size: cover;
   background-position: 50% 50%;
   height: 1440px;
@@ -10,5 +10,25 @@
     width: 220px;
     margin-right: 50px;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  }
+
+  .loginSection {
+    position: absolute;
+    transform: translate(10%, 300%);
+    left: 350px;
+    border: $borderGray;
+    background: $colorWhite;
+
+    .loginH1 {
+      font-weight: $weightBold;
+
+      .loginTitle {
+        font-weight: $weightRegular;
+      }
+    }
+
+    input {
+      color: $colorBackGroundGray;
+    }
   }
 }
