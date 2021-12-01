@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ProductDetailTop from './ProductTop';
@@ -7,7 +7,6 @@ import './ProductDetail.scss';
 
 const ProductDetail = () => {
   const [detail, setDetail] = useState([]);
-  const [price, setPrice] = useState();
   const [count, setCount] = useState(1);
   const { id } = useParams();
 
@@ -27,7 +26,7 @@ const ProductDetail = () => {
         setDetail(data);
       });
   }, []);
-  console.log('디테일입니다:', detail);
+
   return (
     <main className="main">
       {detailList.map(item => {

@@ -9,7 +9,6 @@ const ProductDetailTop = ({
   count,
   countUpEvent,
   countDownEvent,
-  isCountDownVailed,
 }) => {
   return (
     <section className="productDetailTop">
