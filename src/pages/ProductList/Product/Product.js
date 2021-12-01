@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Product/Product.scss';
+import './Product.scss';
 
 function Product({ category, i }) {
   const [imgUrl, setImgUrl] = useState(category.products_list[0].img);
@@ -22,7 +22,7 @@ function Product({ category, i }) {
         </div>
 
         <div className="productType">
-          {category.products_list.map(function (list, i) {
+          {category.products_list.map(function (list) {
             return (
               <div
                 key={list.id}

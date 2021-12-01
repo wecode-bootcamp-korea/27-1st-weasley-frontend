@@ -1,5 +1,5 @@
 import React from 'react';
-import '../ProductListHeader/ProductListHeader.scss';
+import './ProductListHeader.scss';
 
 function ProductListHeader() {
   return (

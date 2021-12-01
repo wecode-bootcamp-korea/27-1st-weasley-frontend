@@ -1,5 +1,5 @@
 import React from 'react';
-import '../ProductListTitle/ProductListTitle.scss';
+import './ProductListTitle.scss';
 
 function ProductListTitle() {
   return (
