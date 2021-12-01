@@ -1,8 +1,8 @@
 @import '../styles/variables.scss';
 
-.navBar {
-  padding: 0 20px;
+.nav {
   @include flexCenter;
+  padding: 0 20px;
   height: 65px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;
@@ -19,7 +19,6 @@
   }
   .navMenu {
     display: flex;
-    display: inline-block;
     text-align: center;
     width: 1280px;
     margin: $marginCenter;
@@ -29,9 +28,7 @@
       display: flex;
     }
 
-    .navMenuIngredient,
-    .navMenuProduct,
-    .navMenuCustomer {
+    .navMenuIteams {
       color: $colorGray;
       cursor: pointer;
       padding: 20px;

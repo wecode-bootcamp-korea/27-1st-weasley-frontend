@@ -1,0 +1,14 @@
+@import '../../styles/variables.scss';
+
+.Login {
+  background: url('/assets/images/loginbg.png') no-repeat center center fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 1440px;
+
+  .logo {
+    width: 220px;
+    margin-right: 50px;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  }
+}
