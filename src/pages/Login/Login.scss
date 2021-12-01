@@ -1,34 +1,61 @@
 @import '../../styles/variables.scss';
 
-.Login {
+.login {
   background: url('/assets/images/loginbackground.png') no-repeat;
   background-size: cover;
   background-position: 50% 50%;
   height: 1440px;
 
   .logo {
-    width: 220px;
-    margin-right: 50px;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    max-height: 25px;
+    width: 100px;
+    transform: translate(350%, 1400%);
+
+    img {
+      width: 100%;
+    }
   }
 
   .loginSection {
     position: absolute;
-    transform: translate(10%, 300%);
-    left: 350px;
+    transform: translate(50%, 100%);
     border: $borderGray;
     background: $colorWhite;
+    padding: 35px;
+    margin: 30px 30px;
 
     .loginH1 {
-      font-weight: $weightBold;
+      font-size: $fontLarge;
+      padding-bottom: 50px;
+    }
 
-      .loginTitle {
-        font-weight: $weightRegular;
-      }
+    .loginTitle {
+      display: flex;
+      font-weight: $weightThin;
+    }
+
+    .form {
+      @include flexCenter;
     }
 
     input {
-      color: $colorBackGroundGray;
+      @include flexCenter;
+      border: 0;
+      border-bottom: $borderGray;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 10px 36px 10px 36px;
+      border: 0;
+      outline: 0;
+      border-radius: 8px;
+      background-color: #5dc5cc;
+      color: $colorWhite;
+    }
+
+    p {
+      padding: 20px 20px;
     }
   }
 }

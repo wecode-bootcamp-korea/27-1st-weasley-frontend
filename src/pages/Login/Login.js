@@ -6,7 +6,9 @@ function Login() {
   return (
     <div className="login">
       <div className="logo">
-        <Link to="/" />
+        <Link to="/">
+          <img src="./images/logo/logo-bk.svg" alt="logo" />
+        </Link>
       </div>
 
       <div className="loginSection">
@@ -14,16 +16,12 @@ function Login() {
           로그인 및 회원가입
           <span className="loginTitle">을 시작합니다.</span>
         </h1>
-
         <form name="loginForm" action="login.js" method="post">
           <label for="email">
-            <input
-              value=""
-              type="text"
-              id="email"
-              name="email"
-              placeholder="이메일"
-            />
+            <input type="text" id="email" name="email" placeholder="이메일" />
+            <button className="nextButton" type="button">
+              다음
+            </button>
           </label>
         </form>
         <p>
