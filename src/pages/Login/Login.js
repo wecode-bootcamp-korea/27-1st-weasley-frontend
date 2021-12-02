@@ -1,25 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './IsValidation';
 import '../Login/Login.scss';
 
+const emailReg =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passwordReg =
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
 function Login() {
-  const [loginActive, setLoginActive] = useState(false);
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const navigate = useNavigate();
-  const inputValue = emailValue가 정규식 && password가 정규식 
 
-
-
-  //email 정규식 
-  //const emailExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
- // const passwordExp = 
-
-
-  const valueActive = () => {
-    return setLoginActive(inputValue);
-  };
+  const emailExp = new RegExp(emailReg);
+  const passwordExp = new RegExp(passwordReg);
+  const isInputValid =
+    emailExp.test(emailValue) && passwordExp.test(passwordValue);
 
   const handleEmail = e => {
     const { value } = e.target;
@@ -32,7 +28,7 @@ function Login() {
   };
 
   const goToMain = () => {
-    fetch('API주소', {
+    fetch('http://10.58.0.114:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: emailValue,
@@ -40,7 +36,9 @@ function Login() {
       }),
     })
       .then(response => response.json())
-      .then(result => (result.message === 'SUCCESS' ? navigate('/') : ''));
+      .then(result => {
+        return result.MESSAGE === 'SUCCESS' ? navigate('/') : '';
+      });
 
     navigate('/');
   };
@@ -61,27 +59,26 @@ function Login() {
         <form name="loginForm" action="login.js" method="post">
           <label for="email">
             <input
-              value=""
+              value={emailValue}
               type="text"
               id="email"
               name="email"
               placeholder="이메일"
               onChange={handleEmail}
-              onKeyUp={valueActive}
             />
           </label>
           <label for="password">
             <input
-              value=""
+              value={passwordValue}
+              type="password"
               id="password"
               name="password"
               placeholder="비밀번호 (8자 이상)"
               onChange={handlePassword}
-              onKeyUp={valueActive}
             />
           </label>
           <button
-            className={loginActive ? 'activeOn' : 'activeOff'}
+            className={isInputValid ? 'activeOn' : 'activeOff'}
             onClick={goToMain}
             type="button"
           >
