@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import ProductListHeader from './ProductListHeader/ProductListHeader';
 import ProductListBanner from './ProductListBanner/ProductListBanner';
@@ -42,5 +41,3 @@ function ProductList() {
 }
 
 export default ProductList;
-=======
->>>>>>> master
