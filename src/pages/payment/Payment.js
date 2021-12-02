@@ -2,11 +2,13 @@ import react, { useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
 
 import PayInfo from './PayInfo';
+import GuestUserInfo from './GuestUserInfo';
+import PaymentUserInfo from './PaymentUserInfo';
 import './Payment.scss';
 
 const Payment = () => {
+  const [userInputValue, setUserInputValue] = useState('');
   const [payInfo, setPayInfo] = useState([]);
-  const [userInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
     fetch('/data/payment/paymentdata.json')
@@ -16,51 +18,32 @@ const Payment = () => {
       });
   }, []);
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userName: '',
-        body: 'I am testing!',
-        userId: 1,
-      }),
-    }).then(response => console.log(response));
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/posts', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       userName: '',
+  //       body: 'I am testing!',
+  //       userId: 1,
+  //     }),
+  //   }).then(response => console.log(response));
+  // }, []);
+
+  const addressInputValue = e => {
+    setUserInputValue(e.target.value);
+  };
 
   return (
     <main className="payment">
-      <div className="paymentUserInfo">
-        <div className="userWrap">
-          <div className="userInfo">
-            <sapn className="userName">
-              <input className="orderName" type="text" placeholder="성함" />
-            </sapn>
-            <span className="userPhone">
-              <input type="text" placeholder="01012345678" />
-            </span>
-            <p className="userAddress">
-              <input type="text" />
-            </p>
-          </div>
-          <div className="modifyButtonWrap">
-            <span className="modifyButton">주소 추가</span>
-          </div>
-        </div>
-        <div className="paymentMethod">
-          <div className="methodTitle">
-            <h1>결제수단을 선택해주세요.</h1>
-          </div>
-          <form className="methodForm">
-            <button className="methodButton point">포인트로 결제</button>
-          </form>
-          <form className="payForm">
-            <button className="payButton">결제하기</button>
-          </form>
-        </div>
-      </div>
+      {/* 회원 토큰이 없으면 주소 입력창 뜨게하기 / 입력하거나 저장된 있다면 저장된 주소 붙여주기*/}
+
+      <GuestUserInfo addressInputValue={addressInputValue} />
+
+      <PaymentUserInfo />
+
       <div className="paymentPayList">
         {payInfo.map(item => {
           return <PayInfo key={item.id} name={item.name} price={item.price} />;
