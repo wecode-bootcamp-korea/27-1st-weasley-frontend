@@ -1,34 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import EmptyCart from './EmptyCart';
+import List from './List';
 import '../Cart/Cart.scss';
+import Price from './Price';
 
 //http://10.58.0.114:8000/shops/carts
 function Cart() {
   useEffect(() => {
-    fetch('data/cartData.json', {
+    fetch('http://10.58.0.114:8000/shops/carts', {
       method: 'get',
       headers: {
         Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.hGDrxyBzszHTxOhDVybkkwg5G9caMFrvv4h2fPZxzJA',
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
     })
       .then(res => res.json())
       .then(data => {
         //data.RESULT.length
-        if (data.length === 0) {
+        if (data.RESULT.length === 0) {
           alert('장바구니가 비었습니다.');
           setEmpty(true);
         } else {
-          setCart(data);
+          setCart(data.RESULT);
+          setAmount(data.RESULT.amount);
         }
       });
   }, []);
 
   const [cart, setCart] = useState([]);
+  const [amount, setAmount] = useState('');
 
   const [empty, setEmpty] = useState(false);
 
-  console.log(cart);
+  const handleCart = fetch('http://10.58.0.114:8000/shops/carts', {
+    method: 'get',
+    headers: {
+      Authorization:
+        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+    },
+  })
+    .then(res => res.json())
+    .then(data => {
+      //data.RESULT.length
+      if (data.RESULT.length === 0) {
+        alert('장바구니가 비었습니다.');
+        setEmpty(true);
+      } else {
+        setCart(data.RESULT);
+        setAmount(data.RESULT.amount);
+      }
+    });
   return (
     <>
       <nav>네브바</nav>
@@ -38,113 +59,11 @@ function Cart() {
         <main className="cartMain">
           <div className="title">장바구니</div>
 
-          {cart.map(function (list, i) {
-            return (
-              <div className="list">
-                <div className="listLeft">
-                  <img src={list.thumb} />
-                  <div className="listArticle">
-                    <h3>{list.category_name}</h3>
-                    <span>
-                      {list.ml_volume}ml / {list.tags.join('')}용
-                    </span>
-                    <p>{list.price.toLocaleString()}원</p>
-                  </div>
-                </div>
-
-                <div className="listRight">
-                  <div className="cancel">
-                    <button
-                      onClick={() => {
-                        fetch('data/cartData.json', {
-                          method: 'delete',
-                          body: JSON.stringify({
-                            id: list.id,
-                          }),
-                        })
-                          .then(res => res.json())
-                          .then(data => {
-                            data = 'success'
-                              ? setCart(
-                                  cart.filter(cartList => {
-                                    return cartList.id !== list.id;
-                                  })
-                                )
-                              : null;
-                          })
-                          .catch(error => alert(error));
-                      }}
-                    >
-                      삭제
-                    </button>
-                  </div>
-                  <div className="order">
-                    <div
-                      className="minus"
-                      onClick={() => {
-                        if (list.amount === 1) {
-                          alert('상품을 더 이상 줄일 수 없습니다.');
-                        }
-                        fetch('data/cartData.json', {
-                          method: 'patch',
-                          body: JSON.stringify({
-                            id: list.id,
-                            amount: list.amount - 1,
-                          }),
-                        })
-                          .then(res => res.json())
-                          .then(data => {
-                            data = 'success' ? (list.amount += 1) : null;
-                          })
-                          .catch(error => alert(error));
-                      }}
-                    >
-                      -
-                    </div>
-                    <div className="count">{list.amount}</div>
-                    <div
-                      className="plus"
-                      onClick={() => {
-                        if (list.amount === 99) {
-                          alert('제품을 더 이상 추가할수 없습니다.');
-                        }
-                        fetch('data/cartData.json', {
-                          method: 'patch',
-                          body: JSON.stringify({
-                            id: list.id,
-                            amount: list.amount + 1,
-                          }),
-                        })
-                          .then(res => res.json())
-                          .then(data => {
-                            data = 'success' ? (list.amount += 1) : null;
-                          })
-                          .catch(error => alert(error));
-                      }}
-                    >
-                      +
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
+          {cart.map(function (list) {
+            return <List cart={cart} list={list} handleCart={handleCart} />;
           })}
 
-          <div className="total">
-            <div className="fee">
-              <p>배송비</p>
-              <p>무료배송</p>
-            </div>
-            <div className="sum">
-              <p>총 결제금액</p>
-              <p>
-                {cart
-                  .reduce((total, curr) => total + curr.price * curr.amount, 0)
-                  .toLocaleString()}
-                원
-              </p>
-            </div>
-          </div>
+          <Price cart={cart} />
 
           <div className="orderBtn">
             <button>주문하기</button>
