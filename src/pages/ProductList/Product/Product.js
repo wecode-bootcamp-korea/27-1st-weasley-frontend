@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Product.scss';
 
-function Product({ category, i }) {
+function Product({ category }) {
   const [imgUrl, setImgUrl] = useState(category.products_list[0].img);
 
   return (
@@ -14,7 +14,7 @@ function Product({ category, i }) {
       <div className="productSelect">
         <div className="productTitle">
           <h2>
-            STEP{i}. {category.name}
+            STEP{category.id}. {category.name}
           </h2>
           <p>
             {category.ml_volume}ml / {category.price}원
