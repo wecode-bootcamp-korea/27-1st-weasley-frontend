@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.paymentPayList {
+  .orderProductList {
+    @include flexCenter;
+    border-bottom: $borderGray;
+  }
+
+  .orderProductImage {
+    width: 100px;
+  }
+
+  .orderProductImage img {
+    width: 100%;
+  }
+  .orderInfo {
+    .productName {
+      font-size: $fontRegular;
+    }
+  }
+
+  .seperateInfo {
+    padding-left: 40px;
+  }
+
+  .total {
+    margin: 40px 0;
+
+    .totalInfo {
+      @include flexSpaceBetweenCenter;
+      padding: 10px 0;
+      li {
+        font-size: $fontSmall;
+        color: $colorGray;
+      }
+      &:nth-child(3) li {
+        font-size: $fontRegular;
+        color: #333;
+      }
+    }
+  }
+}

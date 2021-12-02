@@ -1,29 +1,59 @@
-import react from 'react';
+import react, { useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
 
+import PayInfo from './PayInfo';
 import './Payment.scss';
 
 const Payment = () => {
+  const [payInfo, setPayInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/payment/paymentdata.json')
+      .then(res => res.json())
+      .then(data => {
+        setPayInfo(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userName: '',
+        body: 'I am testing!',
+        userId: 1,
+      }),
+    }).then(response => console.log(response));
+  }, []);
+
   return (
     <main className="payment">
       <div className="paymentUserInfo">
         <div className="userWrap">
           <div className="userInfo">
-            <sapn className="userName">황주영</sapn>
-            <span className="userPhone">01029852796</span>
-            <p className="userAddress">강남구 테헤란로 427 위워크</p>
+            <sapn className="userName">
+              <input className="orderName" type="text" placeholder="성함" />
+            </sapn>
+            <span className="userPhone">
+              <input type="text" placeholder="01012345678" />
+            </span>
+            <p className="userAddress">
+              <input type="text" />
+            </p>
           </div>
           <div className="modifyButtonWrap">
-            <span className="modifyButton">수정</span>
+            <span className="modifyButton">주소 추가</span>
           </div>
         </div>
         <div className="paymentMethod">
           <div className="methodTitle">
             <h1>결제수단을 선택해주세요.</h1>
           </div>
-          {/* <SelectPayMethod /> */}
           <form className="methodForm">
-            <button className="methodButton naver">네이버페이로 결제</button>
             <button className="methodButton point">포인트로 결제</button>
           </form>
           <form className="payForm">
@@ -32,21 +62,37 @@ const Payment = () => {
         </div>
       </div>
       <div className="paymentPayList">
-        <div className="orderProductList">
-          <div className="orderProductImage">
-            <img src="images/productimage/cleanser2.png" alt="#" />
-          </div>
-          <div className="orderInfo">
-            <p className="productName">클렌징폼</p>
-            <span className="productType">건성용</span>
-            <span className="productCapacity">180ml</span>
-          </div>
-          <div className="seperateInfo">
-            <span className="seperateQty">1개</span>
-            <span className="seperateQty">/</span>
-            <span className="seperatePrcie">7500</span>
-            <span className="seperateQty">원</span>
-          </div>
+        {payInfo.map(item => {
+          return <PayInfo key={item.id} name={item.name} price={item.price} />;
+        })}
+
+        <div className="total">
+          <ul className="totalInfo">
+            <li className="productPriceText">상품가격</li>
+            <li className="ProductPrice">
+              {payInfo
+                .reduce((total, curr) => total + curr.price, 0)
+                .toLocaleString()}
+              원
+            </li>
+          </ul>
+          <ul className="totalInfo">
+            <li className="shippingPriceText">배송비</li>
+            <li className="shippingIsFree">무료배송</li>
+          </ul>
+          <ul className="totalInfo">
+            <li className="totalPriceText">총 결제금액</li>
+            <li className="totalPrice">
+              {payInfo
+                .reduce((total, curr) => total + curr.price, 0)
+                .toLocaleString()}
+              원
+            </li>
+          </ul>
+          <ul className="totalInfo">
+            <li>현재 남은 포인트</li>
+            <li>50,000원</li>
+          </ul>
         </div>
       </div>
     </main>
