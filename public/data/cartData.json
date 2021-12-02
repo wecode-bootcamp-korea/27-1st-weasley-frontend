@@ -1,29 +1,29 @@
 [
   {
     "id": 1,
-    "name": "클렌징폼",
+    "category_name": "클렌징폼",
     "ml_volume": "180",
-    "price": "7,800",
-    "tag": "지성용",
-    "img": "images/cleanser1.png",
-    "count": "4"
+    "price": 7800,
+    "tags": ["복합", "지성"],
+    "thumb": "images/cleanser1.png",
+    "amount": 4
   },
   {
     "id": 2,
-    "name": "부스터",
+    "category_name": "부스터",
     "ml_volume": "80",
-    "price": "10,800",
-    "tag": "민감성용",
-    "img": "images/cleanser1.png",
-    "count": "2"
+    "price": 10800,
+    "tags": ["복합", "민감"],
+    "thumb": "images/cleanser1.png",
+    "amount": 2
   },
   {
     "id": 3,
-    "name": "로션",
+    "category_name": "로션",
     "ml_volume": "180",
-    "price": "6,800",
-    "tag": "건성용",
-    "img": "images/cleanser1.png",
-    "count": "2"
+    "price": 6800,
+    "tags": ["복합", "건성"],
+    "thumb": "images/cleanser1.png",
+    "amount": 2
   }
 ]
