@@ -47,11 +47,30 @@ const ProductDetailTop = ({
           <button type="button" className="buyButton">
             구독하기
           </button>
-          <button type="button" className="buyButton">
+          <button
+            type="button"
+            className="buyButton"
+            onClick={() => {
+              fetch('http://10.58.0.114:8000/shops/carts', {
+                headers: {
+                  Authorization:
+                    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+                },
+                method: 'POST',
+                body: JSON.stringify({ product_id: 1, amount: 99 }),
+              })
+                .then(function (res) {
+                  return res.json();
+                })
+                .then(function (data) {
+                  console.log(data.MESSAGE);
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            }}
+          >
             구매하기
-          </button>
-          <button type="button" className="buyButton">
-            장바구니 담기
           </button>
         </form>
         <div className="priceTab">
