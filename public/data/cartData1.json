@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "클렌징폼",
+    "ml_volume": "180",
+    "price": "7,800",
+    "tag": "지성용",
+    "img": "images/suncream2.png",
+    "count": "4"
+  },
+  {
+    "id": 2,
+    "name": "부스터",
+    "ml_volume": "80",
+    "price": "10,800",
+    "tag": "민감성용",
+    "img": "images/ample1.png",
+    "count": "2"
+  },
+  {
+    "id": 3,
+    "name": "로션",
+    "ml_volume": "180",
+    "price": "6,800",
+    "tag": "건성용",
+    "img": "images/lotion1.png",
+    "count": "2"
+  }
+]
