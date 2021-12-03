@@ -1,3 +1,6 @@
+import React from 'react';
+import './Price.scss';
+
 function Price({ cart }) {
   return (
     <div className="total">
