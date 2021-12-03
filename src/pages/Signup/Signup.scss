@@ -1,5 +1,87 @@
 @import '../../styles/variables.scss';
 
 .signup {
-  background: url();
+  background: url('/assets/images/signupbgi.jpg') no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 1440px;
+
+  .logo {
+    max-height: 25px;
+    width: 100px;
+    transform: translate(630%, 1250%);
+
+    img {
+      width: 100%;
+    }
+  }
+  .signupSection {
+    @include flexStart {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .signupH1 {
+        font-size: $weightThin;
+        padding-bottom: 70px;
+      }
+    }
+    label {
+      color: rgb(103, 103, 103);
+      cursor: text;
+    }
+    input {
+      @include flexCenter;
+      border: 0;
+      width: 350px;
+      padding: 20px 0 10px 5px;
+      margin: 20px 0 10px 10px;
+      border-bottom: 1px solid #5dc5cc;
+      font-size: $fontRegular;
+      color: $colorBlack;
+
+      &::placeholder {
+        color: $colorGray;
+      }
+    }
+
+    input[type='checkbox'] {
+      display: none;
+    }
+
+    input[type='checkbox']:checked + label {
+      color: #ffffff;
+      font-weight: bold;
+      background: #5dc5cc;
+      cursor: pointer;
+    }
+  }
+
+  .activeOn {
+    padding: 20px 36px 36px 36px;
+    margin: 50px 30px;
+    font-size: $fontRegular;
+    border: 0;
+    outline: 0;
+    width: 350px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #5dc5cc;
+    color: $colorWhite;
+    cursor: pointer;
+  }
+
+  .activeOff {
+    padding: 20px 36px 36px 36px;
+    margin: 50px 30px;
+    font-size: $fontRegular;
+    border: 0;
+    outline: 0;
+    width: 350px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: $colorGray;
+    color: $colorWhite;
+    cursor: pointer;
+  }
 }

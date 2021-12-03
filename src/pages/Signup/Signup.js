@@ -1,10 +1,19 @@
 import React from 'react';
 
+const emailReg =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passwordReg =
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,45}$/;
+
 function Signup() {
   return (
     <div className="signup">
-      <div className="logo" />
-      <div className="singupContent">
+      <div className="logo">
+        <Link to="/">
+          <img src="./images/logo/logo-bk.svg" alt="logo" />
+        </Link>
+      </div>
+      <div className="signupSection">
         <h1 className="signupH1">
           처음이시군요
           <span className="signupTitle">가입을 진행합니다.</span>
@@ -70,20 +79,20 @@ function Signup() {
           <label for="name">
             성별
             <input
-              value={genderValue}
+              value={genderMaleValue}
               type="radio"
               id="name"
               name="name"
-              placeholder="이름"
+              placeholder="남자"
               onChange={handlename}
             />
             <input
-              value={genderValue}
+              value={genderFemaleValue}
               type="radio"
               id="name"
               name="name"
-              placeholder="이름"
-              onChange={handlename}
+              placeholder="여자"
+              onChange={handleGender}
             />
           </label>
           <button
