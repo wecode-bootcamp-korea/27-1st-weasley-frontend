@@ -4,12 +4,13 @@ import Main from './pages/Main/Main';
 import ProductList from './pages/ProductList/ProductList';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Login from './pages/Login/Login';
+import Subscribe from './pages/Subscribe/Subscribe';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="/login" element={<Login />} />
