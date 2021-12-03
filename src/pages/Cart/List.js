@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './List.scss';
 
-function List({ list, cart, handleCart }) {
-  const [copyCart, setCopyCart] = useState([...cart]);
+function List({ list, cart, handleCart, API }) {
+  const [render, setRender] = useState(true);
 
-  console.log(copyCart, 'asd');
+  useEffect(() => handleCart, [render]);
 
   return (
     <>
@@ -24,19 +24,16 @@ function List({ list, cart, handleCart }) {
           <div className="cancel">
             <button
               onClick={() => {
-                fetch(
-                  `http://10.58.0.114:8000/shops/carts?product_id=${list.product_id}`,
-                  {
-                    method: 'delete',
-                    headers: {
-                      Authorization:
-                        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
-                    },
-                  }
-                )
+                fetch(`${API}/shops/carts?product_id=${list.product_id}`, {
+                  method: 'delete',
+                  headers: {
+                    Authorization:
+                      'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+                  },
+                })
                   .then(res => res.json())
                   .then(data => {
-                    data.MESSAGE = 'SUCCESS' ? { handleCart } : null;
+                    data.MESSAGE = 'SUCCESS' ? setRender(!render) : null;
                   })
                   .catch(error => alert(error));
               }}
@@ -52,20 +49,19 @@ function List({ list, cart, handleCart }) {
                   alert('상품을 더 이상 줄일 수 없습니다.');
                   return;
                 }
-                fetch('http://10.58.0.114:8000/shops/carts', {
+                fetch(`${API}/shops/carts/${list.product_id}`, {
                   method: 'patch',
                   headers: {
                     Authorization:
                       'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
                   },
                   body: JSON.stringify({
-                    product_id: list.product_id,
                     amount: list.amount - 1,
                   }),
                 })
                   .then(res => res.json())
                   .then(data => {
-                    data.MESSAGE = 'SUCCESS' ? { handleCart } : null;
+                    data.MESSAGE = 'SUCCESS' ? setRender(!render) : null;
                   })
                   .catch(error => alert(error));
               }}
@@ -80,20 +76,19 @@ function List({ list, cart, handleCart }) {
                   alert('제품을 더 이상 추가할수 없습니다.');
                   return;
                 }
-                fetch('http://10.58.0.114:8000/shops/carts', {
+                fetch(`${API}/shops/carts/${list.product_id}`, {
                   method: 'patch',
                   headers: {
                     Authorization:
                       'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
                   },
                   body: JSON.stringify({
-                    product_id: list.product_id,
                     amount: list.amount + 1,
                   }),
                 })
                   .then(res => res.json())
                   .then(data => {
-                    data.MESSAGE = 'SUCCESS' ? { handleCart } : null;
+                    data.MESSAGE = 'SUCCESS' ? setRender(!render) : null;
                   })
                   .catch(error => alert(error));
               }}
