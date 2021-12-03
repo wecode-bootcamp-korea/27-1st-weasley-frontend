@@ -33,7 +33,6 @@ function Cart() {
       ...cart[targetIndex],
       amount: cart[targetIndex].amount + 1,
     };
-    console.log(newCartItem);
     const newCart = cart.map((item, itemIndex) => {
       if (itemIndex === targetIndex) {
         return newCartItem;

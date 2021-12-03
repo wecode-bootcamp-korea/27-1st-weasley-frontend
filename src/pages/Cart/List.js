@@ -62,35 +62,33 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
   };
 
   return (
-    <>
-      <div className="list">
-        <div className="listLeft">
-          <img src={list.thumb} />
-          <div className="listArticle">
-            <h3>{list.category_name}</h3>
-            <span>
-              {Math.floor(list.ml_volume)}ml / {list.tags.join('')}용
-            </span>
-            <p>{Math.floor(list.price.toLocaleString())}원</p>
-          </div>
-        </div>
-
-        <div className="listRight">
-          <div className="cancel">
-            <button onClick={handleDelete}>삭제</button>
-          </div>
-          <div className="order">
-            <button className="minus" onClick={handleMinus}>
-              -
-            </button>
-            <div className="count">{list.amount}</div>
-            <button className="plus" onClick={handlePlus}>
-              +
-            </button>
-          </div>
+    <div className="list">
+      <div className="listLeft">
+        <img src={list.thumb} alt="listThumb" />
+        <div className="listArticle">
+          <h3>{list.category_name}</h3>
+          <span>
+            {Math.floor(list.ml_volume)}ml / {list.tags.join('')}용
+          </span>
+          <p>{Math.floor(list.price.toLocaleString())}원</p>
         </div>
       </div>
-    </>
+
+      <div className="listRight">
+        <div className="cancel">
+          <button onClick={handleDelete}>삭제</button>
+        </div>
+        <div className="order">
+          <button className="minus" onClick={handleMinus}>
+            -
+          </button>
+          <div className="count">{list.amount}</div>
+          <button className="plus" onClick={handlePlus}>
+            +
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
