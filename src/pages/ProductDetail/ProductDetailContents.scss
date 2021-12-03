@@ -1,0 +1,130 @@
+@import '../../styles/variables.scss';
+
+.productDetailInfo {
+  width: 50%;
+  padding: 0 40px;
+
+  .productInfoHeader {
+    @include flexSpaceBetweenCenter;
+    border-bottom: $borderGray;
+    padding: 30px 0;
+
+    .productTitleName {
+      font-size: $fontSemiLarge;
+      line-height: 40px;
+
+      strong {
+        font-weight: $weightBold;
+      }
+    }
+    .productInfoOptions {
+      font-size: $fontSmall;
+      color: $colorMint;
+    }
+  }
+  .productInfoBottom {
+    @include flexSpaceBetweenCenter;
+    padding: 30px 0;
+
+    .reviewAverageView {
+      @include flexSpaceBetweenCenter;
+
+      &Score {
+        color: $colorMint;
+      }
+    }
+    .capacity {
+      color: $colorGray;
+    }
+    .countUp {
+      .productCount {
+        padding: 0 10px;
+      }
+    }
+  }
+  .buttonAction {
+    @include flexSpaceBetweenCenter;
+    .buyButton {
+      width: 130px;
+      background-color: $colorMint;
+      color: $colorWhite;
+      border-radius: $ButtonBorderRadius;
+      padding: 20px 15px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  .priceTab {
+    padding: 50px 0;
+    text-align: right;
+
+    font-size: $fontSemiLarge;
+    font-weight: $weightBold;
+    .productPrice {
+      padding-right: 10px;
+    }
+  }
+}
+.productDetailMain {
+  padding: 80px 0;
+
+  .productDetailTitle {
+    margin: 100px 0;
+  }
+  .productDetailTitleContents {
+    font-size: $fontLarge;
+    font-weight: $weightRegular;
+    line-height: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  .slideBanner {
+    @include flexSpaceBetweenCenter;
+    align-items: start;
+    border-radius: $ButtonBorderRadius;
+    background-color: #fff;
+
+    .leftWrap {
+      width: 50%;
+      padding: 80px 35px;
+
+      .leftTag {
+        padding-bottom: 70px;
+      }
+
+      .leftTitle {
+        font-size: $fontLarge;
+        font-weight: $weightRegular;
+        line-height: 40px;
+      }
+    }
+    .slideImage {
+      width: 50%;
+    }
+  }
+  .costInfo {
+    @include flexSpaceBetweenCenter;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .resultWrap {
+    @include flexCenter;
+    margin-top: 50px;
+
+    .circle {
+      background-color: $colorMint;
+      color: $colorWhite;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      margin: 50px;
+      padding: 20px;
+    }
+    .circle:nth-child(2) {
+      background-color: $colorGray;
+    }
+  }
+}

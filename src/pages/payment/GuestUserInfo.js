@@ -1,33 +1,36 @@
-import { useState } from 'react';
+import './GuestUserInfo.scss';
 
-const GuestUserInfo = ({ addressInputValue, submitAddress }) => {
-  const [boolean, setBoolean] = useState(false);
+const GuestUserInfo = ({
+  userAddressInputValue,
+  userAddress,
+  submitAddress,
+  setUserAddress,
+}) => {
   return (
     <form className="guestUserInfo">
-      <p className="guestInfoAddressTitle">받는사람 주소</p>
+      <p className="guestInfoAddressTitle">주소를 추가해주세요</p>
       <input
         className="guestInfoAddress"
         type="text"
-        onChange={addressInputValue}
+        onChange={userAddressInputValue}
+        placeholder="주소를 추가해주세요."
       />
       <button
         type="submit"
-        className="submitForm"
+        className="addressSubmitFormButton"
         onClick={() => {
-          fetch('결제api', {
+          fetch('주소입력api', {
             method: 'post',
             headers: {
               Authorization:
                 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
             },
             body: JSON.stringify({
-              address: addressInputValue,
+              address: userAddress,
             }),
           })
             .then(res => res.json())
-            .then(data => {
-              data.MESSAGE = 'SUCCESS' ? setBoolean(true) : setBoolean(false);
-            });
+            .then(data => setUserAddress(data));
         }}
       >
         확인

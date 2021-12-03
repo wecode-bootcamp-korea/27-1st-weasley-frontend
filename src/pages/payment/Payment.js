@@ -7,8 +7,12 @@ import PaymentUserInfo from './PaymentUserInfo';
 import './Payment.scss';
 
 const Payment = () => {
-  const [userInputValue, setUserInputValue] = useState('');
+  const [userAddressInputValue, setUserAddressInputValue] = useState('');
+  const [userAddress, setUserAddress] = useState([]);
   const [payInfo, setPayInfo] = useState([]);
+  const [point, setPoint] = useState();
+
+  //서버에서 유저 포인트 불러와주고 (최초포인트 50,000원/ 결제서에 담긴 금액만큼 차감해주기)
 
   useEffect(() => {
     fetch('/data/payment/paymentdata.json')
@@ -18,30 +22,25 @@ const Payment = () => {
       });
   }, []);
 
-  useEffect(() => {
-    fetch('/data/payment/paymentdata.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userAddress: '테헤란로427',
-      }),
-    })
-      .then(response => response.json())
-      .then(response => console.log(response));
-  }, []);
-
   const addressInputValue = e => {
-    setUserInputValue(e.target.value);
+    setUserAddressInputValue(e.target.value);
   };
 
   return (
     <main className="payment">
-      {/* 토큰이 없으면 주소 입력창 뜨게하기 / 입력하거나 저장된 있다면 저장된 주소 붙여주기*/}
-      <GuestUserInfo addressInputValue={addressInputValue} />
-      <PaymentUserInfo />
-      <div className="paymentPayList">
+      {userAddressInputValue ? (
+        <PaymentUserInfo
+          userAddressInputValue={userAddressInputValue}
+          userAddress={userAddress}
+        />
+      ) : (
+        <GuestUserInfo
+          userAddressInputValue={userAddressInputValue}
+          setUserAddress={setUserAddress}
+        />
+      )}
+
+      <div className="paymentPayListWrap">
         {payInfo.map(item => {
           return <PayInfo key={item.id} name={item.name} price={item.price} />;
         })}
@@ -71,6 +70,10 @@ const Payment = () => {
           </ul>
           <ul className="totalInfo">
             <li>현재 남은 포인트</li>
+            <li>50,000원</li>
+          </ul>
+          <ul className="totalInfo">
+            <li>결제 후 포인트</li>
             <li>50,000원</li>
           </ul>
         </div>

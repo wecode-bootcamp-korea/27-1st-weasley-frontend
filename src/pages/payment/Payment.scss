@@ -3,23 +3,9 @@
 .payment {
   width: 680px;
   @include flexSpaceBetweenCenter;
+  align-items: flex-start;
   margin: 0 auto;
-}
-.paymentUserInfo {
-  .userInfo {
-    .userAddress {
-      margin-top: 10px;
-    }
-  }
-  .userWrap {
-    @include flexSpaceBetweenCenter;
-    border-bottom: $borderGray;
-    padding: 40px 0 20px 0;
-
-    .modifyButtonWrap {
-      padding-left: 70px;
-    }
-  }
+  padding-top: 100px;
 }
 
 .paymentMethod {
@@ -50,43 +36,20 @@
     }
   }
 }
-.paymentPayList {
-  .orderProductList {
-    @include flexCenter;
-    border-bottom: $borderGray;
-  }
 
-  .orderProductImage {
-    width: 100px;
-  }
+.total {
+  margin: 40px 0;
 
-  .orderProductImage img {
-    width: 100%;
-  }
-  .orderInfo {
-    .productName {
-      font-size: $fontRegular;
+  .totalInfo {
+    @include flexSpaceBetweenCenter;
+    padding: 10px 0;
+    li {
+      font-size: $fontSmall;
+      color: $colorGray;
     }
-  }
-
-  .seperateInfo {
-    padding-left: 40px;
-  }
-
-  .total {
-    margin: 40px 0;
-
-    .totalInfo {
-      @include flexSpaceBetweenCenter;
-      padding: 10px 0;
-      li {
-        font-size: $fontSmall;
-        color: $colorGray;
-      }
-      &:nth-child(3) li {
-        font-size: $fontRegular;
-        color: #333;
-      }
+    &:nth-child(3) li {
+      font-size: $fontRegular;
+      color: #333;
     }
   }
 }

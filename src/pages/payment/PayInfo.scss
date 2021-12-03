@@ -1,0 +1,53 @@
+@import '../../styles/variables.scss';
+
+.paymentPayListWrap {
+  .paymentPayList {
+    .orderProductList {
+      @include flexCenter;
+      border-bottom: $borderGray;
+    }
+
+    .orderProductImage {
+      width: 100px;
+    }
+
+    .orderProductImage img {
+      width: 100%;
+    }
+    .orderInfo {
+      .productName {
+        font-size: $fontSmall;
+      }
+      .productType {
+        font-size: $fontSmall;
+        color: $colorGray;
+      }
+      .productCapacity {
+        font-size: $fontSmall;
+        color: $colorGray;
+      }
+    }
+
+    .seperateInfo {
+      font-size: $fontSmall;
+      padding-left: 40px;
+    }
+  }
+}
+
+.paymentUserInfo {
+  .userInfo {
+    .userAddress {
+      margin-top: 10px;
+    }
+  }
+  .userWrap {
+    @include flexSpaceBetweenCenter;
+    border-bottom: $borderGray;
+    padding: 40px 0 20px 0;
+
+    .modifyButtonWrap {
+      padding-left: 70px;
+    }
+  }
+}
