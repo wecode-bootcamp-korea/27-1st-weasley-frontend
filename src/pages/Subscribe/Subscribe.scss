@@ -1,10 +1,14 @@
 .subscribeBox {
+  margin-top: 50px;
   .subscribe {
     display: flex;
     justify-content: center;
     .user {
+      background-color: white;
+      box-shadow: 2px 2px 4px 3px gray;
+      border-radius: 5px;
       width: 240px;
-      border: 1px solid black;
+
       padding-top: 20px;
       .userName {
         margin-left: 10px;
@@ -19,20 +23,30 @@
           color: white;
           background-color: black;
         }
+      }
+      .addressBox {
+        width: 90%;
+        margin: 0 auto;
         .address {
-          margin-left: 10px;
-          margin-top: 20px;
+          font-weight: 500;
+          font-size: 13px;
+          color: gray;
+          margin-top: 30px;
+          margin-bottom: 60px;
         }
       }
     }
     .shipping {
-      border: 1px solid black;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 2px 2px 4px 3px gray;
+
       height: 300px;
-      width: 40%;
+      width: 600px;
       margin-left: 30px;
       .title {
         padding: 15px 30px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid gray;
       }
       .shippingDate {
         display: flex;
@@ -56,8 +70,11 @@
     }
   }
   .option {
-    border: 1px solid black;
-    width: 59%;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 4px 3px gray;
+
+    width: 870px;
     margin: 50px auto;
     // text-align: center;
     .title {
@@ -97,9 +114,9 @@
 
       div {
         border: 0.1px solid black;
-        margin-left: 6px;
-        margin-top: 3px;
-        margin-bottom: 3px;
+        margin-left: 12px;
+        margin-top: 6px;
+        margin-bottom: 6px;
         img {
           width: 200px;
         }

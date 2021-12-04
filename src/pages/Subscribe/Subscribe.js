@@ -12,10 +12,11 @@ function Subscribe() {
             </div>
             <div>수정</div>
           </div>
-          <div className="address">
-            서울특별시 서초구 서초동 1658-11sadasdasdsad asdasdasd
+          <div className="addressBox">
+            <div className="address">서울특별시 서초구 서초동 1658-11</div>
+            <div className="delivery">정기배송 관리</div>
+            <div className="subscribeProduct">구독중인 상품</div>
           </div>
-          <div>구독관리</div>
         </div>
 
         <div className="shipping">
@@ -41,8 +42,8 @@ function Subscribe() {
         <div className="title">정기배송 주기</div>
         <div className="btn">
           <button>4주마다</button>
-          <button>8주마다</button>
           <button>12주마다</button>
+          <button>16주마다</button>
         </div>
         <div className="message">
           주기를 변경하더라도 다음 결제일은 변경되지 않습니다.
