@@ -18,7 +18,7 @@
 
   .loginSection {
     position: absolute;
-    transform: translate(100%, 55%);
+    transform: translate(85%, 45%);
     border-radius: 5px;
     box-shadow: 0 0 20px $colorGray;
     background: $colorWhite;
@@ -82,11 +82,11 @@
       @include flexCenter;
       font-weight: $weightRegular;
       margin-top: 150px;
-    }
 
-    p {
-      color: $colorMint;
-      text-align: center;
+      p {
+        color: $colorMint;
+        text-align: center;
+      }
     }
   }
 }
