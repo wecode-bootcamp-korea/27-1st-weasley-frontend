@@ -71,8 +71,7 @@ function Signup() {
           <span className="signupTitle">가입을 진행합니다.</span>
         </h1>
         <form name="signupForm" method="post">
-          {/* <label for="email"> */}
-          {USER_DATA.map(user => {
+          {/* {USER_DATA.map(user => {
             return (
             <label>
             <input
@@ -83,10 +82,9 @@ function Signup() {
                 placeholder={user.placeholder}
                 onChange={handleInput}
               />
-            );
             </label>
-          
-          })}
+            );
+          }; */}
           <button
             className={isInputValid ? 'activeOn' : 'activeOff'}
             onClick={goToMain}
