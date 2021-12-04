@@ -23,9 +23,13 @@
         font-weight: 500;
         margin-bottom: 40px;
       }
-      p {
+      .date {
         font-weight: 500;
         font-size: 15px;
+        padding: 30px;
+        border-radius: 40px;
+        border: none;
+        box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
       }
     }
   }

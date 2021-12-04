@@ -8,15 +8,29 @@ import './Subscribe.scss';
 function Subscribe() {
   const [productModal, setproductModal] = useState(false);
 
+  const [deliveryCycle, setDeliveryCycle] = useState('8');
+
+  const [subscribeData, setSubscribeData] = useState([]);
+
+  useEffect(() => {
+    fetch('구독관리API', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => {
+        setSubscribeData(data);
+      });
+  }, []);
+
   return (
     <main className="subscribeBox">
       <div className="subscribe">
         <SubscribeUserBox setModal={setproductModal} />
-        <SubscribeShipping />
+        <SubscribeShipping deliveryCycle={deliveryCycle} />
       </div>
 
       <div className="option">
-        <SubscribeCycle />
+        <SubscribeCycle setDeliveryCycle={setDeliveryCycle} />
         {productModal ? <SubscribeProduct /> : null}
       </div>
     </main>

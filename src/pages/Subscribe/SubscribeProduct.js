@@ -21,7 +21,7 @@ function SubscribeProduct() {
         {subscribeProductImg.map(product => {
           return (
             <div>
-              <img src={product.thumb} />
+              <img src={product.thumb} alt="productImg" />
             </div>
           );
         })}
