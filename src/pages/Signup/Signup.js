@@ -30,13 +30,13 @@ function Signup() {
     });
   };
 
-  const isInputValid = new RegExp();
-  emailExp.test(emailValue) && passwordExp.test(passwordValue);
+  // const isInputValid = new RegExp();
+  // emailExp.test(emailValue) && passwordExp.test(passwordValue);
 
-  const isEmailValid = emailReg.test(email);
-  const isPasswordValid = passwordReg.test(password);
-  const isPhoneValid = phoneReg.test(phone);
-  const isBithValid = birthReg.test(birth);
+  // const isEmailValid = emailReg.test(email);
+  // const isPasswordValid = passwordReg.test(password);
+  // const isPhoneValid = phoneReg.test(phone);
+  // const isBithValid = birthReg.test(birth);
 
   const goToMain = () => {
     fetch('http://3.142.147.114:8000/', {
@@ -58,7 +58,6 @@ function Signup() {
           : alert('회원 가입을 다시 진행해주세요');
       });
   };
-
   return (
     <div className="signup">
       <div className="logo">
@@ -73,19 +72,21 @@ function Signup() {
         </h1>
         <form name="signupForm" method="post">
           {/* <label for="email"> */}
-            {USER_DATA.map(user => {
-              return (
-                <input
-                  key={user.id}
-                  name={user.name}
-                  className="formFormat"
-                  type={user.type}
-                  placeholder={user.placeholder}
-                  onChange={handleInput}
-                />
-              );
-            })}
-          {/* </label> */}
+          {USER_DATA.map(user => {
+            return (
+            <label>
+            <input
+                key={user.id}
+                name={user.name}
+                className="formFormat"
+                type={user.type}
+                placeholder={user.placeholder}
+                onChange={handleInput}
+              />
+            );
+            </label>
+          
+          })}
           <button
             className={isInputValid ? 'activeOn' : 'activeOff'}
             onClick={goToMain}
