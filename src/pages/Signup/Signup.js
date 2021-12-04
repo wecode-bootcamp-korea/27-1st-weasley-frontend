@@ -6,6 +6,28 @@ const passwordReg =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,45}$/;
 
 function Signup() {
+  const [fields, handleFieldChange] = useFormFields({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    confirmationCode: '',
+  });
+  const goToMain = () => {
+    fetch('http://3.142.147.114:8000/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: emailValue,
+        password: passwordValue,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        return result.MESSAGE === 'SUCCESS' ? navigate('/') : '';
+      });
+
+    navigate('/');
+  };
+
   return (
     <div className="signup">
       <div className="logo">
