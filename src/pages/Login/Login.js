@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../Login/Login.scss';
 
 const emailReg =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordReg =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,45}$/;
 
 function Login() {
   const [emailValue, setEmailValue] = useState('');
@@ -28,7 +28,7 @@ function Login() {
   };
 
   const goToMain = () => {
-    fetch('http://10.58.0.114:8000/users/signin', {
+    fetch('http://3.142.147.114:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: emailValue,
@@ -37,10 +37,10 @@ function Login() {
     })
       .then(response => response.json())
       .then(result => {
-        return result.MESSAGE === 'SUCCESS' ? navigate('/') : '';
+        return result.MESSAGE === 'SUCCESS'
+          ? navigate('/')
+          : alert('가입을 먼저 진행해주세요');
       });
-
-    navigate('/');
   };
 
   return (
@@ -56,7 +56,7 @@ function Login() {
           로그인 및 회원가입
           <span className="loginTitle">을 시작합니다.</span>
         </h1>
-        <form name="loginForm" action="login.js" method="post">
+        <form name="loginForm" method="post">
           <label for="email">
             <input
               value={emailValue}
