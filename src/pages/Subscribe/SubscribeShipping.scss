@@ -1,0 +1,32 @@
+.shipping {
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+  height: 300px;
+  width: 600px;
+  margin-left: 30px;
+  .title {
+    font-weight: 600;
+    padding: 15px 30px;
+    border-bottom: 1px solid gray;
+  }
+  .shippingDate {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 80%;
+    text-align: center;
+    justify-content: space-between;
+    .manageDate {
+      h2 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 40px;
+      }
+      p {
+        font-weight: 500;
+        font-size: 15px;
+      }
+    }
+  }
+}

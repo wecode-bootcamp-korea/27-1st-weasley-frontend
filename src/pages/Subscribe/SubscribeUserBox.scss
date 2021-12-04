@@ -1,0 +1,62 @@
+.userBox {
+  background-color: white;
+  box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+  border-radius: 5px;
+  width: 240px;
+  padding-top: 20px;
+  .userName {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    .name span:last-child {
+      font-size: 12px;
+      padding: 3px;
+      border-radius: 5px;
+      color: white;
+      background-color: black;
+    }
+    .modify {
+      font-size: 13px;
+    }
+  }
+
+  .addressBox {
+    width: 100%;
+
+    .address {
+      margin: 0 auto;
+      width: 90%;
+      font-weight: 500;
+      font-size: 13px;
+      color: gray;
+      margin-top: 30px;
+      margin-bottom: 70px;
+    }
+  }
+}
+
+.clickOffBox {
+  cursor: pointer;
+  color: gray;
+  font-weight: 500;
+  text-align: left;
+  padding: 30px;
+}
+.clickOffBox:hover {
+  cursor: pointer;
+  color: rgb(68, 67, 67);
+  background-color: rgb(240, 236, 236);
+  font-weight: 500;
+  text-align: left;
+  padding: 30px;
+}
+.clickOnBox {
+  cursor: pointer;
+  color: rgb(68, 67, 67);
+  background-color: rgb(240, 236, 236);
+  font-weight: 500;
+  text-align: left;
+  padding: 30px;
+}
