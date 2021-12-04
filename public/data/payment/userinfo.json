@@ -1,8 +1,11 @@
-[
-  {
-    "id": 1,
-    "userName": "황주영",
-    "phoneNumber": "01012345678",
-    "address": "테헤란로 327 10층"
-  }
-]
+{
+  "user_info": [
+    {
+      "id": 1,
+      "userName": "황주영",
+      "cellphone": "01012345678",
+      "address": "테헤란로 327 10층",
+      "point": 50000
+    }
+  ]
+}

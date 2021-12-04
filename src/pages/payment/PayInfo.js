@@ -1,6 +1,6 @@
 import './PayInfo.scss';
 
-const PayInfo = ({ name, price }) => {
+const PayInfo = ({ name, type, price }) => {
   return (
     <div className="paymentPayList">
       <div className="orderProductList">
@@ -8,8 +8,8 @@ const PayInfo = ({ name, price }) => {
           <img src="images/productimage/cleanser2.png" alt="주문상품이미지" />
         </div>
         <div className="orderInfo">
-          <p className="productName">클렌징폼</p>
-          <span className="productType">건성용</span>
+          <p className="productName">{name}</p>
+          <span className="productType">{type}</span>
           <span className="productCapacity">180ml</span>
         </div>
         <div className="seperateInfo">

@@ -3,7 +3,7 @@
 .paymentPayListWrap {
   .paymentPayList {
     .orderProductList {
-      @include flexCenter;
+      @include flexSpaceBetweenCenter;
       border-bottom: $borderGray;
     }
 
