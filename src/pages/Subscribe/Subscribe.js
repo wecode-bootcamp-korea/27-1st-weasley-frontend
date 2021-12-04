@@ -10,12 +10,12 @@ function Subscribe() {
             <div className="name">
               <span>황성재</span> <span>구독중</span>
             </div>
-            <div>수정</div>
+            <div className="modify">수정</div>
           </div>
           <div className="addressBox">
             <div className="address">서울특별시 서초구 서초동 1658-11</div>
-            <div className="delivery">정기배송 관리</div>
-            <div className="subscribeProduct">구독중인 상품</div>
+            <div className="clickOffBox">정기배송 관리</div>
+            <div className="clickOnBox">구독중인 상품</div>
           </div>
         </div>
 
