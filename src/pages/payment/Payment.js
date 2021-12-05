@@ -14,63 +14,51 @@ const Payment = () => {
   const [addressValidatedSwitch, setAddressValidatedSwitch] = useState(false);
 
   useEffect(() => {
-    fetch('/data/payment/paymentData.json')
-      .then(res => res.json())
-      .then(data => {
-        setPayInfo(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch('http://3.142.147.114:8000/users/addresses', {
+    fetch('data/payment/payinfo.json', {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
     })
       .then(res => res.json())
+      .then(data => setPayInfo(data));
+  }, []);
+
+  useEffect(() => {
+    fetch('data/payment/userinfo.json')
+      .then(res => res.json())
       .then(data => {
-        if (data.RESULT.length === 0) {
-          setAddressValidatedSwitch(true);
+        setUserInfo(data);
+        if (data.length === 0) {
+          setAddressValidatedSwitch(false);
         } else {
-          setUserInfo(data.RESULT);
+          setUserInfo(data);
+          setAddressValidatedSwitch(true);
         }
       });
   }, []);
+  console.log('userInfo:', userInfo);
+
   const getAddressInput = e => {
     setUserAddressInputValue(e.target.value);
   };
 
-  const handleAddress = e => {
-    setUserAddress([...userAddress, userAddressInputValue]);
-  };
-  console.log(addressValidatedSwitch);
-
-  console.log(userInfo);
   return (
     <main className="payment">
       {addressValidatedSwitch ? (
+        addressValidatedSwitch && (
+          <PaymentUserInfo
+            userInfo={userInfo}
+            userAddressInputValue={userAddressInputValue}
+            userAddress={userAddress}
+          />
+        )
+      ) : (
         <GuestUserInfo
           getAddressInput={getAddressInput}
           userAddressInputValue={userAddressInputValue}
           setUserAddress={setUserAddress}
-          handleAddress={handleAddress}
         />
-      ) : (
-        userInfo.user_info &&
-        userInfo.user_info.map(item => {
-          return (
-            <PaymentUserInfo
-              key={item.id}
-              userName={item.userName}
-              address={item.address}
-              cellphone={item.cellphone}
-              handleAddress={handleAddress}
-              userAddressInputValue={userAddressInputValue}
-              userAddress={userAddress}
-            />
-          );
-        })
       )}
 
       <div className="paymentPayListWrap">
@@ -78,10 +66,12 @@ const Payment = () => {
           payInfo.cart_items.map((item, i) => {
             return (
               <PayInfo
-                key={item.id}
-                name={item.name}
+                key={item.cart_id}
+                name={item.category_name}
+                amount={item.amount}
                 price={item.price}
-                type={item.type}
+                thumb={item.thumb}
+                volume={item.ml_volume}
               />
             );
           })}
@@ -113,7 +103,7 @@ const Payment = () => {
           </ul>
           <ul className="totalInfo">
             <li>현재 남은 포인트</li>
-            <li>{payInfo.price}</li>
+            <li>{Number(payInfo.point)}원</li>
           </ul>
           <ul className="totalInfo">
             <li>결제 후 포인트</li>

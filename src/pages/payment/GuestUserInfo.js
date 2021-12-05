@@ -1,6 +1,7 @@
 import './GuestUserInfo.scss';
 
-const GuestUserInfo = ({ handleAddress, getAddressInput }) => {
+const GuestUserInfo = ({ userAddressInputValue, getAddressInput }) => {
+  console.log(userAddressInputValue);
   return (
     <form className="guestUserInfo">
       <p className="guestInfoAddressTitle">주소를 추가해주세요</p>
@@ -11,9 +12,24 @@ const GuestUserInfo = ({ handleAddress, getAddressInput }) => {
         placeholder="주소를 추가해주세요."
       />
       <button
-        type="submit"
+        type="button"
         className="addressSubmitFormButton"
-        onClick={handleAddress}
+        onClick={() => {
+          fetch('http://3.142.147.114:8000/users/addresses', {
+            method: 'POST',
+            headers: {
+              Authorization:
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+            },
+            body: JSON.stringify({
+              location: userAddressInputValue,
+            }),
+          })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+            });
+        }}
       >
         확인
       </button>
