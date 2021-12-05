@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SubscribeCycle.scss';
 
 function SubscribeCycle({ setDeliveryCycle }) {
@@ -14,7 +14,27 @@ function SubscribeCycle({ setDeliveryCycle }) {
               onClick={() => {
                 if (window.confirm(`정기배송 주기가 ${week}주로 바뀝니다.`)) {
                   setDeliveryCycle(week);
-                  // 백엔드한테 patch요청으로 week바꼈다고 보내기
+
+                  // useEffect(() => {
+                  //   fetch('구독관리API', {
+                  //     method: 'patch',
+                  //   })
+                  //     .then(response => response.json())
+                  //     .then(data => {
+                  //       data.message = 'success'
+                  //         ? useEffect(() => {
+                  //             fetch('구독관리API', {
+                  //               method: 'GET',
+                  //             })
+                  //               .then(response => response.json())
+                  //               .then(data => {
+                  //                 setNextDeliveryDate(data[0].nextdelivery);
+                  //               });
+                  //           }, [])
+                  //         : null;
+                  //     });
+                  // }, []);
+                  // 백엔드한테 patch요청으로 week바꼈다고 보내기 && 다음배송일 랜더링해주기
                 } else {
                   return;
                 }

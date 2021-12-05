@@ -12,6 +12,8 @@ function Subscribe() {
 
   const [subscribeData, setSubscribeData] = useState([]);
 
+  const [nextDeliveryDate, setNextDeliveryDate] = useState();
+
   useEffect(() => {
     fetch('구독관리API', {
       method: 'GET',
@@ -19,14 +21,18 @@ function Subscribe() {
       .then(response => response.json())
       .then(data => {
         setSubscribeData(data);
+        // setNextDeliveryDate(data[0].nextdelivery);
       });
   }, []);
 
   return (
     <main className="subscribeBox">
       <div className="subscribe">
-        <SubscribeUserBox setModal={setproductModal} />
-        <SubscribeShipping deliveryCycle={deliveryCycle} />
+        <SubscribeUserBox setModal={setproductModal} modal={productModal} />
+        <SubscribeShipping
+          deliveryCycle={deliveryCycle}
+          nextDeliveryDate={nextDeliveryDate}
+        />
       </div>
 
       <div className="option">

@@ -53,6 +53,7 @@
   padding: 30px;
 }
 .clickOnBox {
+  pointer-events: none;
   cursor: pointer;
   color: rgb(68, 67, 67);
   background-color: rgb(240, 236, 236);

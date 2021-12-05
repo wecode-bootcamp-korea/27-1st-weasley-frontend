@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SubscribeUserBox.scss';
 
-function SubscribeUserBox({ setModal }) {
+function SubscribeUserBox({ setModal, modal }) {
   const [isItclicked, setisItClicked] = useState(false);
   return (
     <div className="userBox">
@@ -19,6 +19,7 @@ function SubscribeUserBox({ setModal }) {
             setModal(false);
             setisItClicked(!isItclicked);
           }}
+          disabled={!modal}
         >
           정기배송 관리
         </div>
@@ -28,6 +29,7 @@ function SubscribeUserBox({ setModal }) {
             setModal(true);
             setisItClicked(!isItclicked);
           }}
+          disabled={modal}
         >
           구독중인 상품
         </div>

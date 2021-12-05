@@ -1,7 +1,9 @@
 import React from 'react';
 import './SubscribeShipping.scss';
 
-function SubscribeShipping({ deliveryCycle }) {
+function SubscribeShipping({ deliveryCycle, nextDeliveryDate }) {
+  // const month = { nextDeliveryDate }.split('-')[1];
+  // const date = { nextDeliveryDate }.split('-')[2];
   return (
     <div className="shipping">
       <div className="title">다음 결제일 및 주기 관리</div>
@@ -16,7 +18,10 @@ function SubscribeShipping({ deliveryCycle }) {
         </div>
         <div className="manageDate">
           <h2>다음 배송일</h2>
-          <p className="date">3월 25일</p>
+          <p className="date">3월 25일 </p>
+          {/* <p className="date">
+            {month}월 {date}일
+          </p> */}
         </div>
       </div>
     </div>
