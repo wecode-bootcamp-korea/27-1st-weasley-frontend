@@ -1,7 +1,6 @@
 import './GuestUserInfo.scss';
 
 const GuestUserInfo = ({ userAddressInputValue, getAddressInput }) => {
-  console.log(userAddressInputValue);
   return (
     <form className="guestUserInfo">
       <p className="guestInfoAddressTitle">주소를 추가해주세요</p>
@@ -24,11 +23,7 @@ const GuestUserInfo = ({ userAddressInputValue, getAddressInput }) => {
             body: JSON.stringify({
               location: userAddressInputValue,
             }),
-          })
-            .then(res => res.json())
-            .then(data => {
-              console.log(data);
-            });
+          }).then(res => res.json());
         }}
       >
         확인

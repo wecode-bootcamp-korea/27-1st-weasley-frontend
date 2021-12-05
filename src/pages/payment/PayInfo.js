@@ -1,7 +1,6 @@
 import './PayInfo.scss';
 
 const PayInfo = ({ name, amount, price, thumb, volume }) => {
-  console.log('name:', name);
   return (
     <div className="paymentPayList">
       <div className="orderProductList">

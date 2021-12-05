@@ -1,3 +1,5 @@
+import './PaymentUserInfo.scss';
+
 const PaymentUserInfo = ({
   userAddress,
   userGetAddress,
@@ -6,7 +8,6 @@ const PaymentUserInfo = ({
   address,
   cellphone,
 }) => {
-  console.log(userInfo);
   return (
     <div className="paymentUserInfo">
       <div className="userWrap">
@@ -37,11 +38,7 @@ const PaymentUserInfo = ({
                 body: JSON.stringify({
                   address_id: 9,
                 }),
-              })
-                .then(res => res.json())
-                .then(data => {
-                  console.log(data);
-                });
+              }).then(res => res.json());
             }}
           >
             포인트로 결제

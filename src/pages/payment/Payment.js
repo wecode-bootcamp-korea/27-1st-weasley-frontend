@@ -37,7 +37,6 @@ const Payment = () => {
         }
       });
   }, []);
-  console.log('userInfo:', userInfo);
 
   const getAddressInput = e => {
     setUserAddressInputValue(e.target.value);
