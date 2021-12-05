@@ -12,7 +12,6 @@ const Payment = () => {
   const [userInfo, setUserInfo] = useState([]);
   const [payInfo, setPayInfo] = useState([]);
   const [addressValidatedSwitch, setAddressValidatedSwitch] = useState(false);
-  const [sub, setSub] = useState(false);
 
   useEffect(() => {
     fetch('/data/payment/paymentData.json')
@@ -23,22 +22,31 @@ const Payment = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/data/payment/userInfo.json')
+    fetch('http://3.142.147.114:8000/users/addresses', {
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+    })
       .then(res => res.json())
       .then(data => {
-        setUserInfo(data);
+        if (data.RESULT.length === 0) {
+          setAddressValidatedSwitch(true);
+        } else {
+          setUserInfo(data.RESULT);
+        }
       });
   }, []);
-
   const getAddressInput = e => {
     setUserAddressInputValue(e.target.value);
   };
 
   const handleAddress = e => {
     setUserAddress([...userAddress, userAddressInputValue]);
-    setAddressValidatedSwitch(true);
   };
+  console.log(addressValidatedSwitch);
 
+  console.log(userInfo);
   return (
     <main className="payment">
       {addressValidatedSwitch ? (
