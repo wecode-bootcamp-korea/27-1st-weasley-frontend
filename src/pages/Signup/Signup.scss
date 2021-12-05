@@ -9,51 +9,84 @@
   .logo {
     max-height: 25px;
     width: 100px;
-    transform: translate(630%, 1250%);
+    transform: translate(600%, 800%);
 
     img {
       width: 100%;
     }
   }
   .signupSection {
-    @include flexStart {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+    position: absolute;
+    transform: translate(85%, 25%);
+    border-radius: 5px;
+    box-shadow: 0 0 20px $colorGray;
+    background: $colorWhite;
+    padding: 50px 35px 30px 35px;
 
-      .signupH1 {
-        font-size: $weightThin;
-        padding-bottom: 70px;
-      }
+    .signupTitle1 {
+      display: block;
+      font-size: $fontLarge;
+      font-weight: $weightThin;
     }
-    label {
+
+    .signupTitle2 {
+      font-size: $fontLarge;
+      font-weight: $weightRegular;
+      padding-bottom: 50px;
+    }
+  }
+
+  form {
+    padding-top: 50px;
+
+    .formFormatLabel {
+      padding: 20px 0 10px 10px;
+      font-size: $fontSmall;
       color: rgb(103, 103, 103);
       cursor: text;
     }
-    input {
+
+    .formFormat {
       @include flexCenter;
       border: 0;
       width: 350px;
-      padding: 20px 0 10px 5px;
-      margin: 20px 0 10px 10px;
-      border-bottom: 1px solid #5dc5cc;
+      padding: 5px 0 10px 5px;
+      margin: 5px 0 30px 10px;
+      border-bottom: 1px solid $colorGray;
+      font-size: $fontRegular;
+      color: $colorBlack;
+    }
+  }
+
+  .genderTitle {
+    font-size: $fontSmall;
+    color: rgb(103, 103, 103);
+    padding-bottom: 30px;
+    padding-left: 9px;
+
+    .radioButton {
+      display: flex;
+      margin-top: 10px;
       font-size: $fontRegular;
       color: $colorBlack;
 
-      &::placeholder {
-        color: $colorGray;
+      .gender {
+        padding-right: 20px;
+
+        // input[type='radio'] {
+        //   cursor: pointer;
+        //   background-color: $colorWhite;
+
+        //   &:checked {
+        //     content: none;
+        //     display: block;
+        //     width: 20px;
+        //     height: 20px;
+        //     background: $colorWhite;
+        //     border: 10px solid $colorMint;
+        //   }
+        // }
       }
-    }
-
-    input[type='checkbox'] {
-      display: none;
-    }
-
-    input[type='checkbox']:checked + label {
-      color: #ffffff;
-      font-weight: bold;
-      background: #5dc5cc;
-      cursor: pointer;
     }
   }
 

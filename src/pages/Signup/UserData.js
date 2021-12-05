@@ -1,16 +1,19 @@
-export const USER_DATA = [
+const USER_DATA = [
   {
     id: '1',
     name: 'email',
     className: 'formFormat',
     type: 'text',
+    maxLength: '500',
     placeholder: '이메일',
+    defaultRequired: '이메일은 필수항목입니다.',
   },
   {
     id: '2',
     name: 'password',
     className: 'formFormat',
     type: 'password',
+    maxLength: '45',
     placeholder: '비밀번호 (6자 이상)',
   },
   {
@@ -18,78 +21,25 @@ export const USER_DATA = [
     name: 'phone',
     className: 'formFormat',
     type: 'text',
-    placeholder: '휴대폰 번호 ('-'제외)',
+    maxLength: '13',
+    placeholder: '휴대폰 번호 (-제외)',
   },
   {
     id: '4',
-    name: 'birth',
+    name: 'birth_of_birth',
     className: 'forFormat',
     type: 'text',
-    placeholder: '예:930422',
+    maxLength: '10',
+    placeholder: '예:1993-04-22',
   },
   {
     id: '5',
     name: 'name',
     className: 'forFormat',
     type: 'text',
+    maxLength: '15',
     placeholder: '이름',
-  }
+  },
 ];
 
-USER_DATA.map(function(data){
-  return(
-    <label for="">
- <input
-  id="birth"
-  name="birth"
-  type="text"
-  maxLength="6"
-  placeholder="예:930422" />
-</label>
-  )
-})
- <>
-//  {user.name} props.data.라벨로 가져올거  
-<label for="">생일
- <input
-  id="birth"
-  name="birth"
-  type="text"
-  maxLength="6"
-  placeholder="예:930422" />
-</label>
-
-
-<label for="phone">
-휴대폰 번호
-<input
-  value=
-  type="text"
-  id="phone"
-  name="phone"
-  maxLength="13"
-  placeholder="휴대폰 번호 ('-'제외)"
-  onChange={handleInput}
-/>
-</label>
-
-
-
-<label for="gender">
-성별
-<input
-  value=
-  type="radio"
-  id="male"
-  name="male"
-  placeholder="남자"
-  onChange={handleInput}
-/>
-<input
-  value=
-  type="radio"
-  id="female"
-  name="female"
-  placeholder="여자"
-  onChange={hanldeInput}
-/>
+export default USER_DATA;
