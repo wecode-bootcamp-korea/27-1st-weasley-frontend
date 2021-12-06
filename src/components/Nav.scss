@@ -2,14 +2,13 @@
 
 .nav {
   @include flexCenter;
-  padding: 0 20px;
-  height: 65px;
+  height: 60px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;
 
   .navLogo {
-    width: 220px;
-    margin-right: 50px;
+    width: 120px;
+    margin: 5px 100px 0 0;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 
     img {
@@ -18,29 +17,39 @@
     }
   }
   .navMenu {
-    display: flex;
-    text-align: center;
-    width: 1280px;
-    margin: $marginCenter;
-    padding: 50px;
+    @include flexStart;
+    margin-right: 50px;
 
-    ul {
-      display: flex;
-    }
+    .navMenuUl {
+      @include flexStart;
+      padding: 0 600px 0 30px;
 
-    .navMenuIteams {
-      color: $colorGray;
-      cursor: pointer;
-      padding: 20px;
+      .navMenuItems {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 50px;
+        margin: 10px;
+        color: $colorGray;
+        cursor: pointer;
+      }
     }
   }
-  .navLoginCart {
-    @include flexCenter;
-    padding-right: 50px;
+  .navLoginMenu {
+    display: flex;
 
-    .login {
-      padding-right: 30px;
-      width: 100px;
+    .navLoginItems {
+      @include flexCenter;
+      padding: 20px 20px;
+      cursor: pointer;
+    }
+
+    .cartImg {
+      margin: 10px 20px;
+
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
     }
   }
 }
