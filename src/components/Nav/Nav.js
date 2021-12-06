@@ -13,6 +13,11 @@ function Nav() {
       <div className="navMenu">
         <ul className="navMenuUl">
           <li className="navMenuList">
+            <Link to="/subscribe">
+              <p className="navMenuItems">구독관리</p>
+            </Link>
+          </li>
+          <li className="navMenuList">
             <Link to="/">
               <p className="navMenuItems">핵심성분</p>
             </Link>

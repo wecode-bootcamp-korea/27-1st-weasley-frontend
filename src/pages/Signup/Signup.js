@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import USER_DATA from './UserData.js';
-import Nav from '../../components/Nav';
 import './Signup.scss';
 
 function Signup() {
@@ -77,12 +76,11 @@ function Signup() {
         <form name="signupForm" method="post">
           {USER_DATA.map(user => {
             return (
-              <label className="formFormatLabel">
+              <label className="formFormatLabel" key={user.id}>
                 <input
-                  key={user.id}
                   name={user.name}
                   className="formFormat"
-                  d
+                  type={user.type}
                   maxLength={user.maxLength}
                   placeholder={user.placeholder}
                   onChange={handleInput}
@@ -100,7 +98,7 @@ function Signup() {
                   name="male"
                   type="radio"
                   placeholder="남자"
-                  checked={radio === 'male'}
+                  disabled={radio}
                   onChange={handleRadio}
                 />
                 남자
@@ -112,7 +110,7 @@ function Signup() {
                   name="male"
                   type="radio"
                   placeholder="여자"
-                  checked={radio === 'female'}
+                  disabled={radio}
                   onChange={handleRadio}
                 />
                 여자

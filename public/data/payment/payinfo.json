@@ -1,0 +1,12 @@
+{
+  "cart_items": [
+    {
+      "category_name": "클렌징폼",
+      "amount": 10,
+      "type": "건성용",
+      "price": 2600,
+      "ml_volume": 10
+    }
+  ],
+  "point": 50000
+}

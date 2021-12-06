@@ -13,10 +13,10 @@ const ProductDetail = () => {
   const detailList = detail.filter(item => item.id === Number(id));
 
   const countUpEvent = () => {
-    setCount(count + 1);
+    setCount(prev => prev + 1);
   };
   const countDownEvent = () => {
-    setCount(count - 1);
+    setCount(prev => prev - 1);
   };
 
   useEffect(() => {
