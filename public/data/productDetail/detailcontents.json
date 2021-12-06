@@ -1,16 +1,16 @@
 {
   "RESULT": {
-    "name": "건조하고 당기는 피부를 위한 건성용 클렌징폼",
-    "ml_volume": "80.00",
-    "category_price": "7600.00",
+    "name": "건성용 클렌징폼",
+    "ml_volume": 80.0,
+    "category_price": 7600.0,
     "thumb": "https://media.vlpt.us/images/eslerkang/post/16581b21-9917-41f2-a8bd-bc319b0895ed/cleanser2.png",
     "price": [
       {
-        "manufacturing_cost": "3042.00",
-        "transportation_cost": "1000.00",
-        "development_cost": "1260.00",
-        "commision_cost": "248.00",
-        "other_market_price": "25000.00"
+        "manufacturing_cost": 3042.0,
+        "transportation_cost": 1000.0,
+        "development_cost": 1260.0,
+        "commision_cost": 248.0,
+        "other_market_price": 25000.0
       }
     ],
     "reviews": [
@@ -22,6 +22,5 @@
         "created_at": "2021-12-06T12:44:56.288"
       }
     ]
-  },
-  "MESSAGE": "SUCCESS"
+  }
 }

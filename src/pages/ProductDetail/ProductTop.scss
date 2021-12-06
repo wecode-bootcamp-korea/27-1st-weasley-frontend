@@ -24,10 +24,6 @@
           font-weight: $weightBold;
         }
       }
-      .productInfoOptions {
-        font-size: $fontSmall;
-        color: $colorMint;
-      }
     }
     .productInfoBottom {
       @include flexSpaceBetweenCenter;
@@ -54,22 +50,12 @@
       .buyButton {
         width: 220px;
         background-color: $colorMint;
-        color: $colorhite;
+        color: $colorWhite;
         border-radius: $ButtonBorderRadius;
         padding: 20px 15px;
         font-size: 18px;
         border: none;
         cursor: pointer;
-      }
-    }
-    .priceTab {
-      padding: 50px 0;
-      text-align: right;
-
-      font-size: $fontSemiLarge;
-      font-weight: $weightBold;
-      .productPrice {
-        padding-right: 10px;
       }
     }
   }
@@ -93,7 +79,7 @@
       }
     }
     .productInfoOptions {
-      font-size: $fontSmall;
+      font-size: 17px;
       color: $colorMint;
     }
   }
@@ -122,7 +108,7 @@
     .buyButton {
       width: 130px;
       background-color: $colorMint;
-      color: $colorhite;
+      color: $colorWhite;
       border-radius: $ButtonBorderRadius;
       padding: 20px 15px;
       font-size: 18px;
@@ -131,13 +117,18 @@
     }
   }
   .priceTab {
+    @include flexSpaceBetweenCenter;
     padding: 50px 0;
-    text-align: right;
 
-    font-size: $fontSemiLarge;
-    font-weight: $weightBold;
     .productPrice {
+      font-weight: $weightBold;
+      font-size: $fontSemiLarge;
       padding-right: 10px;
+    }
+    .priceTag {
+      text-align: left;
+      font-size: 17px;
+      color: $colorGray;
     }
   }
 }
@@ -183,6 +174,15 @@
     @include flexSpaceBetweenCenter;
     text-align: center;
     margin-top: 50px;
+    .costInfoData {
+      .costInfoDataTag {
+        color: $colorGray;
+      }
+      .costInfoDataPrice {
+        font-size: 20px;
+        padding: 10px 0;
+      }
+    }
   }
 
   .resultWrap {
@@ -190,10 +190,15 @@
     margin-top: 50px;
 
     .circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       background-color: $colorMint;
-      color: $colorhite;
-      width: 100px;
-      height: 100px;
+      color: $colorWhite;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
       text-align: center;
       margin: 50px;
       padding: 20px;

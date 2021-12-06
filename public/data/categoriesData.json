@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "name": "클렌징폼",
+    "ml_volume": "180",
+    "price": "7,800",
+    "products_list": [
+      {
+        "id": 1,
+        "outer_name": "유분 많은 지성복합성 피부용",
+        "inner_name": "유분 많은 지성복합성 화장품",
+        "img": "images/cleanser1.png"
+      },
+      {
+        "id": 2,
+        "outer_name": "건조하고 당기는 건성 피부용",
+        "inner_name": "건조하고 당기는 건성 화장품",
+        "img": "images/cleanser2.png"
+      },
+      {
+        "id": 3,
+        "outer_name": "극도로 예민한 민감성 피부용",
+        "inner_name": "극도로 예민한 민감성 화장품",
+        "img": "images/cleanser3.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "부스터",
+    "ml_volume": "80",
+    "price": "10,800",
+    "products_list": [
+      {
+        "id": 4,
+        "outer_name": "피부를 탄력있게 집중 케어",
+        "inner_name": "피부를 탄력있게 집중 관리",
+        "img": "images/ample1.png"
+      },
+      {
+        "id": 5,
+        "outer_name": "잡티로 얼룩덜룩한 피부 집중 케어",
+        "inner_name": "잡티로 얼룩덜룩한 피부 집중 케어",
+        "img": "images/ample2.png"
+      },
+      {
+        "id": 6,
+        "outer_name": "넓어진 모공을 집중케어",
+        "inner_name": "넓어진 모공을 집중케어",
+        "img": "images/ample3.png"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "로션",
+    "ml_volume": "100",
+    "price": "9,600",
+    "products_list": [
+      {
+        "id": 7,
+        "outer_name": "유분 많은 지성복합성 피부용",
+        "inner_name": "유분 많은 지성복합성 화장품",
+        "img": "images/lotion1.png"
+      },
+      {
+        "id": 8,
+        "outer_name": "건조하고 당기는 건성 피부용",
+        "inner_name": "건조하고 당기는 건성 화장품",
+        "img": "images/lotion2.png"
+      },
+      {
+        "id": 9,
+        "outer_name": "극도로 예민한 민감성 피부용",
+        "inner_name": "극도로 예민한 민감성 화장품",
+        "img": "images/lotion3.png"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "선크림",
+    "ml_volume": "180",
+    "price": "7,600",
+    "products_list": [
+      {
+        "id": 10,
+        "outer_name": "기름기 많은 지성복합성 피부용",
+        "inner_name": "유분 많은 지성복합성 화장품",
+        "img": "images/suncream1.png"
+      },
+      {
+        "id": 11,
+        "outer_name": "건조하고 화끈거리는 건성 피부용",
+        "inner_name": "건조하고 당기는 건성 화장품",
+        "img": "images/suncream2.png"
+      },
+      {
+        "id": 12,
+        "outer_name": "매우매우 예민한 민감성 피부용",
+        "inner_name": "극도로 예민한 민감성 화장품",
+        "img": "images/suncream3.png"
+      }
+    ]
+  }
+]

@@ -3,19 +3,22 @@ import { Link } from 'react-router-dom';
 
 import './ProductTop.scss';
 
-const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
-  console.log(detail.RESULT.name);
-  console.log(detail[0]);
-  console.log(detail.RESULT.category_price);
+const ProductDetailTop = ({
+  detail,
+  count,
+  countUpEvent,
+  countDownEvent,
+  id,
+}) => {
   return (
     <>
       <section className="productDetailTop">
         <div className="productDetailImage">
-          <img src={detail.RESULT.thumb} alt="cleanser" />
+          <img src={detail.thumb} alt="cleanser" />
         </div>
         <div className="productDetailInfo">
           <div className="productInfoHeader">
-            <span className="productTitleName">{detail.RESULT.name}</span>
+            <span className="productTitleName">{detail.name}</span>
             <span className="productInfoOptions">
               <Link to="#">타입변경</Link>
             </span>
@@ -25,7 +28,9 @@ const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
               <span className="reviewAverageViewCount">별그림</span>
               <span className="reviewAverageViewScore">4.4점</span>
             </span>
-            <span className="capacity">180mL (8주 사용 분량)</span>
+            <span className="capacity">
+              {detail.ml_volume}mL (8주 사용 분량)
+            </span>
             <div className="countUp">
               <span>
                 <input
@@ -49,13 +54,13 @@ const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
               type="button"
               className="buyButton"
               onClick={() => {
-                fetch('결제API', {
+                fetch('http://3.142.147.114:8000/shops/carts', {
                   headers: {
                     Authorization:
                       'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
                   },
                   method: 'POST',
-                  body: JSON.stringify({ product_id: 1, amount: 99 }),
+                  body: JSON.stringify({ product_id: id, amount: count }),
                 })
                   .then(function (res) {
                     return res.json();
@@ -68,12 +73,16 @@ const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
                   });
               }}
             >
+              {/* 
+              ///성공하면 장바구니 실패하면 로그인페이지 window.location?*/}
               구매하기
             </button>
           </form>
           <div className="priceTab">
-            <span className="productPrice">{detail.RESULT.category_price}</span>
-            <span>원</span>
+            <span className="priceTag">총 주문금액</span>
+            <span className="productPrice">
+              {(detail.category_price * count).toLocaleString()}원
+            </span>
           </div>
         </div>
       </section>
@@ -97,10 +106,7 @@ const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
             </p>
           </div>
           <div className="slideImage">
-            <img
-              src="images/productdetail/cleanser_sensitive_1.47732c05.png"
-              alt="slide1"
-            />
+            <img src="" alt="slide1" />
           </div>
         </div>
         <div className="costInfographic">
@@ -112,26 +118,40 @@ const ProductDetailTop = ({ detail, count, countUpEvent, countDownEvent }) => {
             </h1>
           </div>
           <div className="costInfo">
-            <span>
-              <p>제조비</p>
-              <p>3,001원</p>
+            <span className="costInfoData">
+              <p className="costInfoDataTag">제조비</p>
+              <p className="costInfoDataPrice">
+                {detail.price[0].manufacturing_cost}원
+              </p>
             </span>
-            <span>
-              <p>제조비</p>
-              <p>3,001원</p>
+            <span className="costInfoData">
+              <p className="costInfoDataTag">개발비</p>
+              <p className="costInfoDataPrice">
+                {detail.price[0].development_cost}원
+              </p>
             </span>
-            <span>
-              <p>제조비</p>
-              <p>3,001원</p>
+            <span className="costInfoData">
+              <p className="costInfoDataTag">물류 및 운송</p>
+              <p className="costInfoDataPrice">
+                {detail.price[0].transportation_cost}원
+              </p>
             </span>
-            <span>
-              <p>제조비</p>
-              <p>3,001원</p>
+            <span className="costInfoData">
+              <p className="costInfoDataTag">결제수수료</p>
+              <p className="costInfoDataPrice">
+                {detail.price[0].commision_cost}원
+              </p>
             </span>
           </div>
           <div className="resultWrap">
-            <div className="circle">오픈워크7600원</div>
-            <div className="circle">시중주요브랜드25000원</div>
+            <div className="circle">
+              <p>오픈워크</p>
+              <p>{detail.category_price}원</p>
+            </div>
+            <div className="circle">
+              <p>시중주요 브랜드</p>
+              <p>{detail.price[0].commision_cost}원</p>
+            </div>
           </div>
         </div>
       </section>

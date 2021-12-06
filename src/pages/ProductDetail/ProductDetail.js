@@ -18,26 +18,25 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    fetch('data/productDetail/detailcontents.json')
+    fetch('/data/productDetail/detailcontents.json')
       .then(res => res.json())
       .then(data => {
         setDetail(data);
       })
       .then(() => {
         setIsData(true);
-      })
-      .catch(error => {
-        console.log('ERROR', error);
       });
+    // .catch(error => {
+    //   console.log('ERROR', error);
+    // });
   }, []);
-
-  console.log('반환값', detail);
 
   return (
     <main className="main">
       {isData && (
         <ProductDetailTop
-          detail={detail}
+          id={id}
+          detail={detail.RESULT}
           count={count}
           countUpEvent={countUpEvent}
           countDownEvent={countDownEvent}
