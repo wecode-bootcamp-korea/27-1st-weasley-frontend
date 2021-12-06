@@ -28,8 +28,7 @@ function Login() {
   };
 
   const goToMain = () => {
-    // e.preventDefault();
-    fetch('http://10.58.3.129:8000/users/signin', {
+    fetch('http://3.142.147.114:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: emailValue,
