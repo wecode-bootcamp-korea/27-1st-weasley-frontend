@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
+<<<<<<< HEAD
+=======
+import '/images/navimg/bi_cart.svg';
+>>>>>>> 6b352eed6eed122074d48fab92f13b97b41cde97
 
 function Nav() {
   return (
@@ -12,11 +16,6 @@ function Nav() {
       </div>
       <div className="navMenu">
         <ul className="navMenuUl">
-          <li className="navMenuList">
-            <Link to="/subscribe">
-              <p className="navMenuItems">구독관리</p>
-            </Link>
-          </li>
           <li className="navMenuList">
             <Link to="/">
               <p className="navMenuItems">핵심성분</p>
@@ -44,7 +43,7 @@ function Nav() {
         </Link>
         <Link to="#">
           <img
-            src="./images/navimg/bi_cart.svg"
+            src="/images/navimg/bi_cart.svg"
             className="cartImg"
             alt="장바구니"
           />
