@@ -1,0 +1,31 @@
+@import '../../styles/variables.scss';
+
+.guestUserInfo {
+  padding-top: 50px;
+
+  .guestInfoAddressTitle {
+    font-size: $fontSemiLarge;
+  }
+
+  .guestInfoAddress {
+    width: 100%;
+    border: none;
+    padding: 8px;
+    margin-top: 30px;
+  }
+
+  .addressSubmitFormButton {
+    width: 100%;
+    display: block;
+    padding: 10px 34px;
+    border: none;
+    background: $borderGray;
+    color: $colorGray;
+    margin-top: 30px;
+
+    &:hover {
+      background: #333;
+      color: $colorWhite;
+    }
+  }
+}
