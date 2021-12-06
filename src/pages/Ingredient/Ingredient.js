@@ -1,10 +1,17 @@
 import React from 'react';
+import IngredientTitle from './IngredientTitle';
+// import Nav from '../../components/Nav';
 import './Ingredient.scss';
+import IngredientList from './IngredientList';
 
 function Ingredient() {
   return (
     <>
-      <div className="container">
+      <IngredientTitle />
+      {[1, 2, 3, 4].map(function (list) {
+        return <IngredientList />;
+      })}
+      {/* <div className="container">
         <div className="inner">
           <img src="https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/oily%26combination.png" />
         </div>
@@ -17,7 +24,7 @@ function Ingredient() {
         <div className="inner">
           <img src="https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/oily%26combination.png" />
         </div>
-      </div>
+      </div> */}
 
       {/* <div>
         <div>
