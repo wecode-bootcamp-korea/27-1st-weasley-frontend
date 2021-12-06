@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import EmptyCart from './EmptyCart';
 import List from './List';
 import Price from './Price';
+import { API } from '../../../src/config';
 import '../Cart/Cart.scss';
-
-const API = 'http://3.142.147.114:8000';
 
 function Cart() {
   const [cart, setCart] = useState([]);
   const [empty, setEmpty] = useState(false);
 
   useEffect(() => {
-    fetch(`${API}/shops/carts`, {
+    fetch(API.CART, {
       method: 'get',
       headers: {
         Authorization:
@@ -61,7 +60,7 @@ function Cart() {
 
   const erase = targetIndex => {
     const newCartItem = {
-      ...cart.splice(targetIndex, 1),
+      ...cart.filter(targetIndex => targetIndex !== list.id),
     };
     const newCart = cart.map((item, itemIndex) => {
       if (itemIndex === targetIndex) {

@@ -1,9 +1,10 @@
 import React from 'react';
+import { API } from '../../../src/config';
 import './List.scss';
 
 function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
   const handleDelete = () => {
-    fetch(`${API}/shops/carts/${list.cart_id}`, {
+    fetch(API`.${list.cart_id}`, {
       method: 'delete',
       headers: {
         Authorization:
@@ -22,7 +23,7 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
       alert('제품을 더 이상 추가할수 없습니다.');
       return;
     }
-    fetch(`${API}/shops/carts/${list.cart_id}`, {
+    fetch(API`.${list.cart_id}`, {
       method: 'patch',
       headers: {
         Authorization:
@@ -44,7 +45,7 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
       alert('상품을 더 이상 줄일 수 없습니다.');
       return;
     }
-    fetch(`${API}/shops/carts/${list.cart_id}`, {
+    fetch(API`.${list.cart_id}`, {
       method: 'patch',
       headers: {
         Authorization:
