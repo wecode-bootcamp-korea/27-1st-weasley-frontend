@@ -84,6 +84,7 @@ function Cart() {
                 increaseCartItem={() => increaseCartItem(index)}
                 decreaseCartItem={() => decreaseCartItem(index)}
                 key={list.product_id}
+                API={API}
               />
             );
           })}

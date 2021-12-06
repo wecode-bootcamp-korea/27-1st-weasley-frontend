@@ -1,7 +1,13 @@
 import React from 'react';
 import './List.scss';
 
-function List({ list, increaseCartItem, decreaseCartItem, eraseCartItem }) {
+function List({
+  list,
+  increaseCartItem,
+  decreaseCartItem,
+  eraseCartItem,
+  API,
+}) {
   const handleDelete = () => {
     fetch(`${API.CART}/${list.cart_id}`, {
       method: 'delete',
