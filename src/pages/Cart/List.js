@@ -2,9 +2,9 @@ import React from 'react';
 import { API } from '../../../src/config';
 import './List.scss';
 
-function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
+function List({ list, increaseCartItem, decreaseCartItem, eraseCartItem }) {
   const handleDelete = () => {
-    fetch(API`.${list.cart_id}`, {
+    fetch(`${API.CART}/${list.cart_id}`, {
       method: 'delete',
       headers: {
         Authorization:
@@ -13,7 +13,7 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE = 'SUCCESS' ? erase(list.id) : null;
+        data.MESSAGE = 'DELETED' ? eraseCartItem(list.product_id) : null;
       })
       .catch(error => alert(error));
   };
@@ -23,7 +23,7 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
       alert('제품을 더 이상 추가할수 없습니다.');
       return;
     }
-    fetch(API`.${list.cart_id}`, {
+    fetch(`${API.CART}/${list.cart_id}`, {
       method: 'patch',
       headers: {
         Authorization:
@@ -35,7 +35,7 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE = 'SUCCESS' ? increaseCartItem(list.id) : null;
+        data.MESSAGE = 'SUCCESS' ? increaseCartItem(list.product_id) : null;
       })
       .catch(error => alert(error));
   };
@@ -45,7 +45,7 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
       alert('상품을 더 이상 줄일 수 없습니다.');
       return;
     }
-    fetch(API`.${list.cart_id}`, {
+    fetch(`${API.CART}/${list.cart_id}`, {
       method: 'patch',
       headers: {
         Authorization:
@@ -57,7 +57,7 @@ function List({ list, API, increaseCartItem, decreaseCartItem, erase }) {
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE = 'SUCCESS' ? decreaseCartItem(list.id) : null;
+        data.MESSAGE = 'SUCCESS' ? decreaseCartItem(list.product_id) : null;
       })
       .catch(error => alert(error));
   };

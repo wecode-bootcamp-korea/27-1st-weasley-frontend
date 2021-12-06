@@ -5,9 +5,11 @@ import Price from './Price';
 import { API } from '../../../src/config';
 import '../Cart/Cart.scss';
 
+//api config 사용법
+
 function Cart() {
   const [cart, setCart] = useState([]);
-  const [empty, setEmpty] = useState(false);
+  const [empty, setEmpty] = useState(true);
 
   useEffect(() => {
     fetch(API.CART, {
@@ -22,6 +24,7 @@ function Cart() {
         if (data.RESULT.cart_items.length === 0) {
           setEmpty(true);
         } else {
+          setEmpty(false);
           setCart(data.RESULT.cart_items);
         }
       });
@@ -58,24 +61,16 @@ function Cart() {
     setCart(newCart);
   };
 
-  const erase = targetIndex => {
-    const newCartItem = {
-      ...cart.filter(targetIndex => targetIndex !== list.id),
-    };
-    const newCart = cart.map((item, itemIndex) => {
-      if (itemIndex === targetIndex) {
-        return newCartItem;
-      } else {
-        return item;
-      }
+  const eraseCartItem = productId => {
+    const filteredCart = cart.filter(item => {
+      return item.product_id !== productId;
     });
-    setCart(newCart);
+
+    setCart(filteredCart);
   };
 
   return (
     <>
-      <nav>네브바</nav>
-
       {empty ? (
         <EmptyCart />
       ) : (
@@ -86,14 +81,11 @@ function Cart() {
             return (
               <List
                 setEmpty={setEmpty}
-                erase={() => erase(index)}
-                setCart={setCart}
-                cart={cart}
+                eraseCartItem={() => eraseCartItem(index)}
                 list={list}
-                API={API}
                 increaseCartItem={() => increaseCartItem(index)}
                 decreaseCartItem={() => decreaseCartItem(index)}
-                key={list.cart_id}
+                key={list.product_id}
               />
             );
           })}
