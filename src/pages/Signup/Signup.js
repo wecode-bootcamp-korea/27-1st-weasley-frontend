@@ -3,17 +3,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import USER_DATA from './UserData.js';
 import './Signup.scss';
 
-function Signup() {
+const Signup = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     phone: '',
     birth: '',
     name: '',
+  });
+
+  const [gender, setGender] = useState({
     gender: '',
   });
+
   const navigate = useNavigate();
   const { email, password, phone, birth, name } = formData;
+
   const handleInput = e => {
     const { name, value } = e.target;
     setFormData({
@@ -22,21 +27,31 @@ function Signup() {
     });
   };
 
-  const emailReg = /[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/;
+  const handleChange = e => {
+    setGender(e.target.value);
+  };
+
+  const emailReg =
+    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
   const passwordReg =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])(?=.*[0-9])[A-Za-z\\d$@$!%*?&]{8,45}$/;
-  const phoneReg = /^\d{3}\d{3,4}\d{4}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?#&]{8,}$/;
+  const phoneReg = /(\d{3}).*(\d{4}).*(\d{4})$/;
   const birthReg = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/;
 
-  const isEmailValid = emailReg.test(email);
-  const isPasswordValid = passwordReg.test(password);
-  const isPhoneValid = phoneReg.test(phone);
-  const isBirthValid = birthReg.test(birth);
+  const emailExp = new RegExp(emailReg);
+  const passwordExp = new RegExp(passwordReg);
+  const phoneExp = new RegExp(phoneReg);
+  const birthExp = new RegExp(birthReg);
+
   const isInputValid =
-    isEmailValid && isPasswordValid && isPhoneValid && isBirthValid;
+    emailExp.test(email) &&
+    passwordExp.test(password) &&
+    phoneExp.test(phone) &&
+    birthExp.test(birth) &&
+    !!name;
 
   const goToMain = () => {
-    fetch('http://10.58.7.120:8000/users/signup', {
+    fetch('http://10.58.1.31:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         email: email,
@@ -44,7 +59,7 @@ function Signup() {
         phone: phone,
         date_of_birth: birth,
         name: name,
-        gender: ['MALE', 'FEMALE'],
+        gender: gender,
       }),
     })
       .then(response => response.json())
@@ -58,7 +73,7 @@ function Signup() {
   return (
     <div className="signup">
       <div className="logo">
-        <Link to="/">
+        <Link to=" /">
           <img src="./images/logo/logo-bk.svg" alt="logo" />
         </Link>
       </div>
@@ -71,6 +86,7 @@ function Signup() {
           {USER_DATA.map(user => {
             return (
               <label className="formFormatLabel" key={user.id}>
+                {user.name}
                 <input
                   name={user.name}
                   className="formFormat"
@@ -84,24 +100,28 @@ function Signup() {
           })}
           <div className="genderTitle">
             성별
-            <span className="radioButton">
+            <span className="checkBox">
               <label className="gender">
                 <input
                   id="male"
-                  value="male"
+                  value="MALE"
                   name="male"
                   type="radio"
                   placeholder="남자"
+                  checked={gender === 'MALE' ? true : false}
+                  onChange={handleChange}
                 />
                 남자
               </label>
               <label className="gender">
                 <input
-                  id="male"
-                  value="female"
-                  name="male"
+                  id="female"
+                  value="FEMALE"
+                  name="female"
                   type="radio"
                   placeholder="여자"
+                  checked={gender === 'FEMALE' ? true : false}
+                  onChange={handleChange}
                 />
                 여자
               </label>
@@ -118,6 +138,6 @@ function Signup() {
       </div>
     </div>
   );
-}
+};
 
 export default Signup;

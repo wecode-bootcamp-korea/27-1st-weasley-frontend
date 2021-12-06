@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
-<<<<<<< HEAD
-=======
 import '/images/navimg/bi_cart.svg';
->>>>>>> 6b352eed6eed122074d48fab92f13b97b41cde97
 
 function Nav() {
   return (

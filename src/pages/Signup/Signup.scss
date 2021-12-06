@@ -17,7 +17,7 @@
   }
   .signupSection {
     position: absolute;
-    transform: translate(85%, 25%);
+    transform: translate(100%, 30%);
     border-radius: 5px;
     box-shadow: 0 0 20px $colorGray;
     background: $colorWhite;
@@ -56,51 +56,50 @@
       font-size: $fontRegular;
       color: $colorBlack;
     }
-  }
+    .genderTitle {
+      font-size: $fontSmall;
+      color: rgb(103, 103, 103);
+      padding-bottom: 30px;
+      padding-left: 9px;
 
-  .genderTitle {
-    font-size: $fontSmall;
-    color: rgb(103, 103, 103);
-    padding-bottom: 30px;
-    padding-left: 9px;
+      .radioButton {
+        display: flex;
+        margin-top: 10px;
+        font-size: $fontRegular;
+        color: $colorBlack;
 
-    .radioButton {
-      display: flex;
-      margin-top: 10px;
-      font-size: $fontRegular;
-      color: $colorBlack;
-
-      .gender {
-        padding-right: 20px;
+        .gender {
+          padding-right: 20px;
+        }
       }
     }
+
+    .activeOn {
+      padding: 20px 36px 36px 36px;
+      margin: 50px 30px;
+      font-size: $fontRegular;
+      border: 0;
+      outline: 0;
+      width: 350px;
+      height: 30px;
+      border-radius: 8px;
+      background-color: #5dc5cc;
+      color: $colorWhite;
+      cursor: pointer;
+    }
+
+    .activeOff {
+      padding: 20px 36px 36px 36px;
+      margin: 50px 30px;
+      font-size: $fontRegular;
+      border: 0;
+      outline: 0;
+      width: 350px;
+      height: 30px;
+      border-radius: 8px;
+      background-color: $colorGray;
+      color: $colorWhite;
+      cursor: pointer;
+    }
   }
-}
-
-.activeOn {
-  padding: 20px 36px 36px 36px;
-  margin: 50px 30px;
-  font-size: $fontRegular;
-  border: 0;
-  outline: 0;
-  width: 350px;
-  height: 30px;
-  border-radius: 8px;
-  background-color: #5dc5cc;
-  color: $colorWhite;
-  cursor: pointer;
-}
-
-.activeOff {
-  padding: 20px 36px 36px 36px;
-  margin: 50px 30px;
-  font-size: $fontRegular;
-  border: 0;
-  outline: 0;
-  width: 350px;
-  height: 30px;
-  border-radius: 8px;
-  background-color: $colorGray;
-  color: $colorWhite;
-  cursor: pointer;
 }
