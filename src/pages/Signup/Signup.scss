@@ -76,45 +76,42 @@
         // input[type='radio'] {
         //   cursor: pointer;
         //   background-color: $colorWhite;
-
-        //   &:checked {
-        //     content: none;
-        //     display: block;
-        //     width: 20px;
-        //     height: 20px;
-        //     background: $colorWhite;
-        //     border: 10px solid $colorMint;
-        //   }
-        // }
+        // &:checked {
+        //   content: none;
+        //   display: block;
+        //   // width: 20px;
+        //   // height: 20px;
+        //   background: $colorWhite;
+        //   border: 10px solid $colorMint;
       }
     }
   }
+}
 
-  .activeOn {
-    padding: 20px 36px 36px 36px;
-    margin: 50px 30px;
-    font-size: $fontRegular;
-    border: 0;
-    outline: 0;
-    width: 350px;
-    height: 30px;
-    border-radius: 8px;
-    background-color: #5dc5cc;
-    color: $colorWhite;
-    cursor: pointer;
-  }
+.activeOn {
+  padding: 20px 36px 36px 36px;
+  margin: 50px 30px;
+  font-size: $fontRegular;
+  border: 0;
+  outline: 0;
+  width: 350px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: #5dc5cc;
+  color: $colorWhite;
+  cursor: pointer;
+}
 
-  .activeOff {
-    padding: 20px 36px 36px 36px;
-    margin: 50px 30px;
-    font-size: $fontRegular;
-    border: 0;
-    outline: 0;
-    width: 350px;
-    height: 30px;
-    border-radius: 8px;
-    background-color: $colorGray;
-    color: $colorWhite;
-    cursor: pointer;
-  }
+.activeOff {
+  padding: 20px 36px 36px 36px;
+  margin: 50px 30px;
+  font-size: $fontRegular;
+  border: 0;
+  outline: 0;
+  width: 350px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: $colorGray;
+  color: $colorWhite;
+  cursor: pointer;
 }

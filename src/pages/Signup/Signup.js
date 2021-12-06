@@ -7,7 +7,7 @@ const emailReg =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordReg =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&]{8,45}$/;
-const phoneReg = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+const phoneReg = /^\d{3}\d{3,4}\d{4}$/;
 const birthReg = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/;
 
 function Signup() {
@@ -78,6 +78,7 @@ function Signup() {
         <form name="signupForm" method="post">
           {USER_DATA.map(user => {
             return (
+              //라벨 컴포넌트화 해서 input props로 전달
               <label className="formFormatLabel">
                 {user.name}
                 <input
