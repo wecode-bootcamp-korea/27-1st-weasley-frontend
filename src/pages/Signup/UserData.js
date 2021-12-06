@@ -26,7 +26,7 @@ const USER_DATA = [
   },
   {
     id: '4',
-    name: 'birth_of_birth',
+    name: 'date_of_birth',
     className: 'forFormat',
     type: 'text',
     maxLength: '10',

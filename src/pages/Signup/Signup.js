@@ -3,12 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import USER_DATA from './UserData.js';
 import './Signup.scss';
 
-const emailReg = '[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}';
-const passwordReg =
-  '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])(?=.*[0-9])[A-Za-z\\d$@$!%*?&]{8,45}';
-const phoneReg = /^\d{3}\d{3,4}\d{4}$/;
-const birthReg = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/;
-
 function Signup() {
   const [formData, setFormData] = useState({
     email: '',
@@ -34,11 +28,16 @@ function Signup() {
     });
   };
 
+  const emailReg = /[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/;
+  const passwordReg =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])(?=.*[0-9])[A-Za-z\\d$@$!%*?&]{8,45}$/;
+  const phoneReg = /^\d{3}\d{3,4}\d{4}$/;
+  const birthReg = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/;
+
   const isEmailValid = emailReg.test(email);
   const isPasswordValid = passwordReg.test(password);
   const isPhoneValid = phoneReg.test(phone);
   const isBirthValid = birthReg.test(birth);
-
   const isInputValid =
     isEmailValid && isPasswordValid && isPhoneValid && isBirthValid;
 
@@ -77,14 +76,12 @@ function Signup() {
         <form name="signupForm" method="post">
           {USER_DATA.map(user => {
             return (
-              //라벨 컴포넌트화 해서 input props로 전달
               <label className="formFormatLabel">
-                {user.name}
                 <input
                   key={user.id}
                   name={user.name}
                   className="formFormat"
-                  type={user.type}
+                  d
                   maxLength={user.maxLength}
                   placeholder={user.placeholder}
                   onChange={handleInput}

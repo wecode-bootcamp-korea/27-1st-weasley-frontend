@@ -28,6 +28,7 @@ const ProductDetail = () => {
   }, []);
 
   return (
+    //</Nav>
     <main className="main">
       {detailList.map(item => {
         return (
