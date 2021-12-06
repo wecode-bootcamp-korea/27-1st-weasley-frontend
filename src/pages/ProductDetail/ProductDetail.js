@@ -18,7 +18,7 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.7.86:8000/products/detail/${id}`)
+    fetch('data/productDetail/detailcontents.json')
       .then(res => res.json())
       .then(data => {
         setDetail(data);
@@ -30,6 +30,8 @@ const ProductDetail = () => {
         console.log('ERROR', error);
       });
   }, []);
+
+  console.log('반환값', detail);
 
   return (
     <main className="main">
