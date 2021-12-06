@@ -13,12 +13,6 @@ function Signup() {
     gender: '',
   });
   const navigate = useNavigate();
-  const [radio, setRadio] = useState(false);
-  const handleRadio = e => {
-    const { value } = e.target;
-    setRadio(value);
-  };
-
   const { email, password, phone, birth, name } = formData;
   const handleInput = e => {
     const { name, value } = e.target;
@@ -98,8 +92,6 @@ function Signup() {
                   name="male"
                   type="radio"
                   placeholder="남자"
-                  disabled={radio}
-                  onChange={handleRadio}
                 />
                 남자
               </label>
@@ -110,8 +102,6 @@ function Signup() {
                   name="male"
                   type="radio"
                   placeholder="여자"
-                  disabled={radio}
-                  onChange={handleRadio}
                 />
                 여자
               </label>

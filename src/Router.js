@@ -4,7 +4,7 @@ import ProductList from './pages/ProductList/ProductList';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Login from './pages/Login/Login';
 import Payment from './pages/payment/Payment';
-import Signup from './pages/Signup/UserData';
+import Signup from './pages/Signup/Signup';
 
 const Router = () => {
   return (
