@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
+import '/images/navimg/bi_cart.svg';
 
 function Nav() {
   return (
@@ -39,7 +40,7 @@ function Nav() {
         </Link>
         <Link to="#">
           <img
-            src="./images/navimg/bi_cart.svg"
+            src="/images/navimg/bi_cart.svg"
             className="cartImg"
             alt="장바구니"
           />
