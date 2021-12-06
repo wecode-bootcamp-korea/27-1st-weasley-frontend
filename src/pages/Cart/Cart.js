@@ -5,8 +5,6 @@ import Price from './Price';
 import { API } from '../../../src/config';
 import '../Cart/Cart.scss';
 
-//api config 사용법
-
 function Cart() {
   const [cart, setCart] = useState([]);
   const [empty, setEmpty] = useState(true);
@@ -70,7 +68,7 @@ function Cart() {
   };
 
   return (
-    <>
+    <div>
       {empty ? (
         <EmptyCart />
       ) : (
@@ -97,7 +95,7 @@ function Cart() {
           </div>
         </main>
       )}
-    </>
+    </div>
   );
 }
 

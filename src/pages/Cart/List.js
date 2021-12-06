@@ -1,5 +1,4 @@
 import React from 'react';
-import { API } from '../../../src/config';
 import './List.scss';
 
 function List({ list, increaseCartItem, decreaseCartItem, eraseCartItem }) {
