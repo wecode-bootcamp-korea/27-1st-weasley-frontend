@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import USER_DATA from './UserData.js';
+import Nav from '../../components/Nav';
 import './Signup.scss';
 
 function Signup() {
