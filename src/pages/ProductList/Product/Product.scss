@@ -1,11 +1,12 @@
 @import '../../../styles/variables.scss';
 
-.product {
+.productList {
   display: flex;
   height: 350px;
   width: 800px;
   margin: $marginCenter;
   margin-top: 100px;
+  margin-bottom: 20px;
   background-color: $colorWhite;
   border-radius: 20px;
 
@@ -14,30 +15,32 @@
     border-radius: 10px;
   }
 
-  .productSelect {
+  .productSelectBox {
     margin-top: 50px;
     margin-left: 50px;
 
     .productTitle {
       padding-right: 15px;
+
       h2 {
         font-size: 25px;
         font-weight: $weightBold;
       }
-    }
 
-    p {
-      padding-bottom: 10px;
-      margin-top: 8px;
-      border-bottom: $borderDarkgray;
-      color: $colorGray;
-      font-size: 20px;
-      font-weight: $weightRegular;
+      p {
+        padding-bottom: 10px;
+        margin-top: 8px;
+        border-bottom: $borderDarkgray;
+        color: $colorGray;
+        font-size: 20px;
+        font-weight: $weightRegular;
+      }
     }
 
     .productType {
       margin-top: 30px;
-      .type {
+
+      .categoryType {
         @include flexSpaceBetweenCenter;
         width: 400px;
         margin-top: 20px;
@@ -50,11 +53,11 @@
         font-weight: $weightRegular;
         cursor: pointer;
       }
-      .type:hover {
+      .categoryType:hover {
         background-color: $colorWhite;
       }
 
-      .typeBtn {
+      .typeSelectButton {
         button {
           padding: 10px;
           cursor: pointer;
