@@ -1,7 +1,12 @@
-@import '../../styles/variables.scss';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Nav.scss';
+import '/images/navimg/bi_cart.svg';
+
+functi@import '../../styles/variables.scss';
 
 .nav {
-  @include flexCenter;
+  @include flexSpaceBetweenCenter;
   height: 60px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;
@@ -9,7 +14,6 @@
 
   .navLogo {
     width: 120px;
-    margin: 5px 100px 0 0;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 
     img {

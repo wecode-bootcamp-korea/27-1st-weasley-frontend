@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Nav/Nav.scss';
+import './Nav.scss';
 import '/images/navimg/bi_cart.svg';
 
 function Nav() {
@@ -8,7 +8,7 @@ function Nav() {
     <div className="nav">
       <div className="navLogo">
         <Link to="/">
-          <img src="./images/logo/logo-bk.svg" alt="logo" className="logo" />
+          <img src="./images/logo/logo-bk.svg" alt="logo" classNAme="logo" />
         </Link>
       </div>
       <div className="navMenu">
