@@ -1,10 +1,10 @@
+@import '../../styles/variables.scss';
+
 .list {
+  @include flexSpaceBetweenCenter;
   padding-right: 20px;
   margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid gray;
+  border-bottom: $borderGray;
   .listLeft {
     display: flex;
     align-items: center;
@@ -14,8 +14,8 @@
     }
     .listArticle {
       h3 {
-        font-size: 20px;
-        font-weight: 500;
+        font-size: $fontMedium;
+        font-weight: $weightRegular;
         margin-bottom: 5px;
       }
       span {
@@ -32,37 +32,35 @@
   .cancel {
     margin-bottom: 10px;
     button {
-      padding: 5px;
-      border-radius: 5px;
-      border: none;
-      background-color: #5dc5cc;
-      color: white;
-      font-size: 14px;
-      font-weight: 350;
       width: 100%;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: $colorMint;
+      color: $colorWhite;
+      font-size: $fontRegular;
+      font-weight: 350;
     }
   }
   .order {
     display: flex;
 
     .minus {
-      font-size: 15px;
       padding: 5px 10px;
       border: none;
-      background-color: #5dc5cc;
-      color: white;
+      background-color: $colorMint;
+      color: $colorWhite;
+      font-size: $fontRegular;
     }
     .count {
       padding: 5px;
-      // border-top: 1px solid black;
-      // border-bottom: 1px solid black;
     }
     .plus {
-      font-size: 15px;
+      font-size: $fontRegular;
       padding: 5px 10px;
       border: none;
-      background-color: #5dc5cc;
-      color: white;
+      background-color: $colorMint;
+      color: $colorWhite;
     }
   }
 }
