@@ -25,6 +25,8 @@ const Signup = () => {
     });
   };
 
+  console.log(formData);
+
   const emailReg =
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
   const passwordReg =
@@ -42,7 +44,8 @@ const Signup = () => {
     passwordExp.test(password) &&
     phoneExp.test(phone) &&
     birthExp.test(birth) &&
-    !!name;
+    !!name &&
+    !!gender;
 
   const goToMain = () => {
     fetch(API.SIGNUP, {
@@ -101,7 +104,7 @@ const Signup = () => {
                 <input
                   id="male"
                   value="MALE"
-                  name="male"
+                  name="gender"
                   type="radio"
                   placeholder="남자"
                   checked={gender === 'MALE' ? true : false}
@@ -113,7 +116,7 @@ const Signup = () => {
                 <input
                   id="female"
                   value="FEMALE"
-                  name="female"
+                  name="gender"
                   type="radio"
                   placeholder="여자"
                   checked={gender === 'FEMALE' ? true : false}

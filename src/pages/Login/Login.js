@@ -27,7 +27,7 @@ function Login() {
   };
 
   const goToMain = () => {
-    fetch(API, {
+    fetch('http://3.142.147.114:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: emailValue,
