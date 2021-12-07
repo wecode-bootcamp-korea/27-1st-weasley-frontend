@@ -25,6 +25,7 @@ const ProductDetail = () => {
   }, []);
 
   return (
+    //</Nav>
     <main className="main">
       {detail.RESULT && (
         <ProductDetailTop
