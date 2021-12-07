@@ -1,7 +1,9 @@
+@import '../../styles/variables.scss';
+
 .main {
   .mainTitle {
     margin: 100px 0 0 30px;
-    font-weight: 700;
+    font-weight: $weightBold;
     font-size: 50px;
   }
 }
