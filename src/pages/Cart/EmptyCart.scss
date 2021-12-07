@@ -1,0 +1,39 @@
+body {
+  background-color: #f7f6f5;
+}
+
+.emptyCartMain {
+  border-radius: 10px;
+  background-color: white;
+  width: 800px;
+  height: 500px;
+  margin: 0 auto;
+  .title {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray;
+  }
+  .summary {
+    margin: 160px auto;
+    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+  }
+}
+
+.emptyOrderBtn {
+  padding: 0 50px;
+  button {
+    cursor: not-allowed;
+    color: white;
+    background-color: gray;
+    opacity: 0.3;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    height: 40px;
+  }
+}
