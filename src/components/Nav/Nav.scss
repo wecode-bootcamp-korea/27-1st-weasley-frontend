@@ -8,7 +8,7 @@
 
   .navLogo {
     width: 120px;
-    margin: 5px 100px 0 50px;
+    margin: 5px 0px 0 50px;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 
     img {
@@ -17,18 +17,17 @@
     }
   }
   .navMenu {
-    @include flexStart;
-    // margin-right: 50px;
+    @include flexCenter;
+    padding-right: 500px;
 
     .navMenuUl {
       @include flexStart;
-      padding-right: 20px;
 
       .navMenuItems {
         display: flex;
         justify-content: space-between;
-        padding-right: 60px;
-        margin: 20px;
+        padding: 30px, 120px;
+        margin: 30px;
         color: $colorGray;
         cursor: pointer;
       }
@@ -39,12 +38,13 @@
 
     .navLoginItems {
       @include flexCenter;
-      padding: 20px 30px;
+      margin-top: 50px;
+      padding: 20px 40px;
       cursor: pointer;
     }
 
     .cartImg {
-      margin: 10px 50px;
+      margin: 60px 60px;
 
       img {
         width: 100%;

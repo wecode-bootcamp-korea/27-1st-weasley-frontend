@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "category_name": "클렌징폼",
+    "ml_volume": "180",
+    "price": 7800,
+    "tags": ["복합", "지성"],
+    "thumb": "images/cleanser1.png",
+    "amount": 4
+  },
+  {
+    "id": 2,
+    "category_name": "부스터",
+    "ml_volume": "80",
+    "price": 10800,
+    "tags": ["복합", "민감"],
+    "thumb": "images/cleanser1.png",
+    "amount": 2
+  },
+  {
+    "id": 3,
+    "category_name": "로션",
+    "ml_volume": "180",
+    "price": 6800,
+    "tags": ["복합", "건성"],
+    "thumb": "images/cleanser1.png",
+    "amount": 2
+  }
+]
