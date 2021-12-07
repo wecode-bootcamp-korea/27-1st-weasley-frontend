@@ -1,24 +1,28 @@
+@import '../../styles/variables.scss';
+
 .userBox {
-  background-color: white;
-  box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
-  border-radius: 5px;
   width: 240px;
   padding-top: 20px;
+  border-radius: 5px;
+  background-color: $colorWhite;
+  box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+
   .userName {
+    @include flexSpaceBetweenCenter;
     margin-left: 10px;
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 20px;
     margin-right: 10px;
+
     .name span:last-child {
-      font-size: 12px;
       padding: 3px;
       border-radius: 5px;
-      color: white;
-      background-color: black;
+      color: $colorWhite;
+      background-color: $colorBlack;
+      font-size: $fontSmall;
     }
+
     .modify {
-      font-size: 13px;
+      font-size: $fontRegular;
     }
   }
 
@@ -26,38 +30,38 @@
     width: 100%;
 
     .address {
-      margin: 0 auto;
       width: 90%;
-      font-weight: 500;
-      font-size: 13px;
-      color: gray;
+      margin: $marginCenter;
       margin-top: 30px;
       margin-bottom: 70px;
+      color: $colorGray;
+      font-weight: $weightRegular;
+      font-size: $fontRegular;
     }
   }
 }
 
 .clickOffBox {
-  cursor: pointer;
-  color: gray;
-  font-weight: 500;
-  text-align: left;
   padding: 30px;
+  color: $colorGray;
+  text-align: left;
+  font-weight: $weightRegular;
+  cursor: pointer;
 }
 .clickOffBox:hover {
-  cursor: pointer;
+  padding: 30px;
+  text-align: left;
   color: rgb(68, 67, 67);
   background-color: rgb(240, 236, 236);
-  font-weight: 500;
-  text-align: left;
-  padding: 30px;
+  font-weight: $weightRegular;
+  cursor: pointer;
 }
 .clickOnBox {
-  pointer-events: none;
-  cursor: pointer;
+  padding: 30px;
+  text-align: left;
   color: rgb(68, 67, 67);
   background-color: rgb(240, 236, 236);
-  font-weight: 500;
-  text-align: left;
-  padding: 30px;
+  font-weight: $weightRegular;
+  pointer-events: none;
+  cursor: pointer;
 }

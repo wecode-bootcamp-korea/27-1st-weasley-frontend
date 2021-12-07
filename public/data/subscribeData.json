@@ -4,10 +4,10 @@
     "thumb": "images/productdetail/cleanser1.png",
     "name": "황성재",
     "address": "서울특별시 서초구 서초동 1658-11",
-    "delivery-cycle": 8,
-    "buy-date": "2022-01-28",
-    "next-delivery-date": "2022-03-25",
-    "product": [
+    "interval": 8,
+    "next_purchase_date": "2022-01-28",
+    "next_ship_date": "2022-03-25",
+    "products": [
       {
         "id": 1,
         "thumb": "images/productdetail/cleanser1.png"

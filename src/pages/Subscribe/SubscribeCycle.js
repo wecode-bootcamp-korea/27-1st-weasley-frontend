@@ -1,13 +1,29 @@
 import React from 'react';
 import './SubscribeCycle.scss';
 
-function SubscribeCycle({ setDeliveryCycle }) {
+function SubscribeCycle({ setDeliveryCycle, setNextDeliveryDate }) {
   const cycle = [4, 12, 16];
+
+  const handleNextShipDate = week => {
+    fetch('da', {
+      method: 'patch',
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+      body: week,
+    })
+      .then(res => res.json())
+      .then(data => {
+        data.MESSAGE ? setNextDeliveryDate(data.MESSAGE) : alert(data.MESSAGE);
+      })
+      .catch(error => alert(error));
+  };
 
   return (
     <>
       <div className="cycleTitle">정기배송 주기</div>
-      <div className="btn">
+      <div className="cycleBtn">
         {cycle.map(week => {
           return (
             <button
@@ -15,27 +31,7 @@ function SubscribeCycle({ setDeliveryCycle }) {
               onClick={() => {
                 if (window.confirm(`정기배송 주기가 ${week}주로 바뀝니다.`)) {
                   setDeliveryCycle(week);
-
-                  // useEffect(() => {
-                  //   fetch('구독관리API', {
-                  //     method: 'patch',
-                  //   })
-                  //     .then(response => response.json())
-                  //     .then(data => {
-                  //       data.message = 'success'
-                  //         ? useEffect(() => {
-                  //             fetch('구독관리API', {
-                  //               method: 'GET',
-                  //             })
-                  //               .then(response => response.json())
-                  //               .then(data => {
-                  //                 setNextDeliveryDate(data[0].nextdelivery);
-                  //               });
-                  //           }, [])
-                  //         : null;
-                  //     });
-                  // }, []);
-                  // 백엔드한테 patch요청으로 week바꼈다고 보내기 && 다음배송일 랜더링해주기
+                  handleNextShipDate(week);
                 } else {
                   return;
                 }
