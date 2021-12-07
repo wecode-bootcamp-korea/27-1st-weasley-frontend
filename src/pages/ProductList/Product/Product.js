@@ -33,7 +33,7 @@ function Product({ category }) {
               >
                 <div>{list.outer_name}</div>
                 <div className="typeBtn">
-                  <Link to={`/productdetail/${list.id}`}>
+                  <Link to={`/productdetails/${list.id}`}>
                     <button>자세히</button>
                   </Link>
                 </div>
