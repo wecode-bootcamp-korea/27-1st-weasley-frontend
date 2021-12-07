@@ -18,36 +18,22 @@ const ProductDetailTop = ({
       },
       method: 'POST',
       body: JSON.stringify({ product_id: id, amount: count }),
-    })
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        console.log(data.MESSAGE);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    }).then(res => {
+      return res.json();
+    });
   };
 
   const subscribeAction = () => {
-    fetch('subscriptAPI', {
+    fetch('구독API', {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
       method: 'POST',
       body: JSON.stringify({ product_id: id, amount: count }),
-    })
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        console.log(data.MESSAGE);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    }).then(res => {
+      return res.json();
+    });
   };
   return (
     <>
@@ -158,7 +144,7 @@ const ProductDetailTop = ({
             <span className="costInfoData">
               <p className="costInfoDataTag">결제수수료</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].commision_cost.toLocaleString()}원
+                {detail.price[0].commission_cost.toLocaleString()}원
               </p>
             </span>
           </div>
@@ -169,7 +155,7 @@ const ProductDetailTop = ({
             </div>
             <div className="circle">
               <p>시중주요 브랜드</p>
-              <p>{detail.price[0].commision_cost.toLocaleString()}원</p>
+              <p>{detail.price[0].commission_cost.toLocaleString()}원</p>
             </div>
           </div>
         </div>
