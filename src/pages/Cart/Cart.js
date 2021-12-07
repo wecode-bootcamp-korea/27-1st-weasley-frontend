@@ -68,6 +68,21 @@ function Cart() {
     setCart(filteredCart);
   };
 
+  const handleDeleteAll = () => {
+    fetch(`${API.CART}/0`, {
+      method: 'delete',
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        data.MESSAGE === 'DELETED' ? setCart([]) : alert(data.MESSAGE);
+      })
+      .catch(error => alert(error));
+  };
+
   return (
     <div>
       {empty ? (
@@ -80,7 +95,9 @@ function Cart() {
             <button
               className="removeAll"
               onClick={() => {
-                setCart([]);
+                window.confirm('전체삭제 하시겠습니까?')
+                  ? handleDeleteAll()
+                  : setCart(...cart);
               }}
             >
               전체삭제
@@ -89,7 +106,7 @@ function Cart() {
               return (
                 <List
                   setEmpty={setEmpty}
-                  eraseCartItem={() => eraseCartItem(index)}
+                  eraseCartItem={() => eraseCartItem(list.product_id)}
                   list={list}
                   increaseCartItem={() => increaseCartItem(index)}
                   decreaseCartItem={() => decreaseCartItem(index)}

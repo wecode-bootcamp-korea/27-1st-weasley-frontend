@@ -82,7 +82,6 @@
 
   .slideBanner {
     @include flexSpaceBetweenCenter;
-    align-items: start;
     border-radius: $ButtonBorderRadius;
     background-color: #fff;
 
