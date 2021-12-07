@@ -45,51 +45,53 @@ function Login() {
 
   return (
     <div className="login">
-      <div className="logo">
-        <Link to="/">
-          <img src="./images/logo/logo-bk.svg" alt="logo" />
-        </Link>
-      </div>
+      <div className="loginInner">
+        <div className="logo">
+          <Link to="/">
+            <img src="./images/logo/logo-bk.svg" alt="logo" />
+          </Link>
+        </div>
 
-      <div className="loginSection">
-        <h1 className="loginH1">
-          로그인 및 회원가입
-          <span className="loginTitle">을 시작합니다.</span>
-        </h1>
-        <form name="loginForm" method="post">
-          <label for="email">
-            <input
-              value={emailValue}
-              type="text"
-              id="email"
-              name="email"
-              placeholder="이메일"
-              onChange={handleEmail}
-            />
-          </label>
-          <label for="password">
-            <input
-              value={passwordValue}
-              type="password"
-              id="password"
-              name="password"
-              placeholder="비밀번호 (8자 이상)"
-              onChange={handlePassword}
-            />
-          </label>
-          <button
-            className={isInputValid ? 'activeOn' : 'activeOff'}
-            onClick={goToMain}
-            type="button"
-          >
-            로그인
-          </button>
-        </form>
-        <Link to="/signup">
-          <span className="informLogin">
-            위즐리 컴퍼니 통합 회원으로 &nbsp;<p>가입</p>
-          </span>
-        </Link>
+        <div className="loginSection">
+          <h1 className="loginH1">
+            <span className="loginTitle1">로그인 및 회원가입</span>
+            <span className="loginTitle2">을 시작합니다.</span>
+          </h1>
+          <form name="loginForm" method="post">
+            <label for="email" className="loginFormLabel">
+              <input
+                value={emailValue}
+                type="text"
+                id="email"
+                name="email"
+                placeholder="이메일"
+                onChange={handleEmail}
+              />
+            </label>
+            <label for="password">
+              <input
+                value={passwordValue}
+                type="password"
+                id="password"
+                name="password"
+                placeholder="비밀번호 (8자 이상)"
+                onChange={handlePassword}
+              />
+            </label>
+            <button
+              className={isInputValid ? 'activeOn' : 'activeOff'}
+              onClick={goToMain}
+              type="button"
+            >
+              로그인
+            </button>
+          </form>
+          <Link to="/signup">
+            <span className="informLogin">
+              위즐리 컴퍼니 통합 회원으로 &nbsp;<p>가입</p>
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   );

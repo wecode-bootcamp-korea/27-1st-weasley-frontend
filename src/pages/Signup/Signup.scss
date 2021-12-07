@@ -2,7 +2,6 @@
 
 .signup {
   position: relative;
-
   background: url('/assets/images/signupbgi.jpg') no-repeat;
   background-size: cover;
   background-position: 50% 50%;
@@ -11,16 +10,17 @@
   min-height: 1440px;
 
   .signupInner {
+    @include flexStart;
     position: absolute;
     top: 130px;
     left: 330px;
-    @include flexStart;
     flex-direction: column;
 
     .logo {
       height: auto;
       max-height: 25px;
       width: 100px;
+
       img {
         width: 100%;
       }
