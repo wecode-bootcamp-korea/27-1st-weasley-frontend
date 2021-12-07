@@ -1,54 +1,91 @@
 @import '../../styles/variables.scss';
 
-.nav {
-  @include flexCenter;
-  height: 60px;
-  border-bottom: $borderDarkgray;
-  background-color: $colorWhite;
+.login {
+  background: url('/assets/images/loginbackground.png') no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 1440px;
 
-  .navLogo {
-    width: 120px;
-    margin: 5px 100px 0 0;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  .logo {
+    max-height: 25px;
+    width: 100px;
+    transform: translate(630%, 1250%);
 
     img {
       width: 100%;
-      cursor: pointer;
     }
   }
-  .navMenu {
-    @include flexStart;
-    margin-right: 50px;
 
-    .navMenuUl {
-      @include flexStart;
-      padding: 0 600px 0 30px;
+  .loginSection {
+    position: absolute;
+    transform: translate(85%, 45%);
+    border-radius: 5px;
+    box-shadow: 0 0 20px $colorGray;
+    background: $colorWhite;
+    padding: 70px 35px 30px 35px;
+    margin: 30px 30px;
 
-      .navMenuItems {
-        display: flex;
-        justify-content: space-between;
-        padding-right: 50px;
-        margin: 10px;
+    .loginH1 {
+      font-size: $fontLarge;
+      padding-bottom: 70px;
+    }
+
+    .loginTitle {
+      display: flex;
+      font-weight: $weightThin;
+    }
+
+    input {
+      @include flexCenter;
+      border: 0;
+      width: 350px;
+      padding: 20px 0 10px 5px;
+      margin: 20px 0 10px 10px;
+      border-bottom: 1px solid #5dc5cc;
+      font-size: $fontRegular;
+      color: $colorBlack;
+
+      &::placeholder {
         color: $colorGray;
-        cursor: pointer;
       }
     }
-  }
-  .navLoginMenu {
-    display: flex;
 
-    .navLoginItems {
-      @include flexCenter;
-      padding: 20px 20px;
+    .activeOn {
+      padding: 20px 36px 36px 36px;
+      margin: 50px 30px;
+      font-size: $fontRegular;
+      border: 0;
+      outline: 0;
+      width: 350px;
+      height: 30px;
+      border-radius: 8px;
+      background-color: #5dc5cc;
+      color: $colorWhite;
       cursor: pointer;
     }
 
-    .cartImg {
-      margin: 10px 20px;
+    .activeOff {
+      padding: 20px 36px 36px 36px;
+      margin: 50px 30px;
+      font-size: $fontRegular;
+      border: 0;
+      outline: 0;
+      width: 350px;
+      height: 30px;
+      border-radius: 8px;
+      background-color: $colorGray;
+      color: $colorWhite;
+      cursor: pointer;
+    }
 
-      img {
-        width: 100%;
-        cursor: pointer;
+    .informLogin {
+      @include flexCenter;
+      font-weight: $weightRegular;
+      margin-top: 150px;
+
+      p {
+        color: $colorMint;
+        text-align: center;
       }
     }
   }
