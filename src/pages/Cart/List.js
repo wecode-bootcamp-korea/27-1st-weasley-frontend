@@ -18,7 +18,7 @@ function List({
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE = 'DELETED' ? eraseCartItem(list.product_id) : null;
+        data.MESSAGE === 'DELETED' ? eraseCartItem(list.product_id) : null;
       })
       .catch(error => alert(error));
   };
@@ -40,7 +40,7 @@ function List({
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE = 'SUCCESS' ? increaseCartItem(list.product_id) : null;
+        data.MESSAGE === 'SUCCESS' ? increaseCartItem(list.product_id) : null;
       })
       .catch(error => alert(error));
   };
@@ -62,7 +62,7 @@ function List({
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE = 'SUCCESS' ? decreaseCartItem(list.product_id) : null;
+        data.MESSAGE === 'SUCCESS' ? decreaseCartItem(list.product_id) : null;
       })
       .catch(error => alert(error));
   };
