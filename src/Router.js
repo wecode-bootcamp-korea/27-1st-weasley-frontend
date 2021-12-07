@@ -9,18 +9,13 @@ import Payment from './pages/payment/Payment';
 import Footer from './components/Footer/Footer';
 import Main from './pages/Main/Main';
 import Nav from './components/Nav/Nav';
-import Main from './pages/Main/Main';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Nav />
       <Routes>
-<<<<<<< HEAD
         <Route path="/Main" element={<Main />} />
-=======
-        <Route path="/" element={<Main />} />
->>>>>>> master
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetails/:id" element={<ProductDetail />} />
         <Route path="/login" element={<Login />} />
