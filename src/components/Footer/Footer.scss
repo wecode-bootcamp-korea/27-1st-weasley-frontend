@@ -7,10 +7,8 @@
   margin-top: 150px;
 
   .footerMainWrap {
-    width: 1080px;
-    margin: 0 auto;
     @include flexSpaceBetweenCenter;
-
+    padding: 15px 100px;
     .footerMainTag {
       @include flexSpaceBetweenCenter;
 
@@ -23,6 +21,17 @@
       }
       img {
         width: 100%;
+      }
+    }
+  }
+  .footerBottomWrap {
+    padding: 40px 100px;
+    border-top: 1px solid #fff;
+    .footerMainInfo {
+      padding: 5px 0;
+
+      &:first-child {
+        font-weight: $weightBold;
       }
     }
   }

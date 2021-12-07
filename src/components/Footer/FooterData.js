@@ -30,6 +30,33 @@ const FOOTER_LEFT_TITLE_DATA = [
       link: '/login',
     },
   ],
+  [
+    {
+      id: 1,
+      mainTag: '주식회사 위즐리',
+      link: '/',
+    },
+    {
+      id: 2,
+      mainTag: '서울특별시 강남구 압구정로 5층',
+      link: '/',
+    },
+    {
+      id: 3,
+      mainTag: '대표자: 홍길동',
+      link: '/',
+    },
+    {
+      id: 4,
+      mainTag: '사업자등록번호:344-344-1234',
+      link: '/',
+    },
+    {
+      id: 5,
+      mainTag: '제휴문의: @korea.kr',
+      link: '/',
+    },
+  ],
 ];
 
 export default FOOTER_LEFT_TITLE_DATA;
