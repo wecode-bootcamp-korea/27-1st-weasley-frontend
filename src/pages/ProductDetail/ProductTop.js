@@ -89,7 +89,7 @@ const ProductDetailTop = ({
       <section className="productDetailMain">
         <div className="productDetailTitle">
           <h1 className="productDetailTitleContents">
-            우리는 이런 변화가 더 건강한 피부를
+            우리는 이런 변화가 건강한 피부를
             <br />
             만드는 길이라고 믿습니다. 그러한 믿음으로,
             <br /> 제품의 효능부터 사용감, 안전성까지
