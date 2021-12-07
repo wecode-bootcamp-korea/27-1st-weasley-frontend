@@ -1,0 +1,27 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  background: #000;
+  color: $colorWhite;
+  padding: 15px 0;
+
+  .footerMainWrap {
+    width: 1080px;
+    margin: 0 auto;
+    @include flexSpaceBetweenCenter;
+
+    .footerMainTag {
+      @include flexSpaceBetweenCenter;
+
+      .footerMainInfo {
+        margin-left: 10px;
+      }
+      .footerMainInfo:first-child {
+        width: 100px;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

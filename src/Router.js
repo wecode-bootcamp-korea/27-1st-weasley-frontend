@@ -4,6 +4,7 @@ import ProductList from './pages/ProductList/ProductList';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Login from './pages/Login/Login';
 import Payment from './pages/payment/Payment';
+import Footer from './components/Footer/Footer';
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/payment" element={<Payment />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
