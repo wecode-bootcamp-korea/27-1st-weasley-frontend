@@ -30,6 +30,7 @@ function ProductList() {
 
       <main className="main">
         <ProductListTitle />
+
         {categories.map(function (category) {
           return (
             <Product category={category} i={category.id} key={category.id} />
