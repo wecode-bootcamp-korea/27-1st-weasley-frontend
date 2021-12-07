@@ -19,7 +19,27 @@ const ProductDetailTop = ({
       method: 'POST',
       body: JSON.stringify({ product_id: id, amount: count }),
     })
-      .then(function (res) {
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        console.log(data.MESSAGE);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  const subscribeAction = () => {
+    fetch('http://3.142.147.114:8000/shops/carts', {
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+      method: 'POST',
+      body: JSON.stringify({ product_id: id, amount: count }),
+    })
+      .then(res => {
         return res.json();
       })
       .then(data => {
@@ -66,12 +86,14 @@ const ProductDetailTop = ({
             </div>
           </div>
           <form className="buttonAction">
-            <button type="button" className="buyButton">
+            <button
+              type="button"
+              className="buyButton"
+              onClick={subscribeAction}
+            >
               구독하기
             </button>
             <button type="button" className="buyButton" onClick={payAction}>
-              {/* 
-              ///성공하면 장바구니 실패하면 로그인페이지 window.location?*/}
               구매하기
             </button>
           </form>
@@ -118,36 +140,36 @@ const ProductDetailTop = ({
             <span className="costInfoData">
               <p className="costInfoDataTag">제조비</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].manufacturing_cost}원
+                {detail.price[0].manufacturing_cost.toLocaleString()}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">개발비</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].development_cost}원
+                {detail.price[0].development_cost.toLocaleString()}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">물류 및 운송</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].transportation_cost}원
+                {detail.price[0].transportation_cost.toLocaleString()}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">결제수수료</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].commision_cost}원
+                {detail.price[0].commision_cost.toLocaleString()}원
               </p>
             </span>
           </div>
           <div className="resultWrap">
             <div className="circle">
               <p>오픈워크</p>
-              <p>{detail.category_price}원</p>
+              <p>{detail.category_price.toLocaleString()}원</p>
             </div>
             <div className="circle">
               <p>시중주요 브랜드</p>
-              <p>{detail.price[0].commision_cost}원</p>
+              <p>{detail.price[0].commision_cost.toLocaleString()}원</p>
             </div>
           </div>
         </div>

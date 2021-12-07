@@ -7,7 +7,6 @@ import './ProductDetail.scss';
 const ProductDetail = () => {
   const [detail, setDetail] = useState([]);
   const [count, setCount] = useState(1);
-  const [isData, setIsData] = useState(false);
   const { id } = useParams();
 
   const countUpEvent = () => {
@@ -22,9 +21,6 @@ const ProductDetail = () => {
       .then(res => res.json())
       .then(data => {
         setDetail(data);
-      })
-      .then(() => {
-        setIsData(true);
       });
     // .catch(error => {
     //   console.log('ERROR', error);
@@ -33,7 +29,7 @@ const ProductDetail = () => {
 
   return (
     <main className="main">
-      {isData && (
+      {detail.RESULT && (
         <ProductDetailTop
           id={id}
           detail={detail.RESULT}
