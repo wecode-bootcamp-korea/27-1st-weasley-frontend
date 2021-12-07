@@ -62,11 +62,13 @@ const Signup = () => {
         gender: gender,
       }),
     })
-      .then(response => response.json())
+      .then(res => res.json())
       .then(result => {
-        return result.MESSAGE === 'SUCCESS'
-          ? navigate('/')
-          : alert('회원 가입을 다시 진행해주세요');
+        if (result.MESSAGE === 'CREATED') {
+          navigate('/Main');
+        } else {
+          alert('회원 가입을 다시 해주세요.');
+        }
       });
   };
 
