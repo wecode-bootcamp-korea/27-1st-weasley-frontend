@@ -11,14 +11,11 @@ const Signup = () => {
     phone: '',
     birth: '',
     name: '',
-  });
-
-  const [gender, setGender] = useState({
     gender: '',
   });
 
   const navigate = useNavigate();
-  const { email, password, phone, birth, name } = formData;
+  const { email, password, phone, birth, name, gender } = formData;
 
   const handleInput = e => {
     const { name, value } = e.target;
@@ -26,10 +23,6 @@ const Signup = () => {
       ...formData,
       [name]: value,
     });
-  };
-
-  const handleChange = e => {
-    setGender(e.target.value);
   };
 
   const emailReg =
@@ -112,7 +105,7 @@ const Signup = () => {
                   type="radio"
                   placeholder="남자"
                   checked={gender === 'MALE' ? true : false}
-                  onChange={handleChange}
+                  onChange={handleInput}
                 />
                 남자
               </label>
@@ -124,7 +117,7 @@ const Signup = () => {
                   type="radio"
                   placeholder="여자"
                   checked={gender === 'FEMALE' ? true : false}
-                  onChange={handleChange}
+                  onChange={handleInput}
                 />
                 여자
               </label>

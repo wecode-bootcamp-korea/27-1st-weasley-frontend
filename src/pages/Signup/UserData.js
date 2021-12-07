@@ -27,7 +27,7 @@ const USER_DATA = [
   {
     id: '4',
     name: 'birth',
-    className: 'forFormat',
+    className: 'formFormat',
     type: 'text',
     maxLength: '10',
     placeholder: '예:1993-04-22',
@@ -35,7 +35,7 @@ const USER_DATA = [
   {
     id: '5',
     name: 'name',
-    className: 'forFormat',
+    className: 'formFormat',
     type: 'text',
     maxLength: '15',
     placeholder: '이름',

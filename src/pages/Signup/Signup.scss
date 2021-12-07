@@ -56,6 +56,7 @@
       font-size: $fontRegular;
       color: $colorBlack;
     }
+
     .genderTitle {
       font-size: $fontSmall;
       color: rgb(103, 103, 103);
@@ -74,7 +75,7 @@
       }
     }
 
-    .activeOn {
+    .button {
       padding: 20px 36px 36px 36px;
       margin: 50px 30px;
       font-size: $fontRegular;
@@ -83,23 +84,20 @@
       width: 350px;
       height: 30px;
       border-radius: 8px;
-      background-color: #5dc5cc;
       color: $colorWhite;
+      background-color: $colorGray;
       cursor: pointer;
     }
 
+    .activeOn {
+      @extend .button;
+      background-color: #5dc5cc;
+    }
+
     .activeOff {
-      padding: 20px 36px 36px 36px;
-      margin: 50px 30px;
-      font-size: $fontRegular;
-      border: 0;
-      outline: 0;
-      width: 350px;
-      height: 30px;
-      border-radius: 8px;
+      @extend .button;
       background-color: $colorGray;
       color: $colorWhite;
-      cursor: pointer;
     }
   }
 }
