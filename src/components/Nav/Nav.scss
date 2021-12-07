@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .nav {
-  @include flexSpaceBetweenCenter;
+  @include flexCenter;
   height: 60px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;
@@ -9,6 +9,7 @@
 
   .navLogo {
     width: 120px;
+    margin: 5px 100px 0 0;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 
     img {

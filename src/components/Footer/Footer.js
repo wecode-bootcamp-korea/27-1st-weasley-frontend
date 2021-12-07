@@ -26,6 +26,18 @@ const Footer = () => {
           })}
         </ul>
       </div>
+      <div className="footerBottomWrap">
+        {FOOTER_LEFT_TITLE_DATA[2].map(footerInfo => {
+          return (
+            <p className="footerMainInfo" key={footerInfo.id}>
+              <span>{footerInfo.mainTag}</span>
+            </p>
+          );
+        })}
+        <p>
+          Copyright ©2021 <strong>WEASLY.</strong> All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 };
