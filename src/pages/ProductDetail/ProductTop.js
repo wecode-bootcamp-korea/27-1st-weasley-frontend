@@ -10,6 +10,25 @@ const ProductDetailTop = ({
   countDownEvent,
   id,
 }) => {
+  const payAction = () => {
+    fetch('http://3.142.147.114:8000/shops/carts', {
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+      method: 'POST',
+      body: JSON.stringify({ product_id: id, amount: count }),
+    })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(data => {
+        console.log(data.MESSAGE);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <section className="productDetailTop">
@@ -50,29 +69,7 @@ const ProductDetailTop = ({
             <button type="button" className="buyButton">
               구독하기
             </button>
-            <button
-              type="button"
-              className="buyButton"
-              onClick={() => {
-                fetch('http://3.142.147.114:8000/shops/carts', {
-                  headers: {
-                    Authorization:
-                      'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
-                  },
-                  method: 'POST',
-                  body: JSON.stringify({ product_id: id, amount: count }),
-                })
-                  .then(function (res) {
-                    return res.json();
-                  })
-                  .then(data => {
-                    console.log(data.MESSAGE);
-                  })
-                  .catch(error => {
-                    console.log(error);
-                  });
-              }}
-            >
+            <button type="button" className="buyButton" onClick={payAction}>
               {/* 
               ///성공하면 장바구니 실패하면 로그인페이지 window.location?*/}
               구매하기
