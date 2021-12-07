@@ -1,0 +1,30 @@
+body {
+  background-color: #f7f6f5;
+}
+
+.cartMain {
+  border-radius: 10px;
+  background-color: white;
+  width: 800px;
+  margin: 0 auto;
+
+  .title {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray;
+  }
+  .orderBtn {
+    padding: 0 50px;
+    button {
+      color: white;
+      background-color: #5dc5cc;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      height: 40px;
+    }
+  }
+}
