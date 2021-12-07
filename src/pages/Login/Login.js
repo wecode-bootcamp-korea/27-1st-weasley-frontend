@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { URL } from '../../config';
 import '../Login/Login.scss';
 
 const emailReg = '[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}';
@@ -27,7 +28,7 @@ function Login() {
   };
 
   const goToMain = () => {
-    fetch('http://3.142.147.114:8000/users/signin', {
+    fetch(API.LOGIN, {
       method: 'POST',
       body: JSON.stringify({
         email: emailValue,
@@ -37,7 +38,7 @@ function Login() {
       .then(response => response.json())
       .then(result => {
         return result.MESSAGE === 'SUCCESS'
-          ? navigate('/')
+          ? navigate('/Main')
           : alert('가입을 먼저 진행해주세요');
       });
   };
