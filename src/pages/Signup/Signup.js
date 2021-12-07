@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { API } from '../../config';
 import USER_DATA from './UserData.js';
 import './Signup.scss';
 
@@ -51,7 +52,7 @@ const Signup = () => {
     !!name;
 
   const goToMain = () => {
-    fetch('http://10.58.1.31:8000/users/signup', {
+    fetch(API.SIGNUP, {
       method: 'POST',
       body: JSON.stringify({
         email: email,
@@ -102,7 +103,7 @@ const Signup = () => {
           })}
           <div className="genderTitle">
             성별
-            <span className="checkBox">
+            <span className="radioBox">
               <label className="gender">
                 <input
                   id="male"
