@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './SubscribeCycle.scss';
 
 function SubscribeCycle({ setDeliveryCycle }) {
@@ -11,6 +11,7 @@ function SubscribeCycle({ setDeliveryCycle }) {
         {cycle.map(week => {
           return (
             <button
+              key={week.id}
               onClick={() => {
                 if (window.confirm(`정기배송 주기가 ${week}주로 바뀝니다.`)) {
                   setDeliveryCycle(week);

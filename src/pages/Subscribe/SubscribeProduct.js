@@ -20,7 +20,7 @@ function SubscribeProduct() {
       <div className="product">
         {subscribeProductImg.map(product => {
           return (
-            <div>
+            <div key={product.id}>
               <img src={product.thumb} alt="productImg" />
             </div>
           );

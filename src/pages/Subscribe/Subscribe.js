@@ -10,9 +10,9 @@ function Subscribe() {
 
   const [deliveryCycle, setDeliveryCycle] = useState('8');
 
-  const [subscribeData, setSubscribeData] = useState([]);
+  // const [subscribeData, setSubscribeData] = useState([]);
 
-  const [nextDeliveryDate, setNextDeliveryDate] = useState();
+  // const [nextDeliveryDate, setNextDeliveryDate] = useState();
 
   useEffect(() => {
     fetch('구독관리API', {
