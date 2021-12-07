@@ -1,12 +1,13 @@
+@import '../../../styles/variables.scss';
+
 .product {
-  background-color: white;
-  height: 350px;
-  margin-top: 100px;
   display: flex;
+  height: 350px;
   width: 800px;
-  margin: 0 auto;
-  border-radius: 20px;
+  margin: $marginCenter;
   margin-top: 100px;
+  background-color: $colorWhite;
+  border-radius: 20px;
 
   .productImg img {
     width: 100%;
@@ -21,48 +22,46 @@
       padding-right: 15px;
       h2 {
         font-size: 25px;
-        font-weight: 700;
+        font-weight: $weightBold;
       }
     }
 
     p {
-      margin-top: 8px;
-      font-size: 20px;
-      font-weight: 500;
-      color: gray;
       padding-bottom: 10px;
-      border-bottom: 1px solid gray;
+      margin-top: 8px;
+      border-bottom: $borderDarkgray;
+      color: $colorGray;
+      font-size: 20px;
+      font-weight: $weightRegular;
     }
 
     .productType {
       margin-top: 30px;
       .type {
+        @include flexSpaceBetweenCenter;
         width: 400px;
-        cursor: pointer;
-        font-weight: 500;
-        color: rgb(88, 87, 87);
         margin-top: 20px;
         margin-right: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         padding: 5px 10px;
+        background-color: $colorLightMint;
+        color: rgb(88, 87, 87);
+        border-radius: $ButtonBorderRadius;
         border: none;
-        background-color: #eef9fa;
-        border-radius: 8px;
+        font-weight: $weightRegular;
+        cursor: pointer;
       }
       .type:hover {
-        background-color: white;
+        background-color: $colorWhite;
       }
 
       .typeBtn {
         button {
+          padding: 10px;
           cursor: pointer;
           border: none;
           border-radius: 10px;
-          padding: 10px;
-          background-color: #5dc5cc;
-          color: white;
+          background-color: $colorMint;
+          color: $colorWhite;
         }
       }
     }
