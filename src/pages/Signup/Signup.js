@@ -25,8 +25,6 @@ const Signup = () => {
     });
   };
 
-  console.log(formData);
-
   const emailReg =
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
   const passwordReg =
@@ -71,69 +69,71 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <div className="logo">
-        <Link to=" /">
-          <img src="./images/logo/logo-bk.svg" alt="logo" />
-        </Link>
-      </div>
-      <div className="signupSection">
-        <h1 className="signupH1">
-          <span className="signupTitle1">처음이시군요</span>
-          <span className="signupTitle2">가입을 진행합니다.</span>
-        </h1>
-        <form name="signupForm" method="post">
-          {USER_DATA.map(user => {
-            return (
-              <label className="formFormatLabel" key={user.id}>
-                {user.name}
-                <input
-                  name={user.name}
-                  className="formFormat"
-                  type={user.type}
-                  maxLength={user.maxLength}
-                  placeholder={user.placeholder}
-                  onChange={handleInput}
-                />
-              </label>
-            );
-          })}
-          <div className="genderTitle">
-            성별
-            <span className="radioBox">
-              <label className="gender">
-                <input
-                  id="male"
-                  value="MALE"
-                  name="gender"
-                  type="radio"
-                  placeholder="남자"
-                  checked={gender === 'MALE' ? true : false}
-                  onChange={handleInput}
-                />
-                남자
-              </label>
-              <label className="gender">
-                <input
-                  id="female"
-                  value="FEMALE"
-                  name="gender"
-                  type="radio"
-                  placeholder="여자"
-                  checked={gender === 'FEMALE' ? true : false}
-                  onChange={handleInput}
-                />
-                여자
-              </label>
-            </span>
-          </div>
-          <button
-            className={isInputValid ? 'activeOn' : 'activeOff'}
-            onClick={goToMain}
-            type="button"
-          >
-            가입완료
-          </button>
-        </form>
+      <div className="signupInner">
+        <div className="logo">
+          <Link to=" /">
+            <img src="./images/logo/logo-bk.svg" alt="logo" />
+          </Link>
+        </div>
+        <div className="signupSection">
+          <h1 className="signupH1">
+            <span className="signupTitle1">처음이시군요</span>
+            <span className="signupTitle2">가입을 진행합니다.</span>
+          </h1>
+          <form name="signupForm" method="post">
+            {USER_DATA.map(user => {
+              return (
+                <label className="formFormatLabel" key={user.id}>
+                  {user.name}
+                  <input
+                    name={user.name}
+                    className="formFormat"
+                    type={user.type}
+                    maxLength={user.maxLength}
+                    placeholder={user.placeholder}
+                    onChange={handleInput}
+                  />
+                </label>
+              );
+            })}
+            <div className="genderTitle">
+              성별
+              <span className="radioBox">
+                <label className="gender">
+                  <input
+                    id="male"
+                    value="MALE"
+                    name="gender"
+                    type="radio"
+                    placeholder="남자"
+                    checked={gender === 'MALE' ? true : false}
+                    onChange={handleInput}
+                  />
+                  남자
+                </label>
+                <label className="gender">
+                  <input
+                    id="female"
+                    value="FEMALE"
+                    name="gender"
+                    type="radio"
+                    placeholder="여자"
+                    checked={gender === 'FEMALE' ? true : false}
+                    onChange={handleInput}
+                  />
+                  여자
+                </label>
+              </span>
+            </div>
+            <button
+              className={isInputValid ? 'activeOn' : 'activeOff'}
+              onClick={goToMain}
+              type="button"
+            >
+              가입완료
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

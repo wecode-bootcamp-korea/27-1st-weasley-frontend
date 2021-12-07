@@ -1,102 +1,115 @@
 @import '../../styles/variables.scss';
 
 .signup {
+  position: relative;
+
   background: url('/assets/images/signupbgi.jpg') no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  height: 1440px;
+  width: 100vw;
+  height: auto;
+  min-height: 1440px;
 
-  .logo {
-    max-height: 25px;
-    width: 100px;
-    transform: translate(600%, 800%);
-
-    img {
-      width: 100%;
-    }
-  }
-  .signupSection {
+  .signupInner {
     position: absolute;
-    transform: translate(100%, 30%);
-    border-radius: 5px;
-    box-shadow: 0 0 20px $colorGray;
-    background: $colorWhite;
-    padding: 50px 35px 30px 35px;
+    top: 130px;
+    left: 330px;
+    @include flexStart;
+    flex-direction: column;
 
-    .signupTitle1 {
-      display: block;
-      font-size: $fontLarge;
-      font-weight: $weightThin;
+    .logo {
+      height: auto;
+      max-height: 25px;
+      width: 100px;
+      img {
+        width: 100%;
+      }
     }
+    .signupSection {
+      height: auto;
+      max-height: 900px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px $colorGray;
+      background: $colorWhite;
+      padding: 35px;
+      margin-top: 50px;
 
-    .signupTitle2 {
-      font-size: $fontLarge;
-      font-weight: $weightRegular;
-      padding-bottom: 50px;
-    }
-  }
+      .signupTitle1 {
+        display: block;
+        font-size: $fontLarge;
+        font-weight: $weightThin;
+      }
 
-  form {
-    padding-top: 50px;
-
-    .formFormatLabel {
-      padding: 20px 0 10px 10px;
-      font-size: $fontSmall;
-      color: rgb(103, 103, 103);
-      cursor: text;
-    }
-
-    .formFormat {
-      @include flexCenter;
-      border: 0;
-      width: 350px;
-      padding: 5px 0 10px 5px;
-      margin: 5px 0 30px 10px;
-      border-bottom: 1px solid $colorGray;
-      font-size: $fontRegular;
-      color: $colorBlack;
-    }
-
-    .genderTitle {
-      font-size: $fontSmall;
-      color: rgb(103, 103, 103);
-      padding-bottom: 30px;
-      padding-left: 9px;
-
-      .radioBox {
-        display: flex;
-        margin-top: 10px;
-        font-size: $fontRegular;
-        color: $colorBlack;
-
-        .gender {
-          padding-right: 20px;
-        }
+      .signupTitle2 {
+        display: block;
+        font-size: $fontLarge;
+        font-weight: $weightRegular;
+        padding-bottom: 10px;
       }
     }
 
-    %buttonBase {
-      padding: 20px 36px 36px 36px;
-      margin: 50px 30px;
-      font-size: $fontRegular;
-      border: 0;
-      outline: 0;
-      width: 350px;
-      height: 30px;
-      border-radius: 8px;
-      color: $colorWhite;
-      background-color: $colorGray;
-      cursor: pointer;
-    }
+    form {
+      padding-top: 50px;
 
-    .activeOn {
-      @extend %buttonBase;
-      background-color: #5dc5cc;
-    }
+      .formFormatLabel {
+        padding: 20px 0 10px 10px;
+        font-size: $fontSmall;
+        color: rgb(103, 103, 103);
+        cursor: text;
+      }
 
-    .activeOff {
-      @extend %buttonBase;
-      background-color: $colorGray;
+      .formFormat {
+        @include flexCenter;
+        border: 0;
+        width: 350px;
+        padding: 5px 0 10px 5px;
+        margin: 5px 0 30px 10px;
+        border-bottom: 1px solid $colorGray;
+        font-size: $fontRegular;
+        color: $colorBlack;
+      }
+
+      .genderTitle {
+        font-size: $fontSmall;
+        color: rgb(103, 103, 103);
+        padding-bottom: 30px;
+        padding-left: 9px;
+
+        .radioBox {
+          display: flex;
+          margin-top: 10px;
+          font-size: $fontRegular;
+          color: $colorBlack;
+
+          .gender {
+            padding-right: 20px;
+          }
+        }
+      }
+
+      %buttonBase {
+        padding: 20px 36px 36px 36px;
+        margin: 50px 30px;
+        font-size: $fontRegular;
+        border: 0;
+        outline: 0;
+        width: 350px;
+        height: 30px;
+        border-radius: 8px;
+        color: $colorWhite;
+        background-color: $colorGray;
+        cursor: pointer;
+      }
+
+      .activeOn {
+        @extend %buttonBase;
+        background-color: #5dc5cc;
+      }
+
+      .activeOff {
+        @extend %buttonBase;
+        background-color: $colorGray;
+      }
     }
   }
 }
