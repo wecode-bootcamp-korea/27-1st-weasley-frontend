@@ -31,7 +31,7 @@ const ProductDetailTop = ({
   };
 
   const subscribeAction = () => {
-    fetch('http://3.142.147.114:8000/shops/carts', {
+    fetch('subscriptAPI', {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
