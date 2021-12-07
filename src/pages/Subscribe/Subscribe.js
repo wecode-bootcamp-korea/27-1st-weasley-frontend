@@ -20,7 +20,7 @@ function Subscribe() {
     })
       .then(response => response.json())
       .then(data => {
-        setSubscribeData(data);
+        // setSubscribeData(data);
         // setNextDeliveryDate(data[0].nextdelivery);
       });
   }, []);
@@ -31,7 +31,7 @@ function Subscribe() {
         <SubscribeUserBox setModal={setproductModal} modal={productModal} />
         <SubscribeShipping
           deliveryCycle={deliveryCycle}
-          nextDeliveryDate={nextDeliveryDate}
+          // nextDeliveryDate={nextDeliveryDate}
         />
       </div>
 

@@ -17,7 +17,7 @@ function SubscribeProduct() {
     <>
       <div className="productTitle">구독중인 상품</div>
 
-      <div className="product">
+      <div className="subscribeProduct">
         {subscribeProductImg.map(product => {
           return (
             <div key={product.id}>
