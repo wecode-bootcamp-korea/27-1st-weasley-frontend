@@ -40,4 +40,23 @@
   font-size: 25px;
 }
 
-// .leftBu
+.leftButton {
+  left: 100px;
+  top: 220px;
+}
+
+.ingredientBtn {
+  cursor: pointer;
+  z-index: 1;
+  position: relative;
+  background-color: gray;
+  color: white;
+  opacity: 0.4;
+  border: none;
+  border-radius: 20px;
+  font-size: 30px;
+}
+.rightButton {
+  left: 1300px;
+  top: 220px;
+}
