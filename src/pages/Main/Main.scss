@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+.mainPage {
+  .mainTitleTag {
+    font-size: $fontLarge;
+    font-weight: $weightBold;
+  }
+
+  .subTitleTag {
+    font-size: $fontRegular;
+    color: $colorGray;
+  }
+
+  .mainPageSection {
+    .viewNowProductButton {
+      background-color: $colorMint;
+      border-radius: $ButtonBorderRadius;
+      padding: 20px 50px;
+      border: none;
+      color: $colorWhite;
+    }
+  }
+}

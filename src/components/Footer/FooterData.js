@@ -3,7 +3,7 @@ const FOOTER_LEFT_TITLE_DATA = [
     {
       id: 1,
       mainTag: (
-        <img src="./images/logo/logo-white.png" alt="logo" classNAme="logo" />
+        <img src="./images/logo/logo-white.png" alt="logo" className="logo" />
       ),
       link: '/main',
     },
