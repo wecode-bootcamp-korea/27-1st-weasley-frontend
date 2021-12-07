@@ -69,7 +69,11 @@ function Cart() {
   };
 
   const handleDeleteAll = () => {
-    fetch(`${API.CART}/0`, {
+    let lists_id = cart.map(list => {
+      return list.cart_id;
+    });
+
+    fetch(`${API.CART}?id=${JSON.stringify(lists_id)}`, {
       method: 'delete',
       headers: {
         Authorization:
@@ -112,6 +116,8 @@ function Cart() {
                   decreaseCartItem={() => decreaseCartItem(index)}
                   key={list.product_id}
                   API={API}
+                  cart={cart}
+                  setCart={setCart}
                 />
               );
             })}

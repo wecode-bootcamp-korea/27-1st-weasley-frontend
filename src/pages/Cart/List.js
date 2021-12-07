@@ -6,23 +6,27 @@ function List({
   increaseCartItem,
   decreaseCartItem,
   eraseCartItem,
+  cart,
+  setCart,
   API,
 }) {
   const handleDelete = () => {
-    fetch(`${API.CART}/${list.cart_id}`, {
-      method: 'delete',
-      headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        data.MESSAGE === 'DELETED'
-          ? eraseCartItem(list.product_id)
-          : alert(data.MESSAGE);
-      })
-      .catch(error => alert(error));
+    window.confirm(`${list.category_name}을 삭제 하시겠습니까?`)
+      ? fetch(`${API.CART}?id=[${list.cart_id}]`, {
+          method: 'delete',
+          headers: {
+            Authorization:
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+          },
+        })
+          .then(res => res.json())
+          .then(data => {
+            data.MESSAGE === 'DELETED'
+              ? eraseCartItem(list.product_id)
+              : alert(data.MESSAGE);
+          })
+          .catch(error => alert(error))
+      : setCart(cart);
   };
 
   const handlePlus = () => {
