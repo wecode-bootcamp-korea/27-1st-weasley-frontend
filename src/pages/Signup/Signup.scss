@@ -75,7 +75,7 @@
       }
     }
 
-    .button {
+    %buttonBase {
       padding: 20px 36px 36px 36px;
       margin: 50px 30px;
       font-size: $fontRegular;
@@ -90,14 +90,13 @@
     }
 
     .activeOn {
-      @extend .button;
+      @extend %buttonBase;
       background-color: #5dc5cc;
     }
 
     .activeOff {
-      @extend .button;
+      @extend %buttonBase;
       background-color: $colorGray;
-      color: $colorWhite;
     }
   }
 }
