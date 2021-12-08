@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 
@@ -14,7 +14,7 @@ const ProductDetailTop = ({
   const navigate = useNavigate();
   const [subscribeUserAddressInput, setSubscribeUserAddressInput] =
     useState('');
-  const [isUserAddressValue, setIsUserAddressValue] = useState('');
+
   const [modalSwitch, setModalSwitch] = useState(false);
 
   const saveUserAddressInputValue = e => {
@@ -22,34 +22,37 @@ const ProductDetailTop = ({
   };
 
   const isValidGoToPage = () => {
-    return subscribeUserAddressInput ? navigate('/subscribes') : null;
+    return subscribeUserAddressInput ? navigate('/subscribe') : null;
   };
 
-  const ValidUserAddress = () => {
+  const openModal = () => {
     fetch('/data/payment/userinfo.json')
       .then(res => res.json())
       .then(data => {
-        if (data.length === 0) {
-          // 아무것도 안해주고
+        if (data.length) {
+          postAddressUser();
+          navigate('/subscribe');
         } else {
-          setIsUserAddressValue(data);
-          // 주소 있다면 보내주긔
-          // 그담에 링크 구독하기페이지로 보내주긔
+          setModalSwitch(!modalSwitch);
         }
       });
   };
 
-  const openModal = () => {
-    setModalSwitch(!modalSwitch);
+  const postAddressUser = () => {
     fetch('http://3.142.147.114:8000/shops/carts', {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
+      method: 'POST',
+      body: JSON.stringify({
+        address_id: subscribeUserAddressInput,
+        product_id: id,
+        amount: count,
+      }),
     }).then(res => {
       return res.json();
     });
-    ValidUserAddress();
   };
 
   const payAction = () => {
