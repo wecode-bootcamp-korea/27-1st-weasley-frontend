@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import './SubscribeProduct.scss';
 
 function SubscribeProduct({
+  subscribeData,
+  setSubscribeData,
   setIsItNowSubscribing,
   setDeliveryCycle,
   setNextDeliveryDate,
   setNextPurchaseDate,
-  setSubscribeData,
-  subscribeData,
 }) {
   const fetchDelete = product_id => {
     window.confirm('제품구독을 취소하시겠습니까?')
@@ -30,23 +30,23 @@ function SubscribeProduct({
   };
 
   const handleDelete = productId => {
-    const filteredSubscribeData = subscribeData.filter(item => {
+    const filteredProduct = subscribeData.filter(item => {
       return item.product_id !== productId;
     });
-    setSubscribeData(filteredSubscribeData);
+    setSubscribeData(filteredProduct);
   };
 
   return (
     <>
       <div className="subscribeProductTitle">구독중인 상품</div>
-      {subscribeData[0].category_name.length > 0 ? (
+      {subscribeData.length > 0 ? (
         <div className="subscribeProduct">
           {subscribeData.map(obj => {
             return (
               <>
                 <Link to={`/productdetails/${obj.product_id}`}>
-                  <div key={obj.product.id}>
-                    <img src={obj.thumb} alt="productImg" />
+                  <div key={obj.product_id}>
+                    <img src={obj?.thumb} alt="productImg" />
                   </div>
                 </Link>
                 <button
