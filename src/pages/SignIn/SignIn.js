@@ -29,7 +29,7 @@ function Signin() {
   };
 
   const goToMain = () => {
-    fetch(API.SIGNIN, {
+    fetch('http://3.142.147.114:8000/users/signin', {
       method: 'POST',
       headers: {
         Authorization:
@@ -44,7 +44,7 @@ function Signin() {
       .then(res => {
         if (res.MESSAGE === 'SUCCESS') {
           localStorage.setItem('access_token', res.access_token);
-          navigate('/Main');
+          navigate('/');
         } else {
           alert('회원 가입을 진행해주세요');
         }
