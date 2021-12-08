@@ -9,10 +9,11 @@ function SubscribeProduct({
   setDeliveryCycle,
   setNextDeliveryDate,
   setNextPurchaseDate,
+  API,
 }) {
-  const fetchDelete = product_id => {
-    window.confirm('제품구독을 취소하시겠습니까?')
-      ? fetch(`1`, {
+  const fetchDelete = obj => {
+    window.confirm(`${obj.category_name} 제품구독을 취소하시겠습니까?`)
+      ? fetch(`${API.SUBSCRIBE}?id=[${obj.subscribe_id}]`, {
           method: 'delete',
           headers: {
             Authorization:
@@ -22,16 +23,16 @@ function SubscribeProduct({
           .then(res => res.json())
           .then(data => {
             data.MESSAGE === 'DELETED'
-              ? handleDelete(product_id)
+              ? handleDelete(obj.subscribe_id)
               : alert(data.MESSAGE);
           })
           .catch(error => alert(error))
-      : handleDelete(product_id);
+      : setSubscribeData(subscribeData);
   };
 
   const handleDelete = productId => {
-    const filteredProduct = subscribeData.filter(item => {
-      return item.product_id !== productId;
+    const filteredProduct = subscribeData.filter(obj => {
+      return obj.subscribe_id !== productId;
     });
     setSubscribeData(filteredProduct);
   };
@@ -51,7 +52,7 @@ function SubscribeProduct({
                 </Link>
                 <button
                   className="subscribeCancel"
-                  onClick={() => fetchDelete(obj.product_id)}
+                  onClick={() => fetchDelete(obj)}
                 >
                   x
                 </button>
