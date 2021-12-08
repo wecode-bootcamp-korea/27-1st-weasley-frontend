@@ -24,10 +24,6 @@
           font-weight: $weightBold;
         }
       }
-      .productInfoOptions {
-        font-size: $fontSmall;
-        color: $colorMint;
-      }
     }
     .productInfoBottom {
       @include flexSpaceBetweenCenter;
@@ -52,7 +48,7 @@
     .buttonAction {
       @include flexSpaceBetweenCenter;
       .buyButton {
-        width: 130px;
+        width: 220px;
         background-color: $colorMint;
         color: $colorWhite;
         border-radius: $ButtonBorderRadius;
@@ -62,15 +58,153 @@
         cursor: pointer;
       }
     }
-    .priceTab {
-      padding: 50px 0;
-      text-align: right;
+  }
+}
 
+.productDetailInfo {
+  width: 50%;
+  padding: 0 40px;
+
+  .productInfoHeader {
+    @include flexSpaceBetweenCenter;
+    border-bottom: $borderGray;
+    padding: 30px 0;
+
+    .productTitleName {
       font-size: $fontSemiLarge;
-      font-weight: $weightBold;
-      .productPrice {
-        padding-right: 10px;
+      line-height: 40px;
+
+      strong {
+        font-weight: $weightBold;
       }
+    }
+    .productInfoOptions {
+      font-size: 17px;
+      color: $colorMint;
+    }
+  }
+  .productInfoBottom {
+    @include flexSpaceBetweenCenter;
+    padding: 30px 0;
+
+    .reviewAverageView {
+      @include flexSpaceBetweenCenter;
+
+      &Score {
+        color: $colorMint;
+      }
+    }
+    .capacity {
+      color: $colorGray;
+    }
+    .countUp {
+      .productCount {
+        padding: 0 10px;
+      }
+    }
+  }
+  .buttonAction {
+    @include flexSpaceBetweenCenter;
+    .buyButton {
+      width: 130px;
+      background-color: $colorMint;
+      color: $colorWhite;
+      border-radius: $ButtonBorderRadius;
+      padding: 20px 15px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  .priceTab {
+    @include flexSpaceBetweenCenter;
+    padding: 50px 0;
+
+    .productPrice {
+      font-weight: $weightBold;
+      font-size: $fontSemiLarge;
+      padding-right: 10px;
+    }
+    .priceTag {
+      text-align: left;
+      font-size: 17px;
+      color: $colorGray;
+    }
+  }
+}
+.productDetailMain {
+  padding: 80px 0;
+
+  .productDetailTitle {
+    margin: 100px 0;
+  }
+  .productDetailTitleContents {
+    font-size: $fontLarge;
+    font-weight: $weightRegular;
+    line-height: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  .slideBanner {
+    @include flexSpaceBetweenCenter;
+    align-items: start;
+    border-radius: $ButtonBorderRadius;
+    background-color: #fff;
+
+    .leftWrap {
+      width: 50%;
+      padding: 80px 35px;
+
+      .leftTag {
+        padding-bottom: 70px;
+      }
+
+      .leftTitle {
+        font-size: $fontLarge;
+        font-weight: $weightRegular;
+        line-height: 40px;
+      }
+    }
+    .slideImage {
+      width: 50%;
+    }
+  }
+  .costInfo {
+    @include flexSpaceBetweenCenter;
+    text-align: center;
+    margin-top: 50px;
+    .costInfoData {
+      .costInfoDataTag {
+        color: $colorGray;
+      }
+      .costInfoDataPrice {
+        font-size: 20px;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  .resultWrap {
+    @include flexCenter;
+    margin-top: 50px;
+
+    .circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: $colorMint;
+      color: $colorWhite;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      text-align: center;
+      margin: 50px;
+      padding: 20px;
+    }
+    .circle:nth-child(2) {
+      background-color: $colorGray;
     }
   }
 }
