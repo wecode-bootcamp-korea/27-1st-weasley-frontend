@@ -43,15 +43,13 @@ function Login() {
       });
   };
 
-데이터 저장
+  // 데이터 저장
 
-sessionStorage.setItem("key", "value")
+  // sessionStorage.setItem("key", "value")
 
+  // 데이터 호출
 
-데이터 호출
-
-sessionStorage.getItem("key")
-
+  // sessionStorage.getItem("key")
 
   return (
     <div className="login">
