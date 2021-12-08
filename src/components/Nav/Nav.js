@@ -13,15 +13,15 @@ function Nav() {
 
   return (
     <div className="nav">
-      <div className="navLogo">
-        <Link to="/main">
-          <img src="./images/logo/logo-bk.svg" alt="logo" classNAme="logo" />
-        </Link>
-      </div>
-      <div className="navMenu">
+      <div className="navMenuInner">
+        <div className="navLogo">
+          <Link to="/main">
+            <img src="./images/logo/logo-bk.svg" alt="logo" classNAme="logo" />
+          </Link>
+        </div>
         <ul className="navMenuUl">
           <li className="navMenuList">
-            <Link to="/ingridient">
+            <Link to="/ingredient">
               <p
                 className={`navMenuItems ${
                   styleHandle === 1 ? 'navChecked' : ''
@@ -61,45 +61,46 @@ function Nav() {
           </li>
         </ul>
       </div>
-
-      <div className="navLoginMenu">
-        <ul className="navLoginMenuUl">
-          <li className="navLoginList">
-            <Link to="/subscribe">
-              <p
-                className={`navLoginItems ${
-                  styleHandle === 4 ? 'navChecked' : ''
-                }`}
-                value={styleValue}
-                onClick={() => setStyleHandle(4)}
-              >
-                구독관리
-              </p>
-            </Link>
-          </li>
-          <li className="navLoginList">
-            <Link to="/login">
-              <p
-                className={`navLoginItems ${
-                  styleHandle === 5 ? 'navChecked' : ''
-                }`}
-                value={styleValue}
-                onClick={() => setStyleHandle(5)}
-              >
-                로그인
-              </p>
-            </Link>
-          </li>
-          <li className="navLoginList">
-            <Link to="/cart">
-              <img
-                src="/images/navimg/bi_cart.svg"
-                className="cartImg"
-                alt="장바구니"
-              />
-            </Link>
-          </li>
-        </ul>
+      <div className="navLoginInner">
+        <div className="navLoginMenu">
+          <ul className="navLoginMenuUl">
+            <li className="navLoginList">
+              <Link to="/subscribe">
+                <p
+                  className={`navLoginItems ${
+                    styleHandle === 4 ? 'navChecked' : ''
+                  }`}
+                  value={styleValue}
+                  onClick={() => setStyleHandle(4)}
+                >
+                  구독관리
+                </p>
+              </Link>
+            </li>
+            <li className="navLoginList">
+              <Link to="/login">
+                <p
+                  className={`navLoginItems ${
+                    styleHandle === 5 ? 'navChecked' : ''
+                  }`}
+                  value={styleValue}
+                  onClick={() => setStyleHandle(5)}
+                >
+                  로그인
+                </p>
+              </Link>
+            </li>
+            <li className="navLoginList">
+              <Link to="/cart">
+                <img
+                  src="/images/navimg/bi_cart.svg"
+                  className="cartImg"
+                  alt="장바구니"
+                />
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 import './IngredientList.scss';
 
+const SLIDE_LEFT_DIRECTION = 'left';
+const SLIDE_RIGHT_DIRECTION = 'right';
+
 function IngredientList({ product }) {
   const [xPos, setXpos] = useState(0);
 
-  const onClick = direction => {
-    direction === 'left' ? setXpos(x => x + 100) : setXpos(x => x - 100);
-    xPos === 300 && setXpos(0);
-    xPos === -600 && setXpos(0);
+  const clickLeftorRight = direction => {
+    direction === SLIDE_LEFT_DIRECTION
+      ? setXpos(x => x + 100)
+      : setXpos(x => x - 100);
+    if (xPos === 300 || xPos === -600) return setXpos(0);
   };
   return (
     <>
       <h3 className="ingredientCategory">클렌징폼</h3>
       <button
         className="leftButton ingredientBtn"
-        onClick={() => onClick('left')}
+        onClick={() => clickLeftorRight(SLIDE_LEFT_DIRECTION)}
       >
         ⇦
       </button>
       <button
         className="rightButton ingredientBtn"
-        onClick={() => onClick('right')}
+        onClick={() => clickLeftorRight(SLIDE_RIGHT_DIRECTION)}
       >
         ⇨
       </button>
