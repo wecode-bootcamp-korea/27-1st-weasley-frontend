@@ -5,31 +5,28 @@
   height: 60px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;
-  padding: 0 50px;
+  padding: 0 60px;
 
-  .navInner {
+  .navMenuInner {
     display: flex;
-  }
 
-  .navLogo {
-    width: 120px;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    .navLogo {
+      width: 120px;
+      margin: 13px 50px 0 0;
 
-    img {
-      width: 100%;
-      cursor: pointer;
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
     }
-  }
-  .navMenu {
-    @include flexStart;
-    text-align: center;
 
     .navMenuUl {
       @include flexStart;
-      padding-right: 40px;
 
       .navMenuList {
-        & > a {
+        display: flex;
+
+        a {
           display: block;
           width: 100%;
           height: 100%;
@@ -51,6 +48,10 @@
       }
     }
   }
+}
+.navLoginInner {
+  display: flex;
+
   .navLoginMenuUl {
     @include flexStart;
     padding-right: 10px;
@@ -67,18 +68,19 @@
           color: $colorGray;
           cursor: pointer;
         }
+
         .navChecked {
           color: $colorMint;
         }
       }
+    }
 
-      .cartImg {
-        margin: 10px 10px;
+    .cartImg {
+      margin: 10px 10px;
 
-        img {
-          width: 100%;
-          cursor: pointer;
-        }
+      img {
+        width: 100%;
+        cursor: pointer;
       }
     }
   }
