@@ -123,7 +123,7 @@ function Cart() {
           <Price cart={cart} />
 
           <div className="orderBtn">
-            <Link to={'/payment'}>
+            <Link to="/payment">
               <button>주문하기</button>
             </Link>
           </div>
