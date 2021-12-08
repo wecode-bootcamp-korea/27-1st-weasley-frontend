@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.total {
+  padding: 15px 10px;
+  .fee {
+    @include flexSpaceBetweenCenter;
+  }
+  .sum {
+    @include flexSpaceBetweenCenter;
+    margin-top: 10px;
+  }
+}

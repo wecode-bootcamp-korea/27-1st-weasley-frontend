@@ -1,0 +1,66 @@
+@import '../../styles/variables.scss';
+
+.list {
+  @include flexSpaceBetweenCenter;
+  padding-right: 20px;
+  margin-top: 30px;
+  border-bottom: $borderGray;
+  .listLeft {
+    display: flex;
+    align-items: center;
+    img {
+      width: 190px;
+      height: 190px;
+    }
+    .listArticle {
+      h3 {
+        font-size: $fontMedium;
+        font-weight: $weightRegular;
+        margin-bottom: 5px;
+      }
+      span {
+        font-size: 10px;
+      }
+      p {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+.listRight {
+  .cancel {
+    margin-bottom: 10px;
+    button {
+      width: 100%;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: $colorMint;
+      color: $colorWhite;
+      font-size: $fontRegular;
+      font-weight: 350;
+    }
+  }
+  .order {
+    display: flex;
+
+    .minus {
+      padding: 5px 10px;
+      border: none;
+      background-color: $colorMint;
+      color: $colorWhite;
+      font-size: $fontRegular;
+    }
+    .count {
+      padding: 5px;
+    }
+    .plus {
+      font-size: $fontRegular;
+      padding: 5px 10px;
+      border: none;
+      background-color: $colorMint;
+      color: $colorWhite;
+    }
+  }
+}

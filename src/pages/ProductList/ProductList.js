@@ -3,6 +3,7 @@ import ProductListHeader from './ProductListHeader/ProductListHeader';
 import ProductListBanner from './ProductListBanner/ProductListBanner';
 import ProductListTitle from './ProductListTitle/ProductListTitle';
 import Product from './Product/Product';
+import Nav from '../../components/Nav/Nav';
 import './ProductList.scss';
 
 function ProductList() {
@@ -20,16 +21,13 @@ function ProductList() {
 
   return (
     <>
-      <nav>
-        nav바 자리 nav바 자리 nav바 자리 nav바 자리 nav바 자리 nav바 자리 nav바
-        자리 nav바 자리 nav바 자리 nav바 자리 nav바 자리 nav바 자리 nav바 자리
-        nav바 자리 nav바 자리 nav바 자리 nav바 자리 nav바 자리
-      </nav>
+      <Nav />
       <ProductListHeader />
       <ProductListBanner />
 
       <main className="main">
         <ProductListTitle />
+
         {categories.map(function (category) {
           return (
             <Product category={category} i={category.id} key={category.id} />

@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+body {
+  background-color: $colorBackGroundGray;
+}
+
+.removeAll {
+  position: relative;
+  left: 720px;
+  margin-top: 3px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: $colorMint;
+  color: $colorWhite;
+}
+.cartMain {
+  width: 800px;
+  margin: $marginCenter;
+  margin-top: 50px;
+  border-radius: 10px;
+  background-color: $colorWhite;
+
+  .title {
+    padding: 30px 0;
+    text-align: center;
+    font-size: $fontSemiLarge;
+    font-weight: $weightSemiBold;
+    border-bottom: $borderGray;
+  }
+  .orderBtn {
+    padding: 0 50px;
+    button {
+      width: 100%;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      color: $colorWhite;
+      background-color: $colorMint;
+    }
+  }
+}
