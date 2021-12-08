@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { API } from '../../config';
-import './Signin.scss';
+import './SignIn.scss';
 
 const emailReg =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -42,7 +42,6 @@ function Signin() {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res.MESSAGE);
         if (res.MESSAGE === 'SUCCESS') {
           localStorage.setItem('access_token', res.access_token);
           navigate('/Main');
