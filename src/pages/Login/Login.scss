@@ -1,0 +1,110 @@
+@import '../../styles/variables.scss';
+
+.login {
+  position: relative;
+  background: url('/assets/images/loginbackground.png') no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: auto;
+  min-height: 1440px;
+
+  .loginInner {
+    @include flexStart;
+    position: absolute;
+    flex-direction: column;
+    top: 130px;
+    left: 330px;
+
+    .logo {
+      height: auto;
+      max-height: 25px;
+      width: 100px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .loginSection {
+      height: auto;
+      max-height: 900px;
+      padding: 35px;
+      margin-top: 50px;
+      background: $colorWhite;
+      border-radius: 5px;
+      box-shadow: 0 0 20px $colorGray;
+
+      .loginTitle1 {
+        display: block;
+        font-size: $fontLarge;
+        font-weight: $weightRegular;
+      }
+
+      .loginTitle2 {
+        display: block;
+        font-size: $fontLarge;
+        font-weight: $weightThin;
+        padding-bottom: 10px;
+      }
+
+      form {
+        @include flexCenter;
+        flex-direction: column;
+        padding-top: 50px;
+
+        input {
+          @include flexCenter;
+          width: 350px;
+          padding: 5px 0 10px 5px;
+          margin: 5px 0 30px 5px;
+          border: 0;
+          border-bottom: 1px solid $colorGray;
+          font-size: $fontRegular;
+          color: $colorBlack;
+
+          &::placeholder {
+            padding: 5px 0 10px 5px;
+            color: rgb(103, 103, 103);
+            font-size: $fontRegular;
+            cursor: text;
+          }
+        }
+
+        %buttonBase {
+          width: 350px;
+          height: 30px;
+          padding: 20px 36px 36px 20px;
+          margin: 70px 30px;
+          border-radius: 8px;
+          border: 0;
+          outline: 0;
+          background-color: $colorGray;
+          font-size: $fontRegular;
+          color: $colorWhite;
+          cursor: pointer;
+        }
+
+        .activeOn {
+          @extend %buttonBase;
+          background-color: #5dc5cc;
+        }
+
+        .activeOff {
+          @extend %buttonBase;
+          background-color: $colorGray;
+        }
+
+        .informLogin {
+          @include flexCenter;
+          padding-right: 10px;
+          font-weight: $weightRegular;
+
+          .informText2 {
+            margin-left: 10px;
+            color: $colorMint;
+          }
+        }
+      }
+    }
+  }
+}
