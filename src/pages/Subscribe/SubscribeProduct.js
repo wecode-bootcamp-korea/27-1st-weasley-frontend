@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './SubscribeProduct.scss';
 
 function SubscribeProduct({
-  productData,
-  setProductData,
+  subscribeData,
+  setSubscribeData,
   setIsItNowSubscribing,
   setDeliveryCycle,
   setNextDeliveryDate,
@@ -22,36 +22,36 @@ function SubscribeProduct({
           .then(res => res.json())
           .then(data => {
             data.MESSAGE === 'DELETED'
-              ? alert(data.MESSAGE)
-              : handleDelete(product_id);
+              ? handleDelete(product_id)
+              : alert(data.MESSAGE);
           })
           .catch(error => alert(error))
       : handleDelete(product_id);
   };
 
-  const handleDelete = product_id => {
-    const filteredProduct = productData.filter(item => {
-      return item.product_id !== product_id;
+  const handleDelete = productId => {
+    const filteredProduct = subscribeData.filter(item => {
+      return item.product_id !== productId;
     });
-    setProductData(filteredProduct);
+    setSubscribeData(filteredProduct);
   };
 
   return (
     <>
       <div className="subscribeProductTitle">구독중인 상품</div>
-      {productData.length > 0 ? (
+      {subscribeData.length > 0 ? (
         <div className="subscribeProduct">
-          {productData.map(product => {
+          {subscribeData.map(obj => {
             return (
               <>
-                <Link to={`/productdetails/${product.product_id}`}>
-                  <div key={product.id}>
-                    <img src={product.thumb} alt="productImg" />
+                <Link to={`/productdetails/${obj.product_id}`}>
+                  <div key={obj.product_id}>
+                    <img src={obj?.thumb} alt="productImg" />
                   </div>
                 </Link>
                 <button
                   className="subscribeCancel"
-                  onClick={() => fetchDelete(product.product_id)}
+                  onClick={() => fetchDelete(obj.product_id)}
                 >
                   x
                 </button>
