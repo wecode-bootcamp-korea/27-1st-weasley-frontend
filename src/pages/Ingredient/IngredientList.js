@@ -9,6 +9,7 @@ function IngredientList({ product }) {
 
   const clickLeftorRight = direction => {
     if (xPos === 300 || xPos === -600) return setXpos(0);
+
     direction === SLIDE_LEFT_DIRECTION
       ? setXpos(x => x + 100)
       : setXpos(x => x - 100);
