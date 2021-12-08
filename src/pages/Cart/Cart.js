@@ -3,8 +3,8 @@ import { API } from '../../../src/config';
 import EmptyCart from './EmptyCart';
 import List from './List';
 import Price from './Price';
-import Nav from '../../components/Nav/Nav';
 import '../Cart/Cart.scss';
+import { Link } from 'react-router-dom';
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -92,43 +92,42 @@ function Cart() {
       {empty ? (
         <EmptyCart />
       ) : (
-        <>
-          <Nav />
-          <main className="cartMain">
-            <div className="title">장바구니</div>
-            <button
-              className="removeAll"
-              onClick={() => {
-                window.confirm('전체삭제 하시겠습니까?')
-                  ? handleDeleteAll()
-                  : setCart(...cart);
-              }}
-            >
-              전체삭제
-            </button>
-            {cart.map(function (list, index) {
-              return (
-                <List
-                  setEmpty={setEmpty}
-                  eraseCartItem={() => eraseCartItem(list.product_id)}
-                  list={list}
-                  increaseCartItem={() => increaseCartItem(index)}
-                  decreaseCartItem={() => decreaseCartItem(index)}
-                  key={list.product_id}
-                  API={API}
-                  cart={cart}
-                  setCart={setCart}
-                />
-              );
-            })}
+        <main className="cartMain">
+          <div className="title">장바구니</div>
+          <button
+            className="removeAll"
+            onClick={() => {
+              window.confirm('전체삭제 하시겠습니까?')
+                ? handleDeleteAll()
+                : setCart(...cart);
+            }}
+          >
+            전체삭제
+          </button>
+          {cart.map(function (list, index) {
+            return (
+              <List
+                setEmpty={setEmpty}
+                eraseCartItem={() => eraseCartItem(list.product_id)}
+                list={list}
+                increaseCartItem={() => increaseCartItem(index)}
+                decreaseCartItem={() => decreaseCartItem(index)}
+                key={list.product_id}
+                API={API}
+                cart={cart}
+                setCart={setCart}
+              />
+            );
+          })}
 
-            <Price cart={cart} />
+          <Price cart={cart} />
 
-            <div className="orderBtn">
+          <div className="orderBtn">
+            <Link to="/payment">
               <button>주문하기</button>
-            </div>
-          </main>
-        </>
+            </Link>
+          </div>
+        </main>
       )}
     </div>
   );

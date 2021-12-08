@@ -1,50 +1,82 @@
 @import '../../styles/variables.scss';
 
 .nav {
-  @include flexCenter;
+  @include flexSpaceBetweenCenter;
   height: 60px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;
+  padding: 0 60px;
 
-  .navLogo {
-    width: 120px;
-    margin: 5px 100px 0 0;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  .navMenuInner {
+    display: flex;
 
-    img {
-      width: 100%;
-      cursor: pointer;
-    }
-  }
-  .navMenu {
-    @include flexStart;
-    margin-right: 50px;
+    .navLogo {
+      width: 120px;
+      margin: 13px 50px 0 0;
 
-    .navMenuUl {
-      @include flexStart;
-      padding: 0 600px 0 30px;
-
-      .navMenuItems {
-        display: flex;
-        justify-content: space-between;
-        padding-right: 50px;
-        margin: 10px;
-        color: $colorGray;
+      img {
+        width: 100%;
         cursor: pointer;
       }
     }
-  }
-  .navLoginMenu {
-    display: flex;
 
-    .navLoginItems {
-      @include flexCenter;
-      padding: 20px 20px;
-      cursor: pointer;
+    .navMenuUl {
+      @include flexStart;
+
+      .navMenuList {
+        display: flex;
+
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+
+          .navMenuItems {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 10px;
+            text-align: center;
+            margin: 10px 20px;
+            color: $colorGray;
+            cursor: pointer;
+          }
+
+          .navChecked {
+            color: $colorMint;
+          }
+        }
+      }
+    }
+  }
+}
+.navLoginInner {
+  display: flex;
+
+  .navLoginMenuUl {
+    @include flexStart;
+    padding-right: 10px;
+
+    .navLoginList {
+      & > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        .navLoginItems {
+          @include flexCenter;
+          padding: 20px 20px;
+          color: $colorGray;
+          cursor: pointer;
+        }
+
+        .navChecked {
+          color: $colorMint;
+        }
+      }
     }
 
     .cartImg {
-      margin: 10px 20px;
+      margin: 10px 10px;
 
       img {
         width: 100%;
