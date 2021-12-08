@@ -29,7 +29,6 @@ function Subscribe() {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setSubscribeData(data.RESULT);
         setNextDeliveryDate(data.RESULT[0].next_ship_date);
         setDeliveryCycle(`${data.RESULT[0].interval}주 마다`);
