@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 
+import { API } from '../../config';
 import './ProductTop.scss';
 
 const ProductDetailTop = ({
@@ -26,7 +27,7 @@ const ProductDetailTop = ({
   };
 
   const openModal = () => {
-    fetch('/data/payment/userinfo.json')
+    fetch(API.SUBSCRIBE)
       .then(res => res.json())
       .then(data => {
         if (data.length) {
@@ -39,7 +40,7 @@ const ProductDetailTop = ({
   };
 
   const postAddressUser = () => {
-    fetch('http://3.142.147.114:8000/shops/carts', {
+    fetch(API.CART, {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
@@ -56,7 +57,7 @@ const ProductDetailTop = ({
   };
 
   const payAction = () => {
-    fetch('http://3.142.147.114:8000/shops/carts', {
+    fetch(API.CART, {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
@@ -73,7 +74,7 @@ const ProductDetailTop = ({
   };
 
   const subscribeAction = () => {
-    fetch('http://3.142.147.114:8000/users/addresses', {
+    fetch(API.USER_ADDRESS, {
       method: 'POST',
       headers: {
         Authorization:
@@ -90,7 +91,7 @@ const ProductDetailTop = ({
     <>
       <section className="productDetailTop">
         <div className="productDetailImage">
-          <img src={detail.thumb} alt="cleanser" />
+          <img src={detail.images[0].thumb} alt="cleanser" />
         </div>
         <div className="productDetailInfo">
           <div className="productInfoHeader">
@@ -173,25 +174,25 @@ const ProductDetailTop = ({
             <span className="costInfoData">
               <p className="costInfoDataTag">제조비</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].manufacturing_cost.toLocaleString()}원
+                {detail.price.manufacturing_cost.toLocaleString()}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">개발비</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].development_cost.toLocaleString()}원
+                {detail.price.development_cost.toLocaleString()}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">물류 및 운송</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].transportation_cost.toLocaleString()}원
+                {detail.price.transportation_cost.toLocaleString()}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">결제수수료</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].commission_cost.toLocaleString()}원
+                {detail.price.commision_cost.toLocaleString()}원
               </p>
             </span>
           </div>
@@ -202,7 +203,7 @@ const ProductDetailTop = ({
             </div>
             <div className="circle">
               <p>시중주요 브랜드</p>
-              <p>{detail.price[0].commission_cost.toLocaleString()}원</p>
+              <p>{detail.price.commision_cost.toLocaleString()}원</p>
             </div>
           </div>
         </div>
