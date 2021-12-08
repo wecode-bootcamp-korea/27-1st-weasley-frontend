@@ -3,7 +3,6 @@ import ProductListHeader from './ProductListHeader/ProductListHeader';
 import ProductListBanner from './ProductListBanner/ProductListBanner';
 import ProductListTitle from './ProductListTitle/ProductListTitle';
 import Product from './Product/Product';
-import Nav from '../../components/Nav/Nav';
 import './ProductList.scss';
 
 function ProductList() {
@@ -21,7 +20,6 @@ function ProductList() {
 
   return (
     <>
-      <Nav />
       <ProductListHeader />
       <ProductListBanner />
 

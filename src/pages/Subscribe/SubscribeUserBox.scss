@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+
+.userBox {
+  width: 240px;
+  padding-top: 20px;
+  border-radius: 5px;
+  background-color: $colorWhite;
+  box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+
+  .userName {
+    @include flexSpaceBetweenCenter;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+
+    .name span:last-child {
+      padding: 3px;
+      border-radius: 5px;
+      color: $colorWhite;
+      background-color: $colorBlack;
+      font-size: $fontSmall;
+    }
+
+    .modify {
+      font-size: $fontRegular;
+    }
+  }
+
+  .addressBox {
+    width: 100%;
+
+    .address {
+      width: 90%;
+      margin: $marginCenter;
+      margin-top: 30px;
+      margin-bottom: 70px;
+      color: $colorGray;
+      font-weight: $weightRegular;
+      font-size: $fontRegular;
+    }
+  }
+}
+
+.clickOffBox {
+  padding: 30px;
+  color: $colorGray;
+  text-align: left;
+  font-weight: $weightRegular;
+  cursor: pointer;
+}
+.clickOffBox:hover {
+  padding: 30px;
+  text-align: left;
+  color: rgb(68, 67, 67);
+  background-color: rgb(240, 236, 236);
+  font-weight: $weightRegular;
+  cursor: pointer;
+}
+.clickOnBox {
+  padding: 30px;
+  text-align: left;
+  color: rgb(68, 67, 67);
+  background-color: rgb(240, 236, 236);
+  font-weight: $weightRegular;
+  pointer-events: none;
+  cursor: pointer;
+}
