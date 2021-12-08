@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .nav {
-  @include flexSpaceBetweenCenter;
+  @include flexCenter;
   height: 60px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;

@@ -14,7 +14,7 @@ const Payment = () => {
   const [addressValidatedSwitch, setAddressValidatedSwitch] = useState(false);
 
   useEffect(() => {
-    fetch('data/payment/payinfo.json', {
+    fetch('/data/payment/payinfo.json', {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
@@ -25,7 +25,7 @@ const Payment = () => {
   }, []);
 
   useEffect(() => {
-    fetch('data/payment/userinfo.json')
+    fetch('/data/payment/userinfo.json')
       .then(res => res.json())
       .then(data => {
         setUserInfo(data);

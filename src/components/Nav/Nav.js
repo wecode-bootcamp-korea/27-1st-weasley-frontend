@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Nav.scss';
+import '../Nav/Nav.scss';
 import '/images/navimg/bi_cart.svg';
 
 function Nav() {
