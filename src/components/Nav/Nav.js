@@ -15,7 +15,7 @@ function Nav() {
     <div className="nav">
       <div className="navMenuInner">
         <div className="navLogo">
-          <Link to="/main">
+          <Link to="/">
             <img src="./images/logo/logo-bk.svg" alt="logo" classNAme="logo" />
           </Link>
         </div>
@@ -78,7 +78,7 @@ function Nav() {
               </Link>
             </li>
             <li className="navLoginList">
-              <Link to="/login">
+              <Link to="/signin">
                 <p
                   className={`navLoginItems ${
                     styleHandle === 5 ? 'navChecked' : ''
