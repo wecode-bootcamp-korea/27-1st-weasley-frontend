@@ -8,11 +8,13 @@ function IngredientList({ product }) {
   const [xPos, setXpos] = useState(0);
 
   const clickLeftorRight = direction => {
+    if (xPos === 300 || xPos === -600) return setXpos(0);
+
     direction === SLIDE_LEFT_DIRECTION
       ? setXpos(x => x + 100)
       : setXpos(x => x - 100);
-    if (xPos === 300 || xPos === -600) return setXpos(0);
   };
+
   return (
     <>
       <h3 className="ingredientCategory">클렌징폼</h3>
