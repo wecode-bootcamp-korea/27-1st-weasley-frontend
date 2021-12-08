@@ -3,7 +3,10 @@ import ProductListHeader from './ProductListHeader/ProductListHeader';
 import ProductListBanner from './ProductListBanner/ProductListBanner';
 import ProductListTitle from './ProductListTitle/ProductListTitle';
 import Product from './Product/Product';
+<<<<<<< HEAD
 import { API } from '../../config';
+=======
+>>>>>>> master
 import './ProductList.scss';
 
 function ProductList() {

@@ -14,12 +14,12 @@ function Product({ category, index }) {
   // };
 
   return (
-    <div className="product">
+    <div className="productList">
       <div className="productImg">
         <img src={imgUrl} alt="productImg" />
       </div>
 
-      <div className="productSelect">
+      <div className="productSelectBox">
         <div className="productTitle">
           <h2>
             STEP{index + 1}. {category.name}
@@ -34,13 +34,13 @@ function Product({ category, index }) {
             return (
               <div
                 key={list.id}
-                className="type"
+                className="categoryType"
                 onClick={() => {
                   setImgUrl(list.img);
                 }}
               >
                 <div>{list.tags}</div>
-                <div className="typeBtn">
+                <div className="typeSelectButton">
                   <Link to={`/productdetails/${list.id}`}>
                     <button>자세히</button>
                   </Link>

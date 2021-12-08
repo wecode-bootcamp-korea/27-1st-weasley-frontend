@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.shipping {
+  height: 300px;
+  width: 600px;
+  margin-left: 30px;
+  background-color: $colorWhite;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+
+  .title {
+    font-weight: $weightSemiBold;
+    padding: 15px 30px;
+    border-bottom: $borderGray;
+  }
+
+  .shippingDate {
+    @include flexSpaceBetweenCenter;
+    width: 80%;
+    margin: $marginCenter;
+    margin-top: 50px;
+
+    .manageDate {
+      h2 {
+        margin-bottom: 40px;
+        font-size: 20px;
+        font-weight: $weightRegular;
+      }
+
+      .date {
+        padding: 30px;
+        border-radius: 40px;
+        border: none;
+        font-weight: $weightRegular;
+        font-size: 15px;
+        box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+      }
+    }
+  }
+}

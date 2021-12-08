@@ -1,0 +1,46 @@
+@import '../../styles/variables.scss';
+
+.cycleTitle {
+  width: 30%;
+  padding: 15px 30px;
+  margin: $marginCenter;
+  margin-bottom: 20px;
+  border-bottom: 3px solid black;
+  text-align: center;
+  font-size: 20px;
+  font-weight: $weightSemiBold;
+}
+
+.cycleBtn {
+  width: 600px;
+  margin: 10px auto;
+  @include flexSpaceBetweenCenter;
+
+  button {
+    padding: 15px 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: $colorWhite;
+    color: $colorGray;
+    box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+    font-size: $fontRegular;
+    font-weight: $weightRegular;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: $colorWhite;
+    background-color: rgb(219, 219, 219);
+    box-shadow: none;
+  }
+}
+
+.message {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  color: $colorGray;
+  text-align: center;
+  font-size: $fontSmall;
+  font-weight: $weightRegular;
+}
