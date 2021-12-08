@@ -3,11 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductList from './pages/ProductList/ProductList';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Login from './pages/Login/Login';
-<<<<<<< HEAD
 import Ingredient from './pages/Ingredient/Ingredient';
-=======
 import Subscribe from './pages/Subscribe/Subscribe';
->>>>>>> master
 import Signup from './pages/Signup/Signup';
 import Cart from './pages/Cart/Cart';
 import Payment from './pages/payment/Payment';
