@@ -38,7 +38,7 @@ function SubscribeProduct({
 
   return (
     <>
-      <div className="productTitle">구독중인 상품</div>
+      <div className="subscribeProductTitle">구독중인 상품</div>
       {productData.length > 0 ? (
         <div className="subscribeProduct">
           {productData.map(product => {
