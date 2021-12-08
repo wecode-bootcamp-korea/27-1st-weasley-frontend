@@ -22,9 +22,6 @@ const ProductDetail = () => {
       .then(data => {
         setDetail(data);
       });
-    // .catch(error => {
-    //   console.log('ERROR', error);
-    // });
   }, []);
 
   return (

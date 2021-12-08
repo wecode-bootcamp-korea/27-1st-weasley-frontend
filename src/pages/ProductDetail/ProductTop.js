@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react/cjs/react.development';
 
 import './ProductTop.scss';
 
@@ -10,6 +11,47 @@ const ProductDetailTop = ({
   countDownEvent,
   id,
 }) => {
+  const navigate = useNavigate();
+  const [subscribeUserAddressInput, setSubscribeUserAddressInput] =
+    useState('');
+  const [isUserAddressValue, setIsUserAddressValue] = useState('');
+  const [modalSwitch, setModalSwitch] = useState(false);
+
+  const saveUserAddressInputValue = e => {
+    setSubscribeUserAddressInput(e.target.value);
+  };
+
+  const isValidGoToPage = () => {
+    return subscribeUserAddressInput ? navigate('/subscribes') : null;
+  };
+
+  const ValidUserAddress = () => {
+    fetch('/data/payment/userinfo.json')
+      .then(res => res.json())
+      .then(data => {
+        if (data.length === 0) {
+          // 아무것도 안해주고
+        } else {
+          setIsUserAddressValue(data);
+          // 주소 있다면 보내주긔
+          // 그담에 링크 구독하기페이지로 보내주긔
+        }
+      });
+  };
+
+  const openModal = () => {
+    setModalSwitch(!modalSwitch);
+    fetch('http://3.142.147.114:8000/shops/carts', {
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+    }).then(res => {
+      return res.json();
+    });
+    ValidUserAddress();
+  };
+
   const payAction = () => {
     fetch('http://3.142.147.114:8000/shops/carts', {
       headers: {
@@ -17,24 +59,30 @@ const ProductDetailTop = ({
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
       method: 'POST',
-      body: JSON.stringify({ product_id: id, amount: count }),
+      body: JSON.stringify({
+        address_id: subscribeUserAddressInput,
+        product_id: id,
+        amount: count,
+      }),
     }).then(res => {
       return res.json();
     });
   };
 
   const subscribeAction = () => {
-    fetch('구독API', {
+    fetch('http://3.142.147.114:8000/users/addresses', {
+      method: 'POST',
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
-      method: 'POST',
-      body: JSON.stringify({ product_id: id, amount: count }),
-    }).then(res => {
-      return res.json();
-    });
+      body: JSON.stringify({
+        location: subscribeUserAddressInput,
+      }),
+    }).then(res => res.json());
+    isValidGoToPage();
   };
+
   return (
     <>
       <section className="productDetailTop">
@@ -72,11 +120,7 @@ const ProductDetailTop = ({
             </div>
           </div>
           <form className="buttonAction">
-            <button
-              type="button"
-              className="buyButton"
-              onClick={subscribeAction}
-            >
+            <button type="button" className="buyButton" onClick={openModal}>
               구독하기
             </button>
             <button type="button" className="buyButton" onClick={payAction}>
@@ -156,6 +200,28 @@ const ProductDetailTop = ({
             <div className="circle">
               <p>시중주요 브랜드</p>
               <p>{detail.price[0].commission_cost.toLocaleString()}원</p>
+            </div>
+          </div>
+        </div>
+        <div className={modalSwitch ? 'openSubscribeModal' : 'closeModal'}>
+          <div className="subscribeInnerWrap">
+            <div className="innerBox">
+              <span className="closeButton" onClick={openModal}>
+                X
+              </span>
+              <h1 className="modalTitle">
+                구독 받으실 주소를
+                <br /> 입력해주세요.
+              </h1>
+              <input
+                className="userAddressInput"
+                type="text"
+                onChange={saveUserAddressInputValue}
+                placeholder="주소를 입력 해주세요."
+              />
+              <button className="submitButton" onClick={subscribeAction}>
+                구독하기
+              </button>
             </div>
           </div>
         </div>
