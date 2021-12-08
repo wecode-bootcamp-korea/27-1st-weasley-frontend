@@ -13,11 +13,13 @@ body {
   border-radius: 5px;
   background-color: $colorMint;
   color: $colorWhite;
+  cursor: pointer;
 }
 .cartMain {
   width: 800px;
   margin: $marginCenter;
   margin-top: 50px;
+  margin-bottom: 100px;
   border-radius: 10px;
   background-color: $colorWhite;
 
@@ -37,6 +39,7 @@ body {
       border-radius: 10px;
       color: $colorWhite;
       background-color: $colorMint;
+      cursor: pointer;
     }
   }
 }

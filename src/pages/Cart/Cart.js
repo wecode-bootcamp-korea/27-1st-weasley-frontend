@@ -3,8 +3,8 @@ import { API } from '../../../src/config';
 import EmptyCart from './EmptyCart';
 import List from './List';
 import Price from './Price';
-import Nav from '../../components/Nav/Nav';
 import '../Cart/Cart.scss';
+import { Link } from 'react-router-dom';
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -93,7 +93,6 @@ function Cart() {
         <EmptyCart />
       ) : (
         <>
-          <Nav />
           <main className="cartMain">
             <div className="title">장바구니</div>
             <button
@@ -125,7 +124,9 @@ function Cart() {
             <Price cart={cart} />
 
             <div className="orderBtn">
-              <button>주문하기</button>
+              <Link to={`/payment`}>
+                <button>주문하기</button>
+              </Link>
             </div>
           </main>
         </>
