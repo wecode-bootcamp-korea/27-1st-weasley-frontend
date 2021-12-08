@@ -1,11 +1,15 @@
 @import '../../styles/variables.scss';
 
 .nav {
-  @include flexCenter;
+  @include flexSpaceBetweenCenter;
   height: 60px;
   border-bottom: $borderDarkgray;
   background-color: $colorWhite;
   padding: 0 50px;
+
+  .navInner {
+    display: flex;
+  }
 
   .navLogo {
     width: 120px;
@@ -18,11 +22,11 @@
   }
   .navMenu {
     @include flexStart;
-    margin-left: -330px;
+    text-align: center;
 
     .navMenuUl {
       @include flexStart;
-      padding-right: 20px;
+      padding-right: 40px;
 
       .navMenuList {
         & > a {
@@ -33,9 +37,9 @@
           .navMenuItems {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0px;
+            padding: 10px 10px;
             text-align: center;
-            margin: 10px 30px;
+            margin: 10px 20px;
             color: $colorGray;
             cursor: pointer;
           }
@@ -49,7 +53,7 @@
   }
   .navLoginMenuUl {
     @include flexStart;
-    padding-right: 20px;
+    padding-right: 10px;
 
     .navLoginList {
       & > a {
@@ -69,7 +73,7 @@
       }
 
       .cartImg {
-        margin: 10px 20px;
+        margin: 10px 10px;
 
         img {
           width: 100%;
