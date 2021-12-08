@@ -31,6 +31,7 @@
 .listRight {
   .cancel {
     margin-bottom: 10px;
+
     button {
       width: 100%;
       padding: 5px;
@@ -40,6 +41,7 @@
       color: $colorWhite;
       font-size: $fontRegular;
       font-weight: 350;
+      cursor: pointer;
     }
   }
   .order {
@@ -51,6 +53,7 @@
       background-color: $colorMint;
       color: $colorWhite;
       font-size: $fontRegular;
+      cursor: pointer;
     }
     .count {
       padding: 5px;
@@ -61,6 +64,7 @@
       border: none;
       background-color: $colorMint;
       color: $colorWhite;
+      cursor: pointer;
     }
   }
 }
