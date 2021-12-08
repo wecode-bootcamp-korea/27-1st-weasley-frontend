@@ -33,32 +33,48 @@
           .navMenuItems {
             display: flex;
             justify-content: space-between;
-            // padding-right: 60px;
             padding: 10px 0px;
             text-align: center;
             margin: 10px 30px;
             color: $colorGray;
             cursor: pointer;
           }
+
+          .navChecked {
+            color: $colorMint;
+          }
         }
       }
     }
   }
-  .navLoginMenu {
-    display: flex;
+  .navLoginMenuUl {
+    @include flexStart;
+    padding-right: 20px;
 
-    .navLoginItems {
-      @include flexCenter;
-      padding: 20px 20px;
-      cursor: pointer;
-    }
-
-    .cartImg {
-      margin: 10px 20px;
-
-      img {
+    .navLoginList {
+      & > a {
+        display: block;
         width: 100%;
-        cursor: pointer;
+        height: 100%;
+
+        .navLoginItems {
+          @include flexCenter;
+          padding: 20px 20px;
+          color: $colorGray;
+          cursor: pointer;
+        }
+        .navChecked {
+          color: $colorMint;
+        }
+      }
+
+      .cartImg {
+        margin: 10px 20px;
+
+        img {
+          width: 100%;
+          cursor: pointer;
+        }
       }
     }
   }
