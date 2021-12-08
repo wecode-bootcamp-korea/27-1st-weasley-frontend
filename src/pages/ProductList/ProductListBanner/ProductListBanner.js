@@ -11,7 +11,7 @@ function ProductListBanner() {
           <button
             className="button"
             onClick={() => {
-              window.scrollTo({ top: 500, behavior: 'smooth' });
+              window.scrollTo({ top: 550, behavior: 'smooth' });
             }}
           >
             둘러보기
