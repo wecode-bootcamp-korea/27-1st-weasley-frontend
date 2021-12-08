@@ -48,9 +48,9 @@
       }
 
       form {
-        @include flexStart;
+        @include flexCenter;
         flex-direction: column;
-        padding: 50px 0;
+        padding-top: 50px;
 
         input {
           @include flexCenter;
@@ -74,7 +74,7 @@
           width: 350px;
           height: 30px;
           padding: 20px 36px 36px 20px;
-          margin: 50px 30px;
+          margin: 70px 30px;
           border-radius: 8px;
           border: 0;
           outline: 0;
@@ -96,7 +96,13 @@
 
         .informLogin {
           @include flexCenter;
+          padding-right: 10px;
           font-weight: $weightRegular;
+
+          .informText2 {
+            margin-left: 10px;
+            color: $colorMint;
+          }
         }
       }
     }
