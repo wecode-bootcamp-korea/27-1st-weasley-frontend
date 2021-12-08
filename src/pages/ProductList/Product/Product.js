@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Product.scss';
 
+const TAG_DETAILS = {
+  피부: '피부를 탄력있게 집중 케어',
+  잡티: '잡티로 얼룩덜룩한 피부를 집중 케어',
+  모공: '넓어진 모공을 집중 케어',
+  '지성,복합성': '기름기 많은 지성/복합성 피부용',
+  '건성,민감성': '건조하거나 예민한 건성/민감성 피부용',
+  건성: '건조하고 당기는 건성 피부용',
+  민감성: '극도로 예민한 민감성 피부용',
+  복합성: '기름기와 건조함을 모두 느까는 복합성 피부용',
+  지성: '기름기 많은 지성 피부용',
+};
+
 function Product({ category, index }) {
   const [imgUrl, setImgUrl] = useState(category.products[0].thumb);
-
-  // const tagsDetail = {
-  //   "피부" : "피부를 탄력있게 집중 케어",
-  //   "잡티" : "잡티로 얼룩덜룩한 피부를 집중 케어",
-  //   "모공": "넓어진 모공을 집중 케어",
-  //   ""
-
-  // };
 
   return (
     <div className="productList">
@@ -25,7 +29,8 @@ function Product({ category, index }) {
             STEP{index + 1}. {category.name}
           </h2>
           <p>
-            {category.ml_volume}ml / {category.price}원
+            {Math.floor(category.ml_volume)}ml /{' '}
+            {Math.floor(category.price).toLocaleString()}원
           </p>
         </div>
 
@@ -36,10 +41,10 @@ function Product({ category, index }) {
                 key={list.id}
                 className="categoryType"
                 onClick={() => {
-                  setImgUrl(list.img);
+                  setImgUrl(list.thumb);
                 }}
               >
-                <div>{list.tags}</div>
+                <div>{TAG_DETAILS[list.tags.join()]}</div>
                 <div className="typeSelectButton">
                   <Link to={`/productdetails/${list.id}`}>
                     <button>자세히</button>
