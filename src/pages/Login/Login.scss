@@ -11,9 +11,9 @@
   .loginInner {
     @include flexStart;
     position: absolute;
+    flex-direction: column;
     top: 130px;
     left: 330px;
-    flex-direction: column;
 
     .logo {
       height: auto;
@@ -28,11 +28,11 @@
     .loginSection {
       height: auto;
       max-height: 900px;
-      border-radius: 5px;
-      box-shadow: 0 0 20px $colorGray;
-      background: $colorWhite;
       padding: 35px;
       margin-top: 50px;
+      background: $colorWhite;
+      border-radius: 5px;
+      box-shadow: 0 0 20px $colorGray;
 
       .loginTitle1 {
         display: block;
@@ -48,37 +48,39 @@
       }
 
       form {
-        padding-top: 50;
+        @include flexStart;
+        flex-direction: column;
+        padding: 50px 0;
 
         input {
           @include flexCenter;
-          border: 0;
           width: 350px;
-          padding-top: 30px;
-          margin: 5px 0 30px 10px;
-          border-bottom: 1px solid #5dc5cc;
+          padding: 5px 0 10px 5px;
+          margin: 5px 0 30px 5px;
+          border: 0;
+          border-bottom: 1px solid $colorGray;
           font-size: $fontRegular;
           color: $colorBlack;
 
           &::placeholder {
-            padding: 20px 0 10px 10px;
+            padding: 5px 0 10px 5px;
             color: rgb(103, 103, 103);
-            font-size: $fontSmall;
+            font-size: $fontRegular;
             cursor: text;
           }
         }
 
         %buttonBase {
-          padding: 20px 36px 36px 36px;
-          margin: 50px 30px;
-          font-size: $fontRegular;
-          border: 0;
-          outline: 0;
           width: 350px;
           height: 30px;
+          padding: 20px 36px 36px 20px;
+          margin: 50px 30px;
           border-radius: 8px;
-          color: $colorWhite;
+          border: 0;
+          outline: 0;
           background-color: $colorGray;
+          font-size: $fontRegular;
+          color: $colorWhite;
           cursor: pointer;
         }
 
@@ -95,12 +97,6 @@
         .informLogin {
           @include flexCenter;
           font-weight: $weightRegular;
-          margin-top: 150px;
-
-          p {
-            color: $colorMint;
-            text-align: center;
-          }
         }
       }
     }

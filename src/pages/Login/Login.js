@@ -87,9 +87,10 @@ function Login() {
             </button>
           </form>
           <Link to="/signup">
-            <span className="informLogin">
-              위즐리 컴퍼니 통합 회원으로 &nbsp;<p>가입</p>
-            </span>
+            <div className="informLogin">
+              <span className="informText1"> 위즐리 컴퍼니 통합 회원으로 </span>
+              <span className="informText2"> 가입 </span>
+            </div>
           </Link>
         </div>
       </div>
