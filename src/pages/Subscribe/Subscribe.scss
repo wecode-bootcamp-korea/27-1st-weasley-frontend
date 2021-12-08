@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.subscribeBox {
+  margin-top: 50px;
+  .subscribe {
+    @include flexCenter;
+  }
+  .option {
+    width: 870px;
+    padding-bottom: 20px;
+    margin: 50px auto;
+    border-radius: 5px;
+    background-color: $colorWhite;
+    box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+  }
+}
