@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { API } from '../../config.js';
 import './PaymentUserInfo.scss';
 
@@ -5,10 +7,13 @@ const PaymentUserInfo = ({
   userAddress,
   userGetAddress,
   userInfo,
-  userName,
   address,
   cellphone,
+  name,
 }) => {
+  const navigate = useNavigate();
+  console.log('props', userInfo[0].address_id);
+  console.log('props', userInfo[0].location);
   return (
     <div className="paymentUserInfo">
       <div className="userWrap">
@@ -33,19 +38,20 @@ const PaymentUserInfo = ({
               fetch(API.ORDER, {
                 method: 'POST',
                 headers: {
-                  Authorization: sessionStorage.getItem('access_token'),
+                  Authorization: `Bearer ${sessionStorage.getItem(
+                    'access_token'
+                  )}`,
                 },
                 body: JSON.stringify({
-                  address_id: address,
+                  address_id: userInfo[0].address_id,
                 }),
-              }).then(res => res.json());
+              })
+                .then(res => res.json())
+                .then(alert('결제가 완료 됐습니다.'));
             }}
           >
             포인트로 결제
           </button>
-        </form>
-        <form className="payForm">
-          <button className="payButton">결제하기</button>
         </form>
       </div>
     </div>

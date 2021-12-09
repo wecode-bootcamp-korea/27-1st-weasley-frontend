@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
+import { useNavigate } from 'react-router-dom';
 
 import PayInfo from './PayInfo';
 import GuestUserInfo from './GuestUserInfo';
@@ -13,30 +14,43 @@ const Payment = () => {
   const [userInfo, setUserInfo] = useState([]);
   const [payInfo, setPayInfo] = useState([]);
   const [addressValidatedSwitch, setAddressValidatedSwitch] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(API.ORDER, {
+    fetch(API.CART, {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
-      .then(data => setPayInfo(data));
+      .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
+        setPayInfo(data.RESULT);
+      });
   }, []);
-  console.log(payInfo);
   useEffect(() => {
-    fetch(API.ORDER)
+    fetch(API.USER_ADDRESS, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
+      },
+    })
       .then(res => res.json())
       .then(data => {
-        setUserInfo(data);
-        if (data.length === 0) {
-          setAddressValidatedSwitch(false);
-        } else {
-          setUserInfo(data);
+        console.log('1번째', data.RESULT);
+
+        if (data.RESULT.length) {
+          setUserInfo(data.RESULT);
           setAddressValidatedSwitch(true);
+        } else {
+          setAddressValidatedSwitch(false);
         }
       });
   }, []);
+  console.log('payment 페이지', userInfo);
 
   const getAddressInput = e => {
     setUserAddressInputValue(e.target.value);
@@ -45,13 +59,11 @@ const Payment = () => {
   return (
     <main className="payment">
       {addressValidatedSwitch ? (
-        addressValidatedSwitch && (
-          <PaymentUserInfo
-            userInfo={userInfo}
-            userAddressInputValue={userAddressInputValue}
-            userAddress={userAddress}
-          />
-        )
+        <PaymentUserInfo
+          userInfo={userInfo}
+          userAddressInputValue={userAddressInputValue}
+          userAddress={userAddress}
+        />
       ) : (
         <GuestUserInfo
           getAddressInput={getAddressInput}
@@ -81,7 +93,7 @@ const Payment = () => {
             <li className="ProductPrice">
               {payInfo.cart_items &&
                 payInfo.cart_items
-                  .reduce((total, curr) => total + curr.price, 0)
+                  .reduce((total, curr) => total + curr.price * curr.amount, 0)
                   .toLocaleString()}
               원
             </li>
@@ -95,18 +107,14 @@ const Payment = () => {
             <li className="totalPrice">
               {payInfo.cart_items &&
                 payInfo.cart_items
-                  .reduce((total, curr) => total + curr.price, 0)
+                  .reduce((total, curr) => total + curr.price * curr.amount, 0)
                   .toLocaleString()}
               원
             </li>
           </ul>
           <ul className="totalInfo">
             <li>현재 남은 포인트</li>
-            <li>{Number(payInfo.point)}원</li>
-          </ul>
-          <ul className="totalInfo">
-            <li>결제 후 포인트</li>
-            <li>50,000원</li>
+            <li>{Number(payInfo.point).toLocaleString()}원</li>
           </ul>
         </div>
       </div>
