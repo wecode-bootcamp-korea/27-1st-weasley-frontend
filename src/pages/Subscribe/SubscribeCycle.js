@@ -35,7 +35,7 @@ function SubscribeCycle({ setDeliveryCycle, setNextDeliveryDate }) {
               key={week.id}
               onClick={() => {
                 if (window.confirm(`정기배송 주기가 ${week}주로 바뀝니다.`)) {
-                  setDeliveryCycle(week);
+                  setDeliveryCycle(`${week}주 마다`);
                   handleNextShipDate(week);
                 } else {
                   return;
