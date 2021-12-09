@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react/cjs/react.development';
 
+import { API } from '../../config';
 import './ProductTop.scss';
 
 const ProductDetailTop = ({
@@ -10,42 +12,142 @@ const ProductDetailTop = ({
   countDownEvent,
   id,
 }) => {
-  const payAction = () => {
-    fetch('http://3.142.147.114:8000/shops/carts', {
+  const navigate = useNavigate();
+  const [subscribeUserAddressInput, setSubscribeUserAddressInput] =
+    useState('');
+
+  const [saveAddress, setSaveAddress] = useState();
+  const [modalSwitch, setModalSwitch] = useState(false);
+
+  const saveUserAddressInputValue = e => {
+    setSubscribeUserAddressInput(e.target.value);
+  };
+
+  const openModal = () => {
+    fetch(API.USER_ADDRESS, {
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.RESULT.length) {
+          setSaveAddress(data.RESULT[0].address_id);
+          postAddressUser(data.RESULT[0].address_id);
+        } else {
+          setModalSwitch(!modalSwitch);
+        }
+      });
+  };
+
+  const postAddressUser = ad => {
+    fetch(API.SUBSCRIBE, {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
       method: 'POST',
-      body: JSON.stringify({ product_id: id, amount: count }),
-    }).then(res => {
-      return res.json();
-    });
+      body: JSON.stringify({
+        product_id: id,
+        amount: count,
+        address_id: ad,
+      }),
+    })
+      .then(res => {
+        return res.json();
+      })
+
+      .then(data => {
+        alert('구독신청 완료 되었습니다.');
+      });
   };
 
   const subscribeAction = () => {
-    fetch('구독API', {
+    fetch(API.USER_ADDRESS, {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+      body: JSON.stringify({
+        address_id: saveAddress,
+        location: subscribeUserAddressInput,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert('구독신청 완료 되었습니다. ');
+        fetch(API.USER_ADDRESS, {
+          headers: {
+            Authorization:
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+          },
+          method: 'GET',
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.MESSAGE === 'SUCCESS') {
+              setSaveAddress(data.RESULT[0].address_id);
+              fetch(API.SUBSCRIBE, {
+                headers: {
+                  Authorization:
+                    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+                },
+                method: 'POST',
+                body: {
+                  product_id: id,
+                  amount: count,
+                  address_id: saveAddress,
+                },
+              })
+                .then(res => res.json())
+                .then(data => {
+                  if (data.MESSAGE === 'SUCCESS') {
+                    navigate('/subscribe');
+                  }
+                });
+            }
+          });
+      });
+  };
+
+  const payAction = () => {
+    fetch(API.CART, {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
       method: 'POST',
-      body: JSON.stringify({ product_id: id, amount: count }),
-    }).then(res => {
-      return res.json();
-    });
+      body: JSON.stringify({
+        product_id: id,
+        amount: count,
+      }),
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data =>
+        window.confirm(
+          '장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?'
+        )
+          ? navigate('/cart')
+          : null
+      );
   };
+
   return (
     <>
       <section className="productDetailTop">
         <div className="productDetailImage">
-          <img src={detail.thumb} alt="cleanser" />
+          <img src={detail.images[0].thumb} alt="cleanser" />
         </div>
         <div className="productDetailInfo">
           <div className="productInfoHeader">
             <span className="productTitleName">{detail.name}</span>
             <span className="productInfoOptions">
-              <Link to="#">타입변경</Link>
+              <Link to="/productlist">타입변경</Link>
             </span>
           </div>
           <div className="productInfoBottom">
@@ -54,7 +156,7 @@ const ProductDetailTop = ({
               <span className="reviewAverageViewScore">4.4점</span>
             </span>
             <span className="capacity">
-              {detail.ml_volume}mL (8주 사용 분량)
+              {Math.floor(detail.ml_volume)}mL (8주 사용 분량)
             </span>
             <div className="countUp">
               <span>
@@ -72,11 +174,7 @@ const ProductDetailTop = ({
             </div>
           </div>
           <form className="buttonAction">
-            <button
-              type="button"
-              className="buyButton"
-              onClick={subscribeAction}
-            >
+            <button type="button" className="buyButton" onClick={openModal}>
               구독하기
             </button>
             <button type="button" className="buyButton" onClick={payAction}>
@@ -111,7 +209,7 @@ const ProductDetailTop = ({
             </p>
           </div>
           <div className="slideImage">
-            <img src="" alt="slide1" />
+            <img src={detail.images[1].detail} alt="slide1" />
           </div>
         </div>
         <div className="costInfographic">
@@ -126,36 +224,61 @@ const ProductDetailTop = ({
             <span className="costInfoData">
               <p className="costInfoDataTag">제조비</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].manufacturing_cost.toLocaleString()}원
+                {Math.floor(detail.price.manufacturing_cost)}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">개발비</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].development_cost.toLocaleString()}원
+                {Math.floor(detail.price.development_cost.toLocaleString())}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">물류 및 운송</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].transportation_cost.toLocaleString()}원
+                {Math.floor(detail.price.transportation_cost.toLocaleString())}
+                원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">결제수수료</p>
               <p className="costInfoDataPrice">
-                {detail.price[0].commission_cost.toLocaleString()}원
+                {Math.floor(detail.price.commision_cost.toLocaleString())}원
               </p>
             </span>
           </div>
           <div className="resultWrap">
             <div className="circle">
               <p>오픈워크</p>
-              <p>{detail.category_price.toLocaleString()}원</p>
+              <p>{Math.floor(detail.category_price.toLocaleString())}원</p>
             </div>
             <div className="circle">
               <p>시중주요 브랜드</p>
-              <p>{detail.price[0].commission_cost.toLocaleString()}원</p>
+              <p>
+                {Math.floor(detail.price.commision_cost.toLocaleString())}원
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className={modalSwitch ? 'openSubscribeModal' : 'closeModal'}>
+          <div className="subscribeInnerWrap">
+            <div className="innerBox">
+              <span className="closeButton" onClick={openModal}>
+                X
+              </span>
+              <h1 className="modalTitle">
+                구독 받으실 주소를
+                <br /> 입력해주세요.
+              </h1>
+              <input
+                className="userAddressInput"
+                type="text"
+                onChange={saveUserAddressInputValue}
+                placeholder="주소를 입력 해주세요."
+              />
+              <button className="submitButton" onClick={subscribeAction}>
+                구독하기
+              </button>
             </div>
           </div>
         </div>

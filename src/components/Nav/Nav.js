@@ -54,17 +54,15 @@ function Nav({ isLogin, setIsLogin }) {
             </Link>
           </li>
           <li className="navMenuList">
-            <Link to="/">
-              <p
-                className={`navMenuItems ${
-                  styleHandle === 3 ? 'navChecked' : ''
-                }`}
-                value={styleValue}
-                onClick={() => setStyleHandle(3)}
-              >
-                고객센터
-              </p>
-            </Link>
+            <p
+              className={`navMenuItems ${
+                styleHandle === 3 ? 'navChecked' : ''
+              }`}
+              value={styleValue}
+              onClick={() => setStyleHandle(3)}
+            >
+              고객센터
+            </p>
           </li>
         </ul>
       </div>

@@ -1,26 +1,38 @@
 {
   "RESULT": {
-    "name": "건성용 클렌징폼",
-    "ml_volume": 80.0,
-    "category_price": 7600.0,
-    "thumb": "https://media.vlpt.us/images/eslerkang/post/16581b21-9917-41f2-a8bd-bc319b0895ed/cleanser2.png",
-    "price": [
+    "product_id": 1,
+    "ml_volume": "80.00",
+    "images": [
       {
-        "manufacturing_cost": 3042.0,
-        "transportation_cost": 1000.0,
-        "development_cost": 1260.0,
-        "commission_cost": 248.0,
-        "other_market_price": 25000.0
+        "thumb": "https://media.vlpt.us/images/eslerkang/post/23ad3d52-b08f-4270-bfe1-f5003c721bd4/cleanser1.png"
       }
     ],
-    "reviews": [
+    "name": "기름기 많은 피부를 위한 지성/복합성용 클렌징폼",
+    "category_price": "7600.00",
+    "tags": ["지성", "복합성"],
+    "average_star": 0,
+    "review": [],
+    "price": {
+      "manufacturing_cost": "3043.00",
+      "transportation_cost": "1000.00",
+      "development_cost": "1260.00",
+      "commisson_cost": "248.00",
+      "other_market_price": "25000.00"
+    },
+    "product_set": [
       {
-        "content": "dfasdfasd",
-        "star": 2,
-        "product_id": 2,
-        "name": "동화길",
-        "created_at": "2021-12-06T12:44:56.288"
+        "id": 1,
+        "tags": ["지성", "복합성"]
+      },
+      {
+        "id": 2,
+        "tags": ["건성"]
+      },
+      {
+        "id": 3,
+        "tags": ["민감성"]
       }
     ]
-  }
+  },
+  "MESSAGE": "SUCCESS"
 }
