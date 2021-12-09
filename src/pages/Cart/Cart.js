@@ -91,13 +91,13 @@ function Cart() {
       .catch(error => alert(error));
   };
 
-  return (
-    <div>
-      {empty ? (
-        <EmptyCart />
-      ) : loading ? (
-        <LoadingCart />
-      ) : (
+  const cartCondition = () => {
+    if (empty === true) {
+      return <EmptyCart />;
+    } else if (loading === true) {
+      return <LoadingCart />;
+    } else {
+      return (
         <main className="cartMain">
           <div className="title">장바구니</div>
           <button
@@ -133,9 +133,11 @@ function Cart() {
             </Link>
           </div>
         </main>
-      )}
-    </div>
-  );
+      );
+    }
+  };
+
+  return <div>{cartCondition()}</div>;
 }
 
 export default Cart;
