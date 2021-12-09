@@ -59,7 +59,6 @@ function Subscribe() {
         />
         {productModal ? (
           <SubscribeProduct
-            API={API}
             setNextPurchaseDate={setNextPurchaseDate}
             setDeliveryCycle={setDeliveryCycle}
             subscribeData={subscribeData}

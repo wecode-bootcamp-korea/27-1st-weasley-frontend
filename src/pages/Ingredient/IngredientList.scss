@@ -1,0 +1,62 @@
+.container {
+  width: 100%;
+  overflow: hidden;
+
+  .ingredientList {
+    width: 100%;
+    margin-bottom: 160px;
+    display: flex;
+    margin-left: 310px;
+    transition: transform 0.5s;
+    .ingredient {
+      margin-right: 20px;
+      margin-left: 20px;
+      width: 100%;
+      height: 400px;
+      background-image: url(https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/oily%26combination.png);
+      background-repeat: no-repeat;
+      background-size: 500px;
+      border: none;
+      border-radius: 20px;
+    }
+    .type {
+      color: gray;
+      margin-top: 320px;
+      margin-left: 45px;
+    }
+    .name {
+      color: black;
+      margin-top: 20px;
+      font-weight: 550;
+      font-size: 23px;
+    }
+  }
+}
+
+.ingredientCategory {
+  margin-left: 160px;
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.leftButton {
+  left: 100px;
+  top: 220px;
+}
+
+.ingredientBtn {
+  cursor: pointer;
+  z-index: 1;
+  position: relative;
+  background-color: gray;
+  color: white;
+  opacity: 0.4;
+  border: none;
+  border-radius: 20px;
+  font-size: 30px;
+}
+.rightButton {
+  left: 1300px;
+  top: 220px;
+}

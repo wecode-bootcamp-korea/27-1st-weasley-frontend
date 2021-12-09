@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { API } from '../../config';
 import './SubscribeProduct.scss';
 
 function SubscribeProduct({
@@ -9,7 +10,6 @@ function SubscribeProduct({
   setDeliveryCycle,
   setNextDeliveryDate,
   setNextPurchaseDate,
-  API,
 }) {
   const fetchDelete = obj => {
     window.confirm(`${obj.category_name} 제품구독을 취소하시겠습니까?`)
