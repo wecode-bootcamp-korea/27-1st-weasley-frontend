@@ -18,7 +18,7 @@ const GuestUserInfo = ({ userAddressInputValue, getAddressInput }) => {
           fetch(API.ORDER, {
             method: 'POST',
             headers: {
-              Authorization: sessionStorage.getItem('access_token'),
+              Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
             },
             body: JSON.stringify({
               location: userAddressInputValue,

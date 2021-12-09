@@ -17,7 +17,7 @@ const Payment = () => {
   useEffect(() => {
     fetch(API.ORDER, {
       headers: {
-        Authorization: sessionStorage.getItem('access_token'),
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
