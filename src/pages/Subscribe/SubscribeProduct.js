@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { API } from '../../config';
 import './SubscribeProduct.scss';
 
 function SubscribeProduct({
-  productData,
-  setProductData,
+  subscribeData,
+  setSubscribeData,
   setIsItNowSubscribing,
   setDeliveryCycle,
   setNextDeliveryDate,
   setNextPurchaseDate,
 }) {
-  const fetchDelete = product_id => {
-    window.confirm('제품구독을 취소하시겠습니까?')
-      ? fetch(`1`, {
+  const fetchDelete = obj => {
+    window.confirm(`${obj.category_name} 제품구독을 취소하시겠습니까?`)
+      ? fetch(`${API.SUBSCRIBE}?id=[${obj.subscribe_id}]`, {
           method: 'delete',
           headers: {
             Authorization:
@@ -22,36 +23,36 @@ function SubscribeProduct({
           .then(res => res.json())
           .then(data => {
             data.MESSAGE === 'DELETED'
-              ? alert(data.MESSAGE)
-              : handleDelete(product_id);
+              ? handleDelete(obj.subscribe_id)
+              : alert(data.MESSAGE);
           })
           .catch(error => alert(error))
-      : handleDelete(product_id);
+      : setSubscribeData(subscribeData);
   };
 
-  const handleDelete = product_id => {
-    const filteredProduct = productData.filter(item => {
-      return item.product_id !== product_id;
+  const handleDelete = productId => {
+    const filteredProduct = subscribeData.filter(obj => {
+      return obj.subscribe_id !== productId;
     });
-    setProductData(filteredProduct);
+    setSubscribeData(filteredProduct);
   };
 
   return (
     <>
       <div className="subscribeProductTitle">구독중인 상품</div>
-      {productData.length > 0 ? (
+      {subscribeData.length > 0 ? (
         <div className="subscribeProduct">
-          {productData.map(product => {
+          {subscribeData.map(obj => {
             return (
               <>
-                <Link to={`/productdetails/${product.product_id}`}>
-                  <div key={product.id}>
-                    <img src={product.thumb} alt="productImg" />
+                <Link to={`/productdetails/${obj.product_id}`}>
+                  <div key={obj.product_id}>
+                    <img src={obj?.thumb} alt="productImg" />
                   </div>
                 </Link>
                 <button
                   className="subscribeCancel"
-                  onClick={() => fetchDelete(product.product_id)}
+                  onClick={() => fetchDelete(obj)}
                 >
                   x
                 </button>

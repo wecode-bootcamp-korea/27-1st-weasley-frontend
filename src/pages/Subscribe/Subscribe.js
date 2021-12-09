@@ -9,13 +9,11 @@ import './Subscribe.scss';
 function Subscribe() {
   const [productModal, setproductModal] = useState(false);
 
-  const [deliveryCycle, setDeliveryCycle] = useState('8');
+  const [deliveryCycle, setDeliveryCycle] = useState('');
 
   const [subscribeData, setSubscribeData] = useState([]);
 
   const [nextDeliveryDate, setNextDeliveryDate] = useState();
-
-  const [productData, setProductData] = useState([]);
 
   const [isItNowSubscribing, setIsItNowSubscribing] = useState('구독중');
 
@@ -32,10 +30,9 @@ function Subscribe() {
       .then(response => response.json())
       .then(data => {
         setSubscribeData(data.RESULT);
-        setProductData(data.RESULT.products_list);
-        setNextDeliveryDate(data.RESULT.next_ship_date);
-        setDeliveryCycle(`${data.RESULT.interval}주 마다`);
-        setNextPurchaseDate(data.RESULT.next_purchase_date);
+        setNextDeliveryDate(data.RESULT[0]?.next_ship_date);
+        setDeliveryCycle(`${data.RESULT[0]?.interval}주 마다`);
+        setNextPurchaseDate(data.RESULT[0]?.next_purchase_date);
       });
   }, []);
 
@@ -62,10 +59,9 @@ function Subscribe() {
         />
         {productModal ? (
           <SubscribeProduct
-            productData={productData}
             setNextPurchaseDate={setNextPurchaseDate}
             setDeliveryCycle={setDeliveryCycle}
-            setProductData={setProductData}
+            subscribeData={subscribeData}
             setSubscribeData={setSubscribeData}
             setIsItNowSubscribing={setIsItNowSubscribing}
             setNextDeliveryDate={setNextDeliveryDate}

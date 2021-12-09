@@ -12,12 +12,13 @@ function SubscribeUserBox({
     <div className="userBox">
       <div className="userName">
         <div className="name">
-          <span>{subscribeData.name}</span> <span>{isItNowSubscribing}</span>
+          <span>{subscribeData[0]?.user_name}</span>{' '}
+          <span>{isItNowSubscribing}</span>
         </div>
         <div className="modify">수정</div>
       </div>
       <div className="addressBox">
-        <div className="address">{subscribeData.address}</div>
+        <div className="address">{subscribeData[0]?.address}</div>
         <div
           className={isItclicked ? 'clickOffBox' : 'clickOnBox'}
           onClick={() => {
