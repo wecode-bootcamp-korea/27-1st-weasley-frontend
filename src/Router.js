@@ -18,10 +18,13 @@ const Router = () => {
     <BrowserRouter>
       <Nav isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
+        <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/" element={<Main />} />
         <Route path="/SignIn" element={<SignIn setIsLogin={setIsLogin} />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetails/:id" element={<ProductDetail />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/ingredient" element={<Ingredient />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/signup" element={<Signup />} />

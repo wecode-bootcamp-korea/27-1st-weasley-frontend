@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { API } from '../../../src/config';
 import EmptyCart from './EmptyCart';
+import LoadingCart from './LoadingCart';
 import List from './List';
 import Price from './Price';
-import Nav from '../../components/Nav/Nav';
 import '../Cart/Cart.scss';
+import { Link } from 'react-router-dom';
 
 function Cart() {
   const [cart, setCart] = useState([]);
-  const [empty, setEmpty] = useState(true);
+  const [empty, setEmpty] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(API.CART, {
@@ -23,8 +25,8 @@ function Cart() {
         if (data.RESULT.cart_items.length === 0) {
           setEmpty(true);
         } else {
-          setEmpty(false);
           setCart(data.RESULT.cart_items);
+          setLoading(false);
         }
       });
   }, []);
@@ -65,7 +67,9 @@ function Cart() {
       return item.product_id !== productId;
     });
 
-    setCart(filteredCart);
+    if (filteredCart.length === 0) {
+      setEmpty(true);
+    } else setCart(filteredCart);
   };
 
   const handleDeleteAll = () => {
@@ -82,56 +86,58 @@ function Cart() {
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE === 'DELETED' ? setCart([]) : alert(data.MESSAGE);
+        data.MESSAGE === 'DELETED' ? setEmpty(true) : alert(data.MESSAGE);
       })
       .catch(error => alert(error));
   };
 
-  return (
-    <div>
-      {empty ? (
-        <EmptyCart />
-      ) : (
-        <>
-          <Nav />
-          <main className="cartMain">
-            <div className="title">장바구니</div>
-            <button
-              className="removeAll"
-              onClick={() => {
-                window.confirm('전체삭제 하시겠습니까?')
-                  ? handleDeleteAll()
-                  : setCart(...cart);
-              }}
-            >
-              전체삭제
-            </button>
-            {cart.map(function (list, index) {
-              return (
-                <List
-                  setEmpty={setEmpty}
-                  eraseCartItem={() => eraseCartItem(list.product_id)}
-                  list={list}
-                  increaseCartItem={() => increaseCartItem(index)}
-                  decreaseCartItem={() => decreaseCartItem(index)}
-                  key={list.product_id}
-                  API={API}
-                  cart={cart}
-                  setCart={setCart}
-                />
-              );
-            })}
+  const cartCondition = () => {
+    if (empty === true) {
+      return <EmptyCart />;
+    } else if (loading === true) {
+      return <LoadingCart />;
+    } else {
+      return (
+        <main className="cartMain">
+          <div className="title">장바구니</div>
+          <button
+            className="removeAll"
+            onClick={() => {
+              window.confirm('전체삭제 하시겠습니까?')
+                ? handleDeleteAll()
+                : setCart(...cart);
+            }}
+          >
+            전체삭제
+          </button>
+          {cart.map(function (list, index) {
+            return (
+              <List
+                setEmpty={setEmpty}
+                eraseCartItem={() => eraseCartItem(list.product_id)}
+                list={list}
+                increaseCartItem={() => increaseCartItem(index)}
+                decreaseCartItem={() => decreaseCartItem(index)}
+                key={list.product_id}
+                cart={cart}
+                setCart={setCart}
+              />
+            );
+          })}
 
-            <Price cart={cart} />
+          <Price cart={cart} />
 
-            <div className="orderBtn">
+          <div className="orderBtn">
+            <Link to="/payment">
               <button>주문하기</button>
-            </div>
-          </main>
-        </>
-      )}
-    </div>
-  );
+            </Link>
+          </div>
+        </main>
+      );
+    }
+  };
+
+  return <div>{cartCondition()}</div>;
 }
 
 export default Cart;

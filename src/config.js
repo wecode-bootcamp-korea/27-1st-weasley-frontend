@@ -5,4 +5,7 @@ export const API = {
   SIGNUP: `${BASE_URL}/users/signup`,
   SIGNIN: `${BASE_URL}/users/signin`,
   //   CART: '/data/cartData.json',
+  // SIGNUP: `${BASE_URL}/users/signup`,
+  CATEGORY: `${BASE_URL}/products/categories`,
+  SUBSCRIBE: `${BASE_URL}/shops/subscribes`,
 };

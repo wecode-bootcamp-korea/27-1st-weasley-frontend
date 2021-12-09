@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "클렌징폼",
+    "products_list": [
+      {
+        "id": 1,
+        "type": "지성 피부용",
+        "name": "소듐코코일알라니네이트",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/oily%26combination.png"
+      },
+      {
+        "id": 2,
+        "type": "건성 피부용",
+        "name": "라우릴하이드록시설테인",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/dry.png"
+      },
+      {
+        "id": 3,
+        "type": "민감성 피부용",
+        "name": "데실글루코사이드",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/sensitive.png"
+      },
+      {
+        "id": 4,
+        "type": "복합성 피부용",
+        "name": "소듐글루사이드",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/dry.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "부스터",
+    "products_list": [
+      {
+        "id": 5,
+        "type": "모공케어",
+        "name": "바하",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/booster/poreControl.png"
+      },
+      {
+        "id": 6,
+        "type": "탄력케어",
+        "name": "펩타이드",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/booster/tightening.png"
+      },
+      {
+        "id": 7,
+        "type": "잡티케어",
+        "name": "나이아신아마이드",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/booster/brightening.png"
+      },
+      {
+        "id": 8,
+        "type": "민감케어",
+        "name": "시카",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/lotion/oily.png"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "로션",
+    "products_list": [
+      {
+        "id": 9,
+        "type": "지성 피부용",
+        "name": "징크피씨에이",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/lotion/dry.png"
+      },
+      {
+        "id": 10,
+        "type": "건성 피부용",
+        "name": "세라마이드",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/lotion/sensitive.png"
+      },
+      {
+        "id": 11,
+        "type": "민감성 피부용",
+        "name": "판테놀",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/lotion/combination.png"
+      },
+      {
+        "id": 12,
+        "type": "복합성 피부용",
+        "name": "히알루론산",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/sunscreen/light.png"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "선크림",
+    "products_list": [
+      {
+        "id": 13,
+        "type": "지성 피부용",
+        "name": "파하",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/sunscreen/cream.png"
+      },
+      {
+        "id": 14,
+        "type": "건성 피부용",
+        "name": "판테놀",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/lotion/dry.png"
+      },
+      {
+        "id": 15,
+        "type": "복합성 피부용",
+        "name": "피씨에이",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/cleanser/sensitive.png"
+      },
+      {
+        "id": 16,
+        "type": "건성 피부용",
+        "name": "세라마이드",
+        "img": "https://wiselystatic.s3.amazonaws.com/OPENWORK/prod/assets/images/core-ingredient/lotion/oily.png"
+      }
+    ]
+  }
+]

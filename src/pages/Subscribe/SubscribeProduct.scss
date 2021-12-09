@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+
+.subscribeProductTitle {
+  width: 30%;
+  padding: 15px 30px;
+  margin: $marginCenter;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: $weightSemiBold;
+  border-bottom: 3px solid black;
+}
+
+.subscribeProduct {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: $marginCenter;
+
+  div {
+    border: none;
+    border-radius: 5px;
+    margin: 6px 6px 14px 0;
+    box-shadow: 2px 2px 4px 3px rgb(224, 222, 222);
+
+    img {
+      width: 200px;
+    }
+
+    img:hover {
+      background: linear-gradient(rgb(245, 245, 245), 50%, $colorWhite);
+    }
+  }
+
+  .subscribeCancel {
+    position: relative;
+    top: 10px;
+    right: 20px;
+    height: 10%;
+    padding: 0%;
+    border-radius: 5px;
+    border: none;
+    color: $colorGray;
+    background-color: $colorWhite;
+    font-size: $fontMedium;
+  }
+}
+
+.notSubscribing {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 240px;
+  color: $colorGray;
+  font-size: 30px;
+  font-weight: $weightRegular;
+}

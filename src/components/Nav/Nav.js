@@ -28,7 +28,7 @@ function Nav({ isLogin, setIsLogin }) {
         </div>
         <ul className="navMenuUl">
           <li className="navMenuList">
-            <Link to="/ingridient">
+            <Link to="/ingredient">
               <p
                 className={`navMenuItems ${
                   styleHandle === 1 ? 'navChecked' : ''

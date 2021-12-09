@@ -1,4 +1,5 @@
 import React from 'react';
+import { API } from '../../../src/config';
 import './List.scss';
 
 function List({
@@ -8,7 +9,6 @@ function List({
   eraseCartItem,
   cart,
   setCart,
-  API,
 }) {
   const handleDelete = () => {
     window.confirm(`${list.category_name}을 삭제 하시겠습니까?`)
@@ -35,7 +35,7 @@ function List({
       return;
     }
     fetch(`${API.CART}/${list.cart_id}`, {
-      method: 'patch',
+      method: 'PATCH',
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
@@ -59,7 +59,7 @@ function List({
       return;
     }
     fetch(`${API.CART}/${list.cart_id}`, {
-      method: 'patch',
+      method: 'PATCH',
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
