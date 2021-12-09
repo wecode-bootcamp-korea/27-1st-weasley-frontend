@@ -12,11 +12,15 @@ function SubscribeCycle({ setDeliveryCycle, setNextDeliveryDate }) {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
-      body: week,
+      body: JSON.stringify({
+        interval: week,
+      }),
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE ? setNextDeliveryDate(data.MESSAGE) : alert(data.MESSAGE);
+        data.MESSAGE === 'SUCCESS'
+          ? setNextDeliveryDate(data.RESULT)
+          : alert(data.MESSAGE);
       })
       .catch(error => alert(error));
   };
