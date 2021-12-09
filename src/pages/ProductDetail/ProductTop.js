@@ -16,6 +16,7 @@ const ProductDetailTop = ({
   const [subscribeUserAddressInput, setSubscribeUserAddressInput] =
     useState('');
 
+  const [saveAddress, setSaveAddress] = useState('');
   const [modalSwitch, setModalSwitch] = useState(false);
 
   const saveUserAddressInputValue = e => {
@@ -23,14 +24,19 @@ const ProductDetailTop = ({
   };
 
   const isValidGoToPage = () => {
-    return subscribeUserAddressInput ? navigate('/subscribe') : null;
+    return subscribeUserAddressInput && navigate('/subscribe');
   };
 
   const openModal = () => {
-    fetch(API.SUBSCRIBE)
+    fetch(API.USER_ADDRESS, {
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+    })
       .then(res => res.json())
       .then(data => {
-        if (data.length) {
+        if (data.RESULT.length) {
           postAddressUser();
           navigate('/subscribe');
         } else {
@@ -40,20 +46,25 @@ const ProductDetailTop = ({
   };
 
   const postAddressUser = () => {
-    fetch(API.CART, {
+    fetch(API.SUBSCRIBE, {
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
       method: 'POST',
       body: JSON.stringify({
-        address_id: subscribeUserAddressInput,
+        address_id: saveAddress,
         product_id: id,
         amount: count,
       }),
-    }).then(res => {
-      return res.json();
-    });
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setSaveAddress(data);
+      })
+      .then(data => (data.MESSAGE === '오류메세지' ? alert : null));
   };
 
   const payAction = () => {
@@ -64,7 +75,6 @@ const ProductDetailTop = ({
       },
       method: 'POST',
       body: JSON.stringify({
-        address_id: subscribeUserAddressInput,
         product_id: id,
         amount: count,
       }),
@@ -74,14 +84,14 @@ const ProductDetailTop = ({
   };
 
   const subscribeAction = () => {
-    fetch(API.USER_ADDRESS, {
+    fetch(API.SUBSCRIBE, {
       method: 'POST',
       headers: {
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
       body: JSON.stringify({
-        location: subscribeUserAddressInput,
+        address_id: subscribeUserAddressInput,
       }),
     }).then(res => res.json());
     isValidGoToPage();
@@ -97,7 +107,7 @@ const ProductDetailTop = ({
           <div className="productInfoHeader">
             <span className="productTitleName">{detail.name}</span>
             <span className="productInfoOptions">
-              <Link to="#">타입변경</Link>
+              <Link to="/productlist">타입변경</Link>
             </span>
           </div>
           <div className="productInfoBottom">
@@ -127,9 +137,11 @@ const ProductDetailTop = ({
             <button type="button" className="buyButton" onClick={openModal}>
               구독하기
             </button>
-            <button type="button" className="buyButton" onClick={payAction}>
-              구매하기
-            </button>
+            <Link to="/cart">
+              <button type="button" className="buyButton" onClick={payAction}>
+                구매하기
+              </button>
+            </Link>
           </form>
           <div className="priceTab">
             <span className="priceTag">총 주문금액</span>
@@ -159,7 +171,7 @@ const ProductDetailTop = ({
             </p>
           </div>
           <div className="slideImage">
-            <img src="" alt="slide1" />
+            <img src={detail.images[1].detail} alt="slide1" />
           </div>
         </div>
         <div className="costInfographic">
@@ -174,7 +186,7 @@ const ProductDetailTop = ({
             <span className="costInfoData">
               <p className="costInfoDataTag">제조비</p>
               <p className="costInfoDataPrice">
-                {detail.price.manufacturing_cost.toLocaleString()}원
+                {detail.price.manufacturing_cost}원
               </p>
             </span>
             <span className="costInfoData">

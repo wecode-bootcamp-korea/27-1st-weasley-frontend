@@ -24,7 +24,6 @@ const ProductDetail = () => {
         setDetail(data);
       });
   }, []);
-  console.log(detail);
 
   return (
     <main className="main">
