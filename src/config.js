@@ -1,4 +1,4 @@
-const BASE_URL = 'http://3.142.147.114:8000';
+const BASE_URL = 'http://13.125.232.201';
 
 export const API = {
   CART: `${BASE_URL}/shops/carts`,
