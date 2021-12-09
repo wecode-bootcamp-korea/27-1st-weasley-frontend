@@ -4,7 +4,7 @@ body {
   background-color: $colorBackGroundGray;
 }
 
-.emptyCartMain {
+.loadingCartMain {
   width: 800px;
   height: 500px;
   margin: $marginCenter;
@@ -27,7 +27,7 @@ body {
   }
 }
 
-.emptyOrderBtn {
+.loadingOrderBtn {
   padding: 0 50px;
   button {
     width: 100%;
