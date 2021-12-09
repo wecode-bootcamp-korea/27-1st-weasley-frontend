@@ -23,10 +23,6 @@ const ProductDetailTop = ({
     setSubscribeUserAddressInput(e.target.value);
   };
 
-  const isValidGoToPage = () => {
-    return subscribeUserAddressInput && navigate('/subscribe');
-  };
-
   const openModal = () => {
     fetch(API.USER_ADDRESS, {
       headers: {
@@ -38,7 +34,6 @@ const ProductDetailTop = ({
       .then(res => res.json())
       .then(data => {
         if (data.RESULT.length) {
-          console.log('aaaaaaa', data.RESULT[0].address_id);
           setSaveAddress(data.RESULT[0].address_id);
           postAddressUser(data.RESULT[0].address_id);
         } else {
@@ -46,8 +41,6 @@ const ProductDetailTop = ({
         }
       });
   };
-
-  console.log('data address확인:', saveAddress);
 
   const postAddressUser = ad => {
     fetch(API.SUBSCRIBE, {
