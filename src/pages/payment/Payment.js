@@ -5,6 +5,7 @@ import PayInfo from './PayInfo';
 import GuestUserInfo from './GuestUserInfo';
 import PaymentUserInfo from './PaymentUserInfo';
 import './Payment.scss';
+import { API } from '../../config.js';
 
 const Payment = () => {
   const [userAddressInputValue, setUserAddressInputValue] = useState('');
@@ -14,7 +15,7 @@ const Payment = () => {
   const [addressValidatedSwitch, setAddressValidatedSwitch] = useState(false);
 
   useEffect(() => {
-    fetch('/data/payment/payinfo.json', {
+    fetch(API.ORDER, {
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
       },
@@ -22,9 +23,9 @@ const Payment = () => {
       .then(res => res.json())
       .then(data => setPayInfo(data));
   }, []);
-
+  console.log(payInfo);
   useEffect(() => {
-    fetch('/data/payment/userinfo.json')
+    fetch(API.ORDER)
       .then(res => res.json())
       .then(data => {
         setUserInfo(data);

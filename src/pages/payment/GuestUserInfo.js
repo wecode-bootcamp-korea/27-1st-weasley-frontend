@@ -1,3 +1,4 @@
+import { API } from '../../config.js';
 import './GuestUserInfo.scss';
 
 const GuestUserInfo = ({ userAddressInputValue, getAddressInput }) => {
@@ -14,7 +15,7 @@ const GuestUserInfo = ({ userAddressInputValue, getAddressInput }) => {
         type="button"
         className="addressSubmitFormButton"
         onClick={() => {
-          fetch('http://3.142.147.114:8000/users/addresses', {
+          fetch(API.ORDER, {
             method: 'POST',
             headers: {
               Authorization: sessionStorage.getItem('access_token'),

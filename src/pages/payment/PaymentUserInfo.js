@@ -1,3 +1,4 @@
+import { API } from '../../config.js';
 import './PaymentUserInfo.scss';
 
 const PaymentUserInfo = ({
@@ -29,13 +30,13 @@ const PaymentUserInfo = ({
             type="button"
             className="methodButton point"
             onClick={() => {
-              fetch('http://3.142.147.114:8000/shops/orders', {
+              fetch(API.ORDER, {
                 method: 'POST',
                 headers: {
                   Authorization: sessionStorage.getItem('access_token'),
                 },
                 body: JSON.stringify({
-                  address_id: 9,
+                  address_id: address,
                 }),
               }).then(res => res.json());
             }}
