@@ -8,7 +8,7 @@ const emailReg =
 const passwordReg =
   /^.*(?=^.{8,45}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
-function Signin() {
+function Signin({ setIsLogin }) {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ function Signin() {
 
   const isInputValid =
     emailExp.test(emailValue) && passwordExp.test(passwordValue);
+
   const handleEmail = e => {
     const { value } = e.target;
     setEmailValue(value);
@@ -31,10 +32,6 @@ function Signin() {
   const goToMain = () => {
     fetch(API.SIGNIN, {
       method: 'POST',
-      headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
-      },
       body: JSON.stringify({
         email: emailValue,
         password: passwordValue,
@@ -43,7 +40,8 @@ function Signin() {
       .then(res => res.json())
       .then(res => {
         if (res.MESSAGE === 'SUCCESS') {
-          localStorage.setItem('access_token', res.access_token);
+          sessionStorage.setItem('access_token', res.access_token);
+          setIsLogin(true);
           navigate('/');
         } else {
           alert('회원 가입을 진행해주세요');

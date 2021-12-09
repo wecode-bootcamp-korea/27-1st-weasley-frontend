@@ -11,14 +11,16 @@ import Main from './pages/Main/Main';
 import Nav from './components/Nav/Nav';
 
 const Router = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/SignIn" element={<SignIn setIsLogin={setIsLogin} />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetails/:id" element={<ProductDetail />} />
-        <Route path="/SignIn" element={<SignIn />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/signup" element={<Signup />} />
