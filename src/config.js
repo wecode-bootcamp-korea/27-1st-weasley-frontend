@@ -8,5 +8,6 @@ export const API = {
   SUBSCRIBE: `${BASE_URL}/shops/subscribes`,
   PRODUCT_DETAIL: `${BASE_URL}/products`,
   ORDER: `${BASE_URL}/shops/orders`,
+  ALLVIEW: `${BASE_URL}/shops/orders/all`,
   USER_ADDRESS: `${BASE_URL}/users/addresses`,
 };
