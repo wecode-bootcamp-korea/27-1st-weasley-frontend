@@ -10,6 +10,8 @@ import Payment from './pages/payment/Payment';
 import Footer from './components/Footer/Footer';
 import Main from './pages/Main/Main';
 import Nav from './components/Nav/Nav';
+import Subscribe from './pages/Subscribe/Subscribe';
+import Ingredient from './pages/Ingredient/Ingredient';
 
 const Router = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -23,7 +25,7 @@ const Router = () => {
         <Route path="/SignIn" element={<SignIn setIsLogin={setIsLogin} />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetails/:id" element={<ProductDetail />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/ingredient" element={<Ingredient />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
