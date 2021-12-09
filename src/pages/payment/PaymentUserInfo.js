@@ -32,8 +32,7 @@ const PaymentUserInfo = ({
               fetch('http://3.142.147.114:8000/shops/orders', {
                 method: 'POST',
                 headers: {
-                  Authorization:
-                    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+                  Authorization: sessionStorage.getItem('access_token'),
                 },
                 body: JSON.stringify({
                   address_id: 9,
