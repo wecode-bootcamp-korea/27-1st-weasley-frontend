@@ -17,7 +17,7 @@ const GuestUserInfo = ({ userAddressInputValue, getAddressInput }) => {
           fetch('http://3.142.147.114:8000/users/addresses', {
             method: 'POST',
             headers: {
-              Authorization: sessionStorage.getItem('access_token'),
+              Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
             },
             body: JSON.stringify({
               location: userAddressInputValue,

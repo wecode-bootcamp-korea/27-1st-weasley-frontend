@@ -1,15 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../config';
 import './SubscribeCycle.scss';
 
 function SubscribeCycle({ setDeliveryCycle, setNextDeliveryDate }) {
   const cycle = [4, 12, 16];
 
+  const navigate = useNavigate();
+
   const handleNextShipDate = week => {
     fetch(API.SUBSCRIBE, {
       method: 'PATCH',
       headers: {
-        Authorization: sessionStorage.getItem('access_token'),
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
       body: JSON.stringify({
         interval: week,
@@ -17,6 +20,11 @@ function SubscribeCycle({ setDeliveryCycle, setNextDeliveryDate }) {
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         data.MESSAGE === 'SUCCESS'
           ? setNextDeliveryDate(data.RESULT)
           : alert(data.MESSAGE);
