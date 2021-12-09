@@ -16,7 +16,7 @@ const Payment = () => {
   useEffect(() => {
     fetch('/data/payment/payinfo.json', {
       headers: {
-        Authorization: sessionStorage.getItem('access_token'),
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())

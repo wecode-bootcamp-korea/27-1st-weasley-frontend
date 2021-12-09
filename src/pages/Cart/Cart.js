@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../../src/config';
 import EmptyCart from './EmptyCart';
 import LoadingCart from './LoadingCart';
@@ -8,6 +9,7 @@ import '../Cart/Cart.scss';
 import { Link } from 'react-router-dom';
 
 function Cart() {
+  const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [empty, setEmpty] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -16,11 +18,16 @@ function Cart() {
     fetch(API.CART, {
       method: 'get',
       headers: {
-        Authorization: sessionStorage.getItem('access_token'),
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         if (data.RESULT.cart_items.length === 0) {
           setEmpty(true);
         } else {
@@ -79,11 +86,16 @@ function Cart() {
     fetch(`${API.CART}?id=${JSON.stringify(lists_id)}`, {
       method: 'delete',
       headers: {
-        Authorization: sessionStorage.getItem('access_token'),
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         data.MESSAGE === 'DELETED' ? setEmpty(true) : alert(data.MESSAGE);
       })
       .catch(error => alert(error));
