@@ -1,4 +1,5 @@
 import React from 'react';
+import { API } from '../../../src/config';
 import './List.scss';
 
 function List({
@@ -8,7 +9,6 @@ function List({
   eraseCartItem,
   cart,
   setCart,
-  API,
 }) {
   const handleDelete = () => {
     window.confirm(`${list.category_name}을 삭제 하시겠습니까?`)
