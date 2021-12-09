@@ -115,7 +115,7 @@ function Cart() {
             onClick={() => {
               window.confirm('전체삭제 하시겠습니까?')
                 ? handleDeleteAll()
-                : setCart(...cart);
+                : setCart(cart);
             }}
           >
             전체삭제
