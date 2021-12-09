@@ -8,13 +8,8 @@ import { useState } from 'react';
 import Cart from './pages/Cart/Cart';
 import Payment from './pages/payment/Payment';
 import Nav from './components/Nav/Nav';
-<<<<<<< HEAD
-import Main from './pages/Main/Main';
-import Footer from './components/Footer/Footer';
-=======
 import Subscribe from './pages/Subscribe/Subscribe';
 import Ingredient from './pages/Ingredient/Ingredient';
->>>>>>> master
 
 const Router = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -27,11 +22,8 @@ const Router = () => {
         <Route path="/SignIn" element={<SignIn setIsLogin={setIsLogin} />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetails/:id" element={<ProductDetail />} />
-<<<<<<< HEAD
         <Route path="/signin" element={<SignIn />} />
-=======
         <Route path="/ingredient" element={<Ingredient />} />
->>>>>>> master
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/signup" element={<Signup />} />
