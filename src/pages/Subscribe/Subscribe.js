@@ -26,8 +26,7 @@ function Subscribe() {
     fetch(API.SUBSCRIBE, {
       method: 'GET',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: sessionStorage.getItem('access_token'),
       },
     })
       .then(response => response.json())

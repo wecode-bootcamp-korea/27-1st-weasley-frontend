@@ -15,8 +15,7 @@ function List({
       ? fetch(`${API.CART}?id=[${list.cart_id}]`, {
           method: 'delete',
           headers: {
-            Authorization:
-              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+            Authorization: sessionStorage.getItem('access_token'),
           },
         })
           .then(res => res.json())
@@ -37,8 +36,7 @@ function List({
     fetch(`${API.CART}/${list.cart_id}`, {
       method: 'PATCH',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: sessionStorage.getItem('access_token'),
       },
       body: JSON.stringify({
         amount: list.amount + 1,
@@ -61,8 +59,7 @@ function List({
     fetch(`${API.CART}/${list.cart_id}`, {
       method: 'PATCH',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: sessionStorage.getItem('access_token'),
       },
       body: JSON.stringify({
         amount: list.amount - 1,
