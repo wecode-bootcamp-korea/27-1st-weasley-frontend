@@ -28,7 +28,7 @@ function Login() {
   };
 
   const goToMain = () => {
-    fetch(API.LOGIN, {
+    fetch(API.SIGNIN, {
       method: 'POST',
       body: JSON.stringify({
         email: emailValue,

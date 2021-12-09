@@ -16,7 +16,7 @@ const ProductDetailTop = ({
   const [subscribeUserAddressInput, setSubscribeUserAddressInput] =
     useState('');
 
-  const [saveAddress, setSaveAddress] = useState('');
+  const [saveAddress, setSaveAddress] = useState();
   const [modalSwitch, setModalSwitch] = useState(false);
 
   const saveUserAddressInputValue = e => {
@@ -33,19 +33,23 @@ const ProductDetailTop = ({
         Authorization:
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
       },
+      method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         if (data.RESULT.length) {
-          postAddressUser();
-          navigate('/subscribe');
+          console.log('aaaaaaa', data.RESULT[0].address_id);
+          setSaveAddress(data.RESULT[0].address_id);
+          postAddressUser(data.RESULT[0].address_id);
         } else {
           setModalSwitch(!modalSwitch);
         }
       });
   };
 
-  const postAddressUser = () => {
+  console.log('data address확인:', saveAddress);
+
+  const postAddressUser = ad => {
     fetch(API.SUBSCRIBE, {
       headers: {
         Authorization:
@@ -53,18 +57,67 @@ const ProductDetailTop = ({
       },
       method: 'POST',
       body: JSON.stringify({
-        address_id: saveAddress,
         product_id: id,
         amount: count,
+        address_id: ad,
       }),
     })
       .then(res => {
         return res.json();
       })
+
       .then(data => {
-        setSaveAddress(data);
-      })
-      .then(data => (data.MESSAGE === '오류메세지' ? alert : null));
+        alert('구독신청 완료 되었습니다.');
+      });
+  };
+
+  const subscribeAction = () => {
+    fetch(API.USER_ADDRESS, {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+      },
+      body: JSON.stringify({
+        address_id: saveAddress,
+        location: subscribeUserAddressInput,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert('구독신청 완료 되었습니다. ');
+        fetch(API.USER_ADDRESS, {
+          headers: {
+            Authorization:
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+          },
+          method: 'GET',
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.MESSAGE === 'SUCCESS') {
+              setSaveAddress(data.RESULT[0].address_id);
+              fetch(API.SUBSCRIBE, {
+                headers: {
+                  Authorization:
+                    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+                },
+                method: 'POST',
+                body: {
+                  product_id: id,
+                  amount: count,
+                  address_id: saveAddress,
+                },
+              })
+                .then(res => res.json())
+                .then(data => {
+                  if (data.MESSAGE === 'SUCCESS') {
+                    navigate('/subscribe');
+                  }
+                });
+            }
+          });
+      });
   };
 
   const payAction = () => {
@@ -78,23 +131,17 @@ const ProductDetailTop = ({
         product_id: id,
         amount: count,
       }),
-    }).then(res => {
-      return res.json();
-    });
-  };
-
-  const subscribeAction = () => {
-    fetch(API.SUBSCRIBE, {
-      method: 'POST',
-      headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
-      },
-      body: JSON.stringify({
-        address_id: subscribeUserAddressInput,
-      }),
-    }).then(res => res.json());
-    isValidGoToPage();
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data =>
+        window.confirm(
+          '장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?'
+        )
+          ? navigate('/cart')
+          : null
+      );
   };
 
   return (
@@ -116,7 +163,7 @@ const ProductDetailTop = ({
               <span className="reviewAverageViewScore">4.4점</span>
             </span>
             <span className="capacity">
-              {detail.ml_volume}mL (8주 사용 분량)
+              {Math.floor(detail.ml_volume)}mL (8주 사용 분량)
             </span>
             <div className="countUp">
               <span>
@@ -137,11 +184,9 @@ const ProductDetailTop = ({
             <button type="button" className="buyButton" onClick={openModal}>
               구독하기
             </button>
-            <Link to="/cart">
-              <button type="button" className="buyButton" onClick={payAction}>
-                구매하기
-              </button>
-            </Link>
+            <button type="button" className="buyButton" onClick={payAction}>
+              구매하기
+            </button>
           </form>
           <div className="priceTab">
             <span className="priceTag">총 주문금액</span>
@@ -186,36 +231,39 @@ const ProductDetailTop = ({
             <span className="costInfoData">
               <p className="costInfoDataTag">제조비</p>
               <p className="costInfoDataPrice">
-                {detail.price.manufacturing_cost}원
+                {Math.floor(detail.price.manufacturing_cost)}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">개발비</p>
               <p className="costInfoDataPrice">
-                {detail.price.development_cost.toLocaleString()}원
+                {Math.floor(detail.price.development_cost.toLocaleString())}원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">물류 및 운송</p>
               <p className="costInfoDataPrice">
-                {detail.price.transportation_cost.toLocaleString()}원
+                {Math.floor(detail.price.transportation_cost.toLocaleString())}
+                원
               </p>
             </span>
             <span className="costInfoData">
               <p className="costInfoDataTag">결제수수료</p>
               <p className="costInfoDataPrice">
-                {detail.price.commision_cost.toLocaleString()}원
+                {Math.floor(detail.price.commision_cost.toLocaleString())}원
               </p>
             </span>
           </div>
           <div className="resultWrap">
             <div className="circle">
               <p>오픈워크</p>
-              <p>{detail.category_price.toLocaleString()}원</p>
+              <p>{Math.floor(detail.category_price.toLocaleString())}원</p>
             </div>
             <div className="circle">
               <p>시중주요 브랜드</p>
-              <p>{detail.price.commision_cost.toLocaleString()}원</p>
+              <p>
+                {Math.floor(detail.price.commision_cost.toLocaleString())}원
+              </p>
             </div>
           </div>
         </div>
