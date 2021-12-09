@@ -1,8 +1,8 @@
 @import '../../styles/variables.scss';
 
 .payment {
-  width: 680px;
   @include flexSpaceBetweenCenter;
+  width: 680px;
   align-items: flex-start;
   margin: 0 auto;
   padding-top: 100px;

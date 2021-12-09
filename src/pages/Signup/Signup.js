@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { API } from '../../config';
 import USER_DATA from './UserData.js';
-import './Signup.scss';
+import './SignUp.scss';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
