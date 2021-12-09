@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../../src/config';
 import EmptyCart from './EmptyCart';
 import LoadingCart from './LoadingCart';
@@ -8,6 +9,7 @@ import '../Cart/Cart.scss';
 import { Link } from 'react-router-dom';
 
 function Cart() {
+  const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [empty, setEmpty] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -16,12 +18,16 @@ function Cart() {
     fetch(API.CART, {
       method: 'get',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         if (data.RESULT.cart_items.length === 0) {
           setEmpty(true);
         } else {
@@ -80,12 +86,16 @@ function Cart() {
     fetch(`${API.CART}?id=${JSON.stringify(lists_id)}`, {
       method: 'delete',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         data.MESSAGE === 'DELETED' ? setEmpty(true) : alert(data.MESSAGE);
       })
       .catch(error => alert(error));
@@ -105,7 +115,7 @@ function Cart() {
             onClick={() => {
               window.confirm('전체삭제 하시겠습니까?')
                 ? handleDeleteAll()
-                : setCart(...cart);
+                : setCart(cart);
             }}
           >
             전체삭제

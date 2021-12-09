@@ -40,7 +40,7 @@ function Signin({ setIsLogin }) {
       .then(res => res.json())
       .then(res => {
         if (res.MESSAGE === 'SUCCESS') {
-          sessionStorage.setItem('access_token', res.access_token);
+          sessionStorage.setItem('access_token', res.TOKEN);
           setIsLogin(true);
           navigate('/');
         } else {
@@ -91,7 +91,7 @@ function Signin({ setIsLogin }) {
             >
               로그인
             </button>
-            <Link to="/signin">
+            <Link to="/signup">
               <div className="informLogin">
                 <span className="informText1">위즐리 컴퍼니 통합 회원으로</span>
                 <span className="informText2"> 가입 </span>

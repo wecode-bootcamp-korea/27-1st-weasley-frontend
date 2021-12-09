@@ -26,13 +26,17 @@ const ProductDetailTop = ({
   const openModal = () => {
     fetch(API.USER_ADDRESS, {
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         if (data.RESULT.length) {
           setSaveAddress(data.RESULT[0].address_id);
           postAddressUser(data.RESULT[0].address_id);
@@ -45,8 +49,7 @@ const ProductDetailTop = ({
   const postAddressUser = ad => {
     fetch(API.SUBSCRIBE, {
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
       method: 'POST',
       body: JSON.stringify({
@@ -68,8 +71,7 @@ const ProductDetailTop = ({
     fetch(API.USER_ADDRESS, {
       method: 'POST',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
       body: JSON.stringify({
         address_id: saveAddress,
@@ -81,8 +83,7 @@ const ProductDetailTop = ({
         alert('구독신청 완료 되었습니다. ');
         fetch(API.USER_ADDRESS, {
           headers: {
-            Authorization:
-              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+            Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
           },
           method: 'GET',
         })
@@ -92,8 +93,9 @@ const ProductDetailTop = ({
               setSaveAddress(data.RESULT[0].address_id);
               fetch(API.SUBSCRIBE, {
                 headers: {
-                  Authorization:
-                    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+                  Authorization: `Bearer ${sessionStorage.getItem(
+                    'access_token'
+                  )}`,
                 },
                 method: 'POST',
                 body: {
@@ -116,8 +118,7 @@ const ProductDetailTop = ({
   const payAction = () => {
     fetch(API.CART, {
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
       method: 'POST',
       body: JSON.stringify({

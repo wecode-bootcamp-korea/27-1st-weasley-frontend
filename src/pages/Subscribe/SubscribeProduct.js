@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { API } from '../../config';
+import { useNavigate } from 'react-router-dom';
 import './SubscribeProduct.scss';
 
 function SubscribeProduct({
@@ -16,12 +17,16 @@ function SubscribeProduct({
       ? fetch(`${API.SUBSCRIBE}?id=[${obj.subscribe_id}]`, {
           method: 'delete',
           headers: {
-            Authorization:
-              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+            Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
           },
         })
           .then(res => res.json())
           .then(data => {
+            if (data.MESSAGE === 'INVALID_TOKEN') {
+              alert('로그인이 필요합니다!');
+              navigate('/signin');
+              return;
+            }
             data.MESSAGE === 'DELETED'
               ? handleDelete(obj.subscribe_id)
               : alert(data.MESSAGE);
@@ -36,6 +41,7 @@ function SubscribeProduct({
     });
     setSubscribeData(filteredProduct);
   };
+  const navigate = useNavigate();
 
   return (
     <>

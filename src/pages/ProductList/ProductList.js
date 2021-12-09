@@ -12,10 +12,6 @@ function ProductList() {
   useEffect(() => {
     fetch(API.CATEGORY, {
       method: 'get',
-      headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
-      },
     })
       .then(res => res.json())
       .then(data => {

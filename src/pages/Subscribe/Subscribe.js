@@ -26,12 +26,16 @@ function Subscribe() {
     fetch(API.SUBSCRIBE, {
       method: 'GET',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(response => response.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         if (data.RESULT.length === 0) {
           alert('구독중인 상품이 없습니다. 메인으로 이동합니다');
           navigate('/');
