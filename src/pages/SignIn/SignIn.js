@@ -8,7 +8,7 @@ const emailReg =
 const passwordReg =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?#&]{8,}$/;
 
-function Signin() {
+function SignIn() {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ function Signin() {
       .then(res => res.json())
       .then(res => {
         if (res.MESSAGE === 'SUCCESS') {
-          localStorage.setItem('access_token', res.access_token);
+          sessionStorage.setItem('access_token', res.TOKEN);
           navigate('/');
         } else {
           alert('회원 가입을 진행해주세요');
@@ -52,16 +52,16 @@ function Signin() {
   };
 
   return (
-    <div className="signin">
-      <div className="signinInner">
+    <div className="signIn">
+      <div className="signInInner">
         <div className="logo">
           <Link to="/">
             <img src="./images/logo/logo-bk.svg" alt="logo" />
           </Link>
         </div>
 
-        <div className="signinSection">
-          <h1 className="signinH1">
+        <div className="signInSection">
+          <h1 className="signInH1">
             <span className="signinTitle1">로그인 및 회원가입</span>
             <span className="signinTitle2">을 시작합니다.</span>
           </h1>
@@ -106,4 +106,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default SignIn;

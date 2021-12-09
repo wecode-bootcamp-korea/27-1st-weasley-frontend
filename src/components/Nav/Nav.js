@@ -46,19 +46,6 @@ function Nav() {
               </p>
             </Link>
           </li>
-          <li className="navMenuList">
-            <Link to="/">
-              <p
-                className={`navMenuItems ${
-                  styleHandle === 3 ? 'navChecked' : ''
-                }`}
-                value={styleValue}
-                onClick={() => setStyleHandle(3)}
-              >
-                고객센터
-              </p>
-            </Link>
-          </li>
         </ul>
       </div>
       <div className="navLoginInner">
@@ -68,10 +55,10 @@ function Nav() {
               <Link to="/subscribe">
                 <p
                   className={`navLoginItems ${
-                    styleHandle === 4 ? 'navChecked' : ''
+                    styleHandle === 3 ? 'navChecked' : ''
                   }`}
                   value={styleValue}
-                  onClick={() => setStyleHandle(4)}
+                  onClick={() => setStyleHandle(3)}
                 >
                   구독관리
                 </p>
@@ -81,10 +68,10 @@ function Nav() {
               <Link to="/login">
                 <p
                   className={`navLoginItems ${
-                    styleHandle === 5 ? 'navChecked' : ''
+                    styleHandle === 4 ? 'navChecked' : ''
                   }`}
                   value={styleValue}
-                  onClick={() => setStyleHandle(5)}
+                  onClick={() => setStyleHandle(4)}
                 >
                   로그인
                 </p>
