@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { API } from '../../config';
-import '../Login/Login.scss';
+import './SignIn.scss';
 
-const emailReg = '[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}';
+const emailReg =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 const passwordReg =
-  '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])(?=.*[0-9])[A-Za-z\\d$@$!%*?&]{8,45}';
+  /^.*(?=^.{8,45}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
-function Login() {
+function Signin({ setIsLogin }) {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const navigate = useNavigate();
 
   const emailExp = new RegExp(emailReg);
   const passwordExp = new RegExp(passwordReg);
+
   const isInputValid =
     emailExp.test(emailValue) && passwordExp.test(passwordValue);
 
@@ -35,30 +37,34 @@ function Login() {
         password: passwordValue,
       }),
     })
-      .then(response => response.json())
-      .then(result => {
-        return result.MESSAGE === 'SUCCESS'
-          ? navigate('/Main')
-          : alert('가입을 먼저 진행해주세요');
+      .then(res => res.json())
+      .then(res => {
+        if (res.MESSAGE === 'SUCCESS') {
+          sessionStorage.setItem('access_token', res.access_token);
+          setIsLogin(true);
+          navigate('/');
+        } else {
+          alert('회원 가입을 진행해주세요');
+        }
       });
   };
 
   return (
-    <div className="login">
-      <div className="loginInner">
+    <div className="signin">
+      <div className="signinInner">
         <div className="logo">
           <Link to="/">
             <img src="./images/logo/logo-bk.svg" alt="logo" />
           </Link>
         </div>
 
-        <div className="loginSection">
-          <h1 className="loginH1">
-            <span className="loginTitle1">로그인 및 회원가입</span>
-            <span className="loginTitle2">을 시작합니다.</span>
+        <div className="signinSection">
+          <h1 className="signinH1">
+            <span className="signinTitle1">로그인 및 회원가입</span>
+            <span className="signinTitle2">을 시작합니다.</span>
           </h1>
-          <form name="loginForm" method="post">
-            <label for="email" className="loginFormLabel">
+          <form name="signinForm" method="post">
+            <label for="email" className="signinFormLabel">
               <input
                 value={emailValue}
                 type="text"
@@ -85,12 +91,9 @@ function Login() {
             >
               로그인
             </button>
-            <Link to="/signup">
+            <Link to="/signin">
               <div className="informLogin">
-                <span className="informText1">
-                  {' '}
-                  위즐리 컴퍼니 통합 회원으로{' '}
-                </span>
+                <span className="informText1">위즐리 컴퍼니 통합 회원으로</span>
                 <span className="informText2"> 가입 </span>
               </div>
             </Link>
@@ -101,4 +104,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signin;
