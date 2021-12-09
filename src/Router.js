@@ -4,6 +4,7 @@ import ProductList from './pages/ProductList/ProductList';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import SignIn from './pages/SignIn/SignIn';
 import Signup from './pages/Signup/Signup';
+import { useState } from 'react';
 import Cart from './pages/Cart/Cart';
 import Payment from './pages/payment/Payment';
 import Footer from './components/Footer/Footer';
