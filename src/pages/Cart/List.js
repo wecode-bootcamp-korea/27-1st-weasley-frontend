@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../../../src/config';
 import './List.scss';
 
 function List({
@@ -8,19 +10,22 @@ function List({
   eraseCartItem,
   cart,
   setCart,
-  API,
 }) {
   const handleDelete = () => {
     window.confirm(`${list.category_name}을 삭제 하시겠습니까?`)
       ? fetch(`${API.CART}?id=[${list.cart_id}]`, {
           method: 'delete',
           headers: {
-            Authorization:
-              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+            Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
           },
         })
           .then(res => res.json())
           .then(data => {
+            if (data.MESSAGE === 'INVALID_TOKEN') {
+              alert('로그인이 필요합니다!');
+              navigate('/signin');
+              return;
+            }
             data.MESSAGE === 'DELETED'
               ? eraseCartItem(list.product_id)
               : alert(data.MESSAGE);
@@ -35,10 +40,9 @@ function List({
       return;
     }
     fetch(`${API.CART}/${list.cart_id}`, {
-      method: 'patch',
+      method: 'PATCH',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
       body: JSON.stringify({
         amount: list.amount + 1,
@@ -46,6 +50,11 @@ function List({
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         data.MESSAGE === 'SUCCESS'
           ? increaseCartItem(list.product_id)
           : alert(data.MESSAGE);
@@ -59,10 +68,9 @@ function List({
       return;
     }
     fetch(`${API.CART}/${list.cart_id}`, {
-      method: 'patch',
+      method: 'PATCH',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
       body: JSON.stringify({
         amount: list.amount - 1,
@@ -70,12 +78,19 @@ function List({
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         data.MESSAGE === 'SUCCESS'
           ? decreaseCartItem(list.product_id)
           : alert(data.MESSAGE);
       })
       .catch(error => alert(error));
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="list">

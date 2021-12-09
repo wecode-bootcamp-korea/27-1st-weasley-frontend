@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.signIn {
+.signin {
   position: relative;
   background: url('/assets/images/loginbackground.png') no-repeat;
   background-size: cover;
@@ -8,7 +8,7 @@
   height: auto;
   min-height: 1440px;
 
-  .signInInner {
+  .signinInner {
     @include flexStart;
     position: absolute;
     flex-direction: column;
@@ -25,7 +25,7 @@
       }
     }
 
-    .signInSection {
+    .signinSection {
       height: auto;
       max-height: 900px;
       padding: 35px;
@@ -34,13 +34,13 @@
       border-radius: 5px;
       box-shadow: 0 0 20px $colorGray;
 
-      .signInTitle1 {
+      .signinTitle1 {
         display: block;
         font-size: $fontLarge;
         font-weight: $weightRegular;
       }
 
-      .signInTitle2 {
+      .signinTitle2 {
         display: block;
         font-size: $fontLarge;
         font-weight: $weightThin;

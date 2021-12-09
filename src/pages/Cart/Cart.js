@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../../src/config';
 import EmptyCart from './EmptyCart';
+import LoadingCart from './LoadingCart';
 import List from './List';
 import Price from './Price';
 import '../Cart/Cart.scss';
 import { Link } from 'react-router-dom';
 
 function Cart() {
+  const navigate = useNavigate();
   const [cart, setCart] = useState([]);
-  const [empty, setEmpty] = useState(true);
+  const [empty, setEmpty] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(API.CART, {
       method: 'get',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
       .then(data => {
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
         if (data.RESULT.cart_items.length === 0) {
           setEmpty(true);
         } else {
-          setEmpty(false);
           setCart(data.RESULT.cart_items);
+          setLoading(false);
         }
       });
   }, []);
@@ -65,7 +73,9 @@ function Cart() {
       return item.product_id !== productId;
     });
 
-    setCart(filteredCart);
+    if (filteredCart.length === 0) {
+      setEmpty(true);
+    } else setCart(filteredCart);
   };
 
   const handleDeleteAll = () => {
@@ -76,22 +86,28 @@ function Cart() {
     fetch(`${API.CART}?id=${JSON.stringify(lists_id)}`, {
       method: 'delete',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(res => res.json())
       .then(data => {
-        data.MESSAGE === 'DELETED' ? setCart([]) : alert(data.MESSAGE);
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
+        data.MESSAGE === 'DELETED' ? setEmpty(true) : alert(data.MESSAGE);
       })
       .catch(error => alert(error));
   };
 
-  return (
-    <div>
-      {empty ? (
-        <EmptyCart />
-      ) : (
+  const cartCondition = () => {
+    if (empty === true) {
+      return <EmptyCart />;
+    } else if (loading === true) {
+      return <LoadingCart />;
+    } else {
+      return (
         <main className="cartMain">
           <div className="title">장바구니</div>
           <button
@@ -99,7 +115,7 @@ function Cart() {
             onClick={() => {
               window.confirm('전체삭제 하시겠습니까?')
                 ? handleDeleteAll()
-                : setCart(...cart);
+                : setCart(cart);
             }}
           >
             전체삭제
@@ -113,7 +129,6 @@ function Cart() {
                 increaseCartItem={() => increaseCartItem(index)}
                 decreaseCartItem={() => decreaseCartItem(index)}
                 key={list.product_id}
-                API={API}
                 cart={cart}
                 setCart={setCart}
               />
@@ -128,9 +143,11 @@ function Cart() {
             </Link>
           </div>
         </main>
-      )}
-    </div>
-  );
+      );
+    }
+  };
+
+  return <div>{cartCondition()}</div>;
 }
 
 export default Cart;

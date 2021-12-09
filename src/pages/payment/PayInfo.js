@@ -10,12 +10,14 @@ const PayInfo = ({ name, amount, price, thumb, volume }) => {
         <div className="orderInfo">
           <p className="productName">{name}</p>
           <span className="productType">{}</span>
-          <span className="productCapacity">{volume}ml</span>
+          <span className="productCapacity">{Math.floor(volume)}ml</span>
         </div>
         <div className="seperateInfo">
           <span className="seperateQty">{amount}개</span>
           <span className="seperateQtySlash">/</span>
-          <span className="seperatePrice">{price}원</span>
+          <span className="seperatePrice">
+            {Math.floor(price).toLocaleString()}원
+          </span>
         </div>
       </div>
     </div>

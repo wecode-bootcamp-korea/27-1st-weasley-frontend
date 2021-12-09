@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { API } from '../../config';
 import ProductDetailTop from './ProductTop';
 import './ProductDetail.scss';
 
@@ -17,18 +18,14 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    fetch('/data/productDetail/detailcontents.json')
+    fetch(`${API.PRODUCT_DETAIL}/${id}`)
       .then(res => res.json())
       .then(data => {
         setDetail(data);
       });
-    // .catch(error => {
-    //   console.log('ERROR', error);
-    // });
   }, []);
 
   return (
-    //</Nav>
     <main className="main">
       {detail.RESULT && (
         <ProductDetailTop

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SubscribeUserBox from './SubscribeUserBox';
 import SubscribeShipping from './SubscribeShipping';
 import SubscribeCycle from './SubscribeCycle';
@@ -9,33 +10,41 @@ import './Subscribe.scss';
 function Subscribe() {
   const [productModal, setproductModal] = useState(false);
 
-  const [deliveryCycle, setDeliveryCycle] = useState('8');
+  const [deliveryCycle, setDeliveryCycle] = useState('');
 
   const [subscribeData, setSubscribeData] = useState([]);
 
   const [nextDeliveryDate, setNextDeliveryDate] = useState();
 
-  const [productData, setProductData] = useState([]);
-
   const [isItNowSubscribing, setIsItNowSubscribing] = useState('구독중');
 
   const [nextPurchaseDate, setNextPurchaseDate] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(API.SUBSCRIBE, {
       method: 'GET',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       },
     })
       .then(response => response.json())
       .then(data => {
-        setSubscribeData(data.RESULT);
-        setProductData(data.RESULT.products_list);
-        setNextDeliveryDate(data.RESULT.next_ship_date);
-        setDeliveryCycle(`${data.RESULT.interval}주 마다`);
-        setNextPurchaseDate(data.RESULT.next_purchase_date);
+        if (data.MESSAGE === 'INVALID_TOKEN') {
+          alert('로그인이 필요합니다!');
+          navigate('/signin');
+          return;
+        }
+        if (data.RESULT.length === 0) {
+          alert('구독중인 상품이 없습니다. 메인으로 이동합니다');
+          navigate('/');
+        } else {
+          setSubscribeData(data.RESULT);
+          setNextDeliveryDate(data.RESULT[0]?.next_ship_date);
+          setDeliveryCycle(`${data.RESULT[0]?.interval}주 마다`);
+          setNextPurchaseDate(data.RESULT[0]?.next_purchase_date);
+        }
       });
   }, []);
 
@@ -62,10 +71,9 @@ function Subscribe() {
         />
         {productModal ? (
           <SubscribeProduct
-            productData={productData}
             setNextPurchaseDate={setNextPurchaseDate}
             setDeliveryCycle={setDeliveryCycle}
-            setProductData={setProductData}
+            subscribeData={subscribeData}
             setSubscribeData={setSubscribeData}
             setIsItNowSubscribing={setIsItNowSubscribing}
             setNextDeliveryDate={setNextDeliveryDate}
