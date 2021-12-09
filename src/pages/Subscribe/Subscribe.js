@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SubscribeUserBox from './SubscribeUserBox';
 import SubscribeShipping from './SubscribeShipping';
 import SubscribeCycle from './SubscribeCycle';
@@ -19,6 +20,8 @@ function Subscribe() {
 
   const [nextPurchaseDate, setNextPurchaseDate] = useState();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch(API.SUBSCRIBE, {
       method: 'GET',
@@ -29,10 +32,15 @@ function Subscribe() {
     })
       .then(response => response.json())
       .then(data => {
-        setSubscribeData(data.RESULT);
-        setNextDeliveryDate(data.RESULT[0]?.next_ship_date);
-        setDeliveryCycle(`${data.RESULT[0]?.interval}주 마다`);
-        setNextPurchaseDate(data.RESULT[0]?.next_purchase_date);
+        if (data.RESULT.length === 0) {
+          alert('구독중인 상품이 없습니다. 메인으로 이동합니다');
+          navigate('/');
+        } else {
+          setSubscribeData(data.RESULT);
+          setNextDeliveryDate(data.RESULT[0]?.next_ship_date);
+          setDeliveryCycle(`${data.RESULT[0]?.interval}주 마다`);
+          setNextPurchaseDate(data.RESULT[0]?.next_purchase_date);
+        }
       });
   }, []);
 
