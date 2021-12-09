@@ -25,7 +25,6 @@ const Router = () => {
         <Route path="/SignIn" element={<SignIn setIsLogin={setIsLogin} />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetails/:id" element={<ProductDetail />} />
-        <Route path="/signin" element={<SignIn />} />
         <Route path="/ingredient" element={<Ingredient />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />

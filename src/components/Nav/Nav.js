@@ -55,6 +55,7 @@ function Nav({ isLogin, setIsLogin }) {
           </li>
           <li className="navMenuList">
             <p
+              id="customer"
               className={`navMenuItems ${
                 styleHandle === 3 ? 'navChecked' : ''
               }`}
