@@ -8,7 +8,7 @@ const emailReg =
 const passwordReg =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?#&]{8,}$/;
 
-function Signin({ setIsLogin }) {
+function SignIn({ setIsSignIn }) {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const navigate = useNavigate();
@@ -31,10 +31,6 @@ function Signin({ setIsLogin }) {
   const goToMain = () => {
     fetch(API.SIGNIN, {
       method: 'POST',
-      headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.bHQK7d38oajQKa3Hl8nsYrqDhp9m2fmo_MWjDWMN4Zs',
-      },
       body: JSON.stringify({
         email: emailValue,
         password: passwordValue,
@@ -44,7 +40,7 @@ function Signin({ setIsLogin }) {
       .then(res => {
         if (res.MESSAGE === 'SUCCESS') {
           sessionStorage.setItem('access_token', res.TOKEN);
-          setIsLogin(true);
+          setIsSignIn(true);
           navigate('/');
         } else {
           alert('회원 가입을 진행해주세요');
@@ -53,21 +49,21 @@ function Signin({ setIsLogin }) {
   };
 
   return (
-    <div className="signin">
-      <div className="signinInner">
+    <div className="signIn">
+      <div className="signInInner">
         <div className="logo">
           <Link to="/">
             <img src="./images/logo/logo-bk.svg" alt="logo" />
           </Link>
         </div>
 
-        <div className="signinSection">
-          <h1 className="signinH1">
-            <span className="signinTitle1">로그인 및 회원가입</span>
-            <span className="signinTitle2">을 시작합니다.</span>
+        <div className="signInSection">
+          <h1 className="signInH1">
+            <span className="signInTitle1">로그인 및 회원가입</span>
+            <span className="signInTitle2">을 시작합니다.</span>
           </h1>
-          <form name="signinForm" method="post">
-            <label for="email" className="signinFormLabel">
+          <form name="signInForm" method="post">
+            <label for="email" className="signInFormLabel">
               <input
                 value={emailValue}
                 type="text"
@@ -94,7 +90,7 @@ function Signin({ setIsLogin }) {
             >
               로그인
             </button>
-            <Link to="/signin">
+            <Link to="/signUp">
               <div className="informLogin">
                 <span className="informText1">위즐리 컴퍼니 통합 회원으로</span>
                 <span className="informText2"> 가입 </span>
@@ -107,4 +103,4 @@ function Signin({ setIsLogin }) {
   );
 }
 
-export default Signin;
+export default SignIn;

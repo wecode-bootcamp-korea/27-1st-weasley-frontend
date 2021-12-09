@@ -8,7 +8,7 @@ import { API } from '../../config';
 import './Subscribe.scss';
 
 function Subscribe() {
-  const [productModal, setproductModal] = useState(false);
+  const [productModal, setProductModal] = useState(false);
 
   const [deliveryCycle, setDeliveryCycle] = useState('');
 
@@ -52,7 +52,7 @@ function Subscribe() {
     <main className="subscribeBox">
       <div className="subscribe">
         <SubscribeUserBox
-          setModal={setproductModal}
+          setModal={setProductModal}
           modal={productModal}
           subscribeData={subscribeData}
           isItNowSubscribing={isItNowSubscribing}

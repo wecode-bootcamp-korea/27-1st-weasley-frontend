@@ -7,7 +7,7 @@ const SLIDE_RIGHT_DIRECTION = 'right';
 function IngredientList({ product }) {
   const [xPos, setXpos] = useState(0);
 
-  const clickLeftorRight = direction => {
+  const clickLeftOrRight = direction => {
     if (xPos === 300 || xPos === -600) return setXpos(0);
 
     direction === SLIDE_LEFT_DIRECTION
@@ -20,13 +20,13 @@ function IngredientList({ product }) {
       <h3 className="ingredientCategory">클렌징폼</h3>
       <button
         className="leftButton ingredientBtn"
-        onClick={() => clickLeftorRight(SLIDE_LEFT_DIRECTION)}
+        onClick={() => clickLeftOrRight(SLIDE_LEFT_DIRECTION)}
       >
         ⇦
       </button>
       <button
         className="rightButton ingredientBtn"
-        onClick={() => clickLeftorRight(SLIDE_RIGHT_DIRECTION)}
+        onClick={() => clickLeftOrRight(SLIDE_RIGHT_DIRECTION)}
       >
         ⇨
       </button>

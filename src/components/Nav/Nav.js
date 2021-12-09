@@ -3,12 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../Nav/Nav.scss';
 import '/images/navimg/bi_cart.svg';
 
-function Nav({ isLogin, setIsLogin }) {
+function Nav({ isSignIn, setIsSignIn }) {
   const [styleHandle, setStyleHandle] = useState(-1);
   const navigate = useNavigate();
 
-  const logOut = () => {
-    setIsLogin(false);
+  const signOut = () => {
+    setIsSignIn(false);
     sessionStorage.clear('');
     navigate('/');
   };
@@ -55,13 +55,13 @@ function Nav({ isLogin, setIsLogin }) {
           </li>
         </ul>
       </div>
-      <div className="navLoginInner">
-        <div className="navLoginMenu">
-          <ul className="navLoginMenuUl">
-            <li className="navLoginList">
+      <div className="navSignInInner">
+        <div className="navSignInMenu">
+          <ul className="navSignInMenuUl">
+            <li className="navSignInList">
               <Link to="/subscribe">
                 <p
-                  className={`navLoginItems ${
+                  className={`navSignInItems ${
                     styleHandle === 3 ? 'navChecked' : ''
                   }`}
                   value={styleValue}
@@ -73,20 +73,20 @@ function Nav({ isLogin, setIsLogin }) {
             </li>
 
             <li className="navLoginList">
-              <Link to="/signin">
-                {isLogin ? (
+              <Link to="/signIn">
+                {{ isSignIn } ? (
                   <p
-                    className={`navLoginItems ${
-                      styleHandle === 5 ? 'navChecked' : ''
+                    className={`navSignItems ${
+                      styleHandle === 4 ? 'navChecked' : ''
                     }`}
                     value={styleValue}
-                    onClick={logOut}
+                    onClick={signOut}
                   >
                     로그아웃
                   </p>
                 ) : (
                   <p
-                    className={`navLoginItems ${
+                    className={`navSignInItems ${
                       styleHandle === 5 ? 'navChecked' : ''
                     }`}
                     value={styleValue}
@@ -97,7 +97,7 @@ function Nav({ isLogin, setIsLogin }) {
                 )}
               </Link>
             </li>
-            <li className="navLoginList">
+            <li className="navSignInList">
               <Link to="/cart">
                 <img
                   src="/images/navimg/bi_cart.svg"

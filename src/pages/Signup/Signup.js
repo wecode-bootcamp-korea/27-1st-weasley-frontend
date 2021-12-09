@@ -68,19 +68,19 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup">
-      <div className="signupInner">
+    <div className="signUp">
+      <div className="signUpInner">
         <div className="logo">
           <Link to=" /">
             <img src="./images/logo/logo-bk.svg" alt="logo" />
           </Link>
         </div>
-        <div className="signupSection">
-          <h1 className="signupH1">
-            <span className="signupTitle1">처음이시군요</span>
-            <span className="signupTitle2">가입을 진행합니다.</span>
+        <div className="signUpSection">
+          <h1 className="signUpH1">
+            <span className="signUpTitle1">처음이시군요</span>
+            <span className="signUpTitle2">가입을 진행합니다.</span>
           </h1>
-          <form name="signupForm" method="post">
+          <form name="signUpForm" method="post">
             {USER_DATA.map(user => {
               return (
                 <label className="formFormatLabel" key={user.id}>

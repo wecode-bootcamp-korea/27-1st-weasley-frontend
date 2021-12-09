@@ -5,7 +5,7 @@ const FOOTER_LEFT_TITLE_DATA = [
       mainTag: (
         <img src="./images/logo/logo-white.png" alt="logo" className="logo" />
       ),
-      link: '/main',
+      link: '/',
     },
     {
       id: 2,
@@ -22,12 +22,12 @@ const FOOTER_LEFT_TITLE_DATA = [
     {
       id: 1,
       mainTag: '로그아웃',
-      link: '/login',
+      link: '/signin',
     },
     {
       id: 2,
       mainTag: '고객센터',
-      link: '/login',
+      link: '/signin',
     },
   ],
   [

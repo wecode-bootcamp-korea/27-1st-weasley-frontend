@@ -7,7 +7,7 @@ function SubscribeUserBox({
   subscribeData,
   isItNowSubscribing,
 }) {
-  const [isItclicked, setisItClicked] = useState(false);
+  const [isItClicked, setIsItClicked] = useState(false);
   return (
     <div className="userBox">
       <div className="userName">
@@ -20,20 +20,20 @@ function SubscribeUserBox({
       <div className="addressBox">
         <div className="address">{subscribeData[0]?.address}</div>
         <div
-          className={isItclicked ? 'clickOffBox' : 'clickOnBox'}
+          className={isItClicked ? 'clickOffBox' : 'clickOnBox'}
           onClick={() => {
             setModal(false);
-            setisItClicked(!isItclicked);
+            setIsItClicked(!isItClicked);
           }}
           disabled={!modal}
         >
           정기배송 관리
         </div>
         <div
-          className={isItclicked ? 'clickOnBox' : 'clickOffBox'}
+          className={isItClicked ? 'clickOnBox' : 'clickOffBox'}
           onClick={() => {
             setModal(true);
-            setisItClicked(!isItclicked);
+            setIsItClicked(!isItClicked);
           }}
           disabled={modal}
         >
