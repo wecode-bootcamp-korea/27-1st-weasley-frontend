@@ -1,11 +1,11 @@
-# Team 'Weasley'
-
-Wecode 'Weasley' 1st team project
+:: Weasley Project :: 
+- Demo Video
+- 짧은 프로젝트 기간동안 개발에 집중하기 위하여 디자인/기획 부분은 클론했습니다.
+- 
 
 <br>
 
-## Members
-
+:: Members
 <br>
 
 프론트 - 김유량, 황성재, 황주영  
