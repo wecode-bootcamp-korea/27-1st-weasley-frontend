@@ -1,25 +1,87 @@
-## Weasley Project
-## 개발인원 및 기간
-- 개발기간: 2021.11.29 ~ 2021.12.10
-- 개발인원: 프론트엔드(김유량, 황성재, 황주영)/백엔드(강태준, 길동화, 염기욱)
+![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=200&section=header&text=TEAM_WEASELY&fontSize=50)
 
-## 개요
-- Demo Video
-- 짧은 프로젝트 기간동안 개발에 집중하기 위하여 디자인/기획 부분은 클론했습니다.
-<br>
-## Members
-<br>
-### Front-end
-- 김유량 - Nav, 로그인, 회원가입 
-- 황성재 - 상품리스트, 장바구니, 핵심성분, 구독 및 배송관리
-- 황주영 - 상품상세, 오더페이지, 메인, 푸터 
+<br/>
 
-<br>
-## 기술 스택
-html, css, scss, JS, React Js, React Router Dom
+# 프로젝트 개요
 
-## Refference
-<br>
-- 이 프로젝트는 ZARA HOME 사이트를 참조하여 학습목적으로 만들었습니다.
-- 실무 수준의 프로젝트이지만 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제가 될 수 있습니다.
-- 이 프로젝트에서 사용하고 있는 사진 대부분은 위코드에서 구매한 것이므로 해당 프로젝트 외부인이 사용할 수 없습니다.
+## 프로젝트 기간
+
+- 2021.11.29. ~ 2021.12.10.
+
+<br/>
+
+## <b>목표</b>
+
+- 그동안 학습했던 지식들을 2주 간의 팀 프로젝트에 활용
+- 초기 세팅부터 전부 실제 사용할 수 있는 서비스 수준으로 기획 및 배포까지 구현
+
+---
+
+# 구현 영상
+
+[구현 영상](https://youtu.be/-NVtder2lRE)
+
+---
+
+# 프로젝트 회고
+
+## 배운 점
+
+1. fetch를 통한 서버와의 통신 방법을 알게 되었습니다.
+2. state 관리와 불변성에 대해 이해하게 되었습니다.
+3. scss 활용
+
+<br/>
+
+## 느낀 점
+
+1. 팀 단위의 프로젝트를 통해 의사소통 능력 향상 및 협업의 중요성과 이해도를 향상 시키는 계기가 되엇습니다.
+
+2. 공통적인 목적성을 가지고 프로젝트를 진행해볼 수 있는 기회가 있어서 좋았고, 백엔드와 실질 적인 통신을 해봄으로써, API에 대한 전반적인 이해도가 향상 되었습니다.
+
+3. 리액트적 사고와 문법에 대해 기본적인 이해와 리액트에 대한 지적호기심이 더욱 생겼습니다.
+
+<br/>
+
+## 아쉬운 점
+
+1. 기능 구현에 초점을 맞춰서 사용자 중심의 UI를 고려하지 못했다. 그에 따라 CSS의 완성도가 부족했던 것 같습니다.
+
+2. 첫 주의 협업 툴의 사용시에 있어서 업무 세분화가 체계적으로 안되어 아쉬웠지만, 2주차 때 checklist 활용을 통해서 업무를 분배하고 진행했다.
+
+<br/>
+
+---
+
+# SKillS
+
+- HTML
+- CSS
+- Sass
+- JavaScript(ES6)
+- React.js
+- Git
+
+---
+
+# Members
+
+[프론트엔드]  
+[김유량 Github](http:s//github.com/YuryangKim)  
+[황성재 Github](https://github.com/seongjae0325)  
+[황주영 Github](https://github.com/dududweb)
+
+<br/>
+
+[백엔드]  
+[강태준 Github](https://github.com/eslerkang)  
+[길동화 Github](https://github.com/dk-sync)  
+[염기욱 Github](https://github.com/bakha1002)
+
+---
+
+# Reference
+
+- [API Document](https://docs.google.com/spreadsheets/d/1VEnmoeMfSquz6PnfTI9717p0FvRqJzT_ZRAklIup-lY/edit?usp=sharing)
+- 이 프로젝트는 [와이즐리 오픈워크](https://openwork.wiselycompany.com/) 사이트를 참조하여 학습목적으로 만들었습니다.
+- 실무수준의 프로젝트이지만 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제될 수 있습니다.
